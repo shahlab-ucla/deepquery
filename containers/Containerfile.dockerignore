@@ -20,6 +20,8 @@
 !schemas/**
 !sql/
 !sql/**
+!scripts/
+!scripts/**
 !tests/
 !tests/**
 !environment/

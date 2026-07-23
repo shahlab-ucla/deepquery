@@ -32,6 +32,7 @@ COPY experiments ./experiments
 COPY mappings ./mappings
 COPY schemas ./schemas
 COPY sql ./sql
+COPY scripts ./scripts
 COPY tests ./tests
 COPY environment/constraints-container.txt environment/requirements-container.txt ./environment/
 

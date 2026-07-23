@@ -62,6 +62,21 @@ class PackagingTests(unittest.TestCase):
         self.assertIn("s.source_release", ddl)
         self.assertIn("s.source_artifact", ddl)
 
+    def test_container_definitions_include_experiment_runners(self) -> None:
+        containerfile = (ROOT / "containers" / "Containerfile").read_text(
+            encoding="utf-8"
+        )
+        dockerignore = (
+            ROOT / "containers" / "Containerfile.dockerignore"
+        ).read_text(encoding="utf-8")
+        apptainer = (ROOT / "containers" / "deepquery.def").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn("COPY scripts ./scripts", containerfile)
+        self.assertIn("!scripts/", dockerignore)
+        self.assertIn("!scripts/**", dockerignore)
+        self.assertIn("scripts /opt/deepquery/scripts", apptainer)
+
 
 if __name__ == "__main__":
     unittest.main()

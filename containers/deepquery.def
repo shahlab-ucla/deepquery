@@ -20,6 +20,7 @@ From: {{ base_image }}
     mappings /opt/deepquery/mappings
     schemas /opt/deepquery/schemas
     sql /opt/deepquery/sql
+    scripts /opt/deepquery/scripts
     tests /opt/deepquery/tests
     environment/constraints-container.txt /opt/deepquery/environment/constraints-container.txt
     environment/requirements-container.txt /opt/deepquery/environment/requirements-container.txt
