@@ -27,6 +27,24 @@ metrics, split files, data manifest, resolved configuration, and vocabulary. All
 checkpoint tensors were bitwise identical. The safetensors container hash changed because its
 metadata includes the timestamped run identifier; tensor values did not change.
 
+The second seed was committed before execution and also passed every gate:
+
+| Metric | primary seed | second seed |
+|---|---:|---:|
+| family accuracy | 1.0000 | 1.0000 |
+| operator micro-F1 | 1.0000 | 1.0000 |
+| invalid-design rejection accuracy | 0.9167 | 0.9340 |
+| invalid-flag micro-F1 | 0.9091 | 0.9261 |
+| conclusion accuracy | 0.9167 | 0.9167 |
+| experiment accuracy | 1.0000 | 1.0000 |
+| resolution MAE | 0.1045 | 0.0599 |
+| hypothesis accuracy | 0.3333 | 0.3333 |
+
+The paired record is
+[`paired_seed_synthetic_feasibility.json`](paired_seed_synthetic_feasibility.json). Two seeds
+test sensitivity to declared randomization; they do not define a sampling distribution or
+confidence interval.
+
 The machine-neutral evidence record is
 [`rtx3090_synthetic_feasibility.json`](rtx3090_synthetic_feasibility.json). It binds the source
 revision, source archive, execution manifest, output-closure receipt, workload, metrics, and
@@ -35,7 +53,7 @@ absolute paths, and interpreter locations are excluded. The 223-MB model run dir
 committed; its recursive closure digest is recorded so a retained or repeated run can be
 checked against the same contract.
 
-The second simulation/training seed is frozen in
+The second simulation/training seed was frozen in
 [`full_gpu_second_seed.json`](../config/full_gpu_second_seed.json) and bound by
-[`rtx3090_gpu_second_seed.json`](../execution/rtx3090_gpu_second_seed.json). After its paired
-run, conventional real-data baselines remain required before biological interpretation.
+[`rtx3090_gpu_second_seed.json`](../execution/rtx3090_gpu_second_seed.json) before execution.
+Conventional real-data baselines remain required before biological interpretation.

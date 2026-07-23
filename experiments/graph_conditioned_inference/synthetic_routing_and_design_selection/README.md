@@ -29,6 +29,7 @@ One full checked GPU run has completed and passed every predeclared engineering 
 path-free evidence record and interpretation are under [`evidence/`](evidence/README.md).
 An exact replay reproduced all stable artifacts and all 117 checkpoint tensors. A second
 simulation/training seed and its execution manifest are now frozen under `config/` and
-`execution/`.
+`execution/`; that paired run also passed every gate. Descriptive paired results are under
+`evidence/`.
 
 Implementation: `wormctx.poc.{generation,operators,tensorize,model,training,metrics}`.

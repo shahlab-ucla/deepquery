@@ -131,8 +131,9 @@ The source archive, hardware qualification, graph fixture, 24-epoch model run, e
 checksums, and 223-MB recursive output closure all verified. The machine-neutral metrics and
 receipt digests are recorded in
 `experiments/graph_conditioned_inference/synthetic_routing_and_design_selection/evidence/`.
-This establishes software and execution feasibility only; it does not validate a biological
-prediction.
+An exact replay reproduced every checkpoint tensor, and a second seed committed before
+execution also passed all gates. This establishes software and execution feasibility only; it
+does not validate a biological prediction.
 
 ## Output contract
 

@@ -73,7 +73,9 @@ configuration, reloaded its portable checkpoint, and verified the 223-MB output 
 public-safe result is recorded under
 `experiments/graph_conditioned_inference/synthetic_routing_and_design_selection/evidence/`.
 An exact replay reproduced all stable artifacts and every checkpoint tensor bitwise. The
-remaining model-level gate is the frozen second seed and a paired comparison across seeds.
+outcome-blind second seed also passed every gate, with stable core routing metrics. The
+current synthetic model-level qualification gate is complete; further seeds would estimate
+variability rather than close a portability blocker.
 
 Run the small and full graph-conditioned configurations with at least two seeds. Record:
 
