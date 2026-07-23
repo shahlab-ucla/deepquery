@@ -6,11 +6,12 @@ import socket
 import subprocess
 import sys
 from pathlib import Path
-from unittest.mock import patch
+from unittest.mock import MagicMock, patch
 
 import pytest
 from pydantic import ValidationError
 
+import wormctx.execution as execution_module
 from wormctx.execution import (
     ExecutionFailed,
     ExecutionManifest,
@@ -87,6 +88,53 @@ def execution_case(tmp_path: Path) -> tuple[ExecutionManifest, ExecutionRoots, d
 
 def _available() -> ResourceAvailability:
     return ResourceAvailability(cpu_cores=8, ram_gib=32, gpu_vram_gib=(24,))
+
+
+def test_linux_ram_discovery_prefers_memavailable() -> None:
+    meminfo_path = MagicMock(spec=Path)
+    meminfo_path.read_text.return_value = (
+        "MemTotal:       131900000 kB\n"
+        "MemFree:          7000000 kB\n"
+        "MemAvailable:    114294784 kB\n"
+    )
+    with (
+        patch.object(execution_module.sys, "platform", "linux"),
+        patch.object(execution_module.os, "sysconf", create=True) as sysconf,
+    ):
+        assert execution_module._discover_posix_ram_gib(meminfo_path) == 109.0
+    meminfo_path.read_text.assert_called_once_with(encoding="ascii")
+    sysconf.assert_not_called()
+
+
+@pytest.mark.parametrize(
+    "meminfo_result",
+    [
+        "MemAvailable: not-a-number kB\n",
+        FileNotFoundError("/proc/meminfo"),
+    ],
+)
+def test_linux_ram_discovery_falls_back_to_sysconf(
+    meminfo_result: str | OSError,
+) -> None:
+    meminfo_path = MagicMock(spec=Path)
+    if isinstance(meminfo_result, OSError):
+        meminfo_path.read_text.side_effect = meminfo_result
+    else:
+        meminfo_path.read_text.return_value = meminfo_result
+    with (
+        patch.object(execution_module.sys, "platform", "linux"),
+        patch.object(
+            execution_module.os,
+            "sysconf",
+            side_effect=[4096, 2_097_152],
+            create=True,
+        ) as sysconf,
+    ):
+        assert execution_module._discover_posix_ram_gib(meminfo_path) == 8.0
+    assert sysconf.call_args_list == [
+        (("SC_PAGE_SIZE",),),
+        (("SC_AVPHYS_PAGES",),),
+    ]
 
 
 @pytest.mark.parametrize(

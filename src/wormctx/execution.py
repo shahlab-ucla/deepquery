@@ -33,6 +33,11 @@ _ENVIRONMENT_NAME_PATTERN = re.compile(r"^[A-Z_][A-Z0-9_]*$")
 _PLACEHOLDER_PATTERN = re.compile(
     r"^\{(?P<kind>config|input|output):(?P<name>[a-z][a-z0-9]*(?:[-_][a-z0-9]+)*)\}$"
 )
+_MEM_AVAILABLE_PATTERN = re.compile(
+    r"^MemAvailable:[ \t]+(?P<value_kib>[0-9]+)[ \t]+kB[ \t]*$",
+    re.MULTILINE,
+)
+_LINUX_MEMINFO_PATH = Path("/proc/meminfo")
 
 
 class ExecutionError(RuntimeError):
@@ -467,6 +472,29 @@ def _resolve_beneath(
     return resolved
 
 
+def _discover_posix_ram_gib(
+    meminfo_path: Path = _LINUX_MEMINFO_PATH,
+) -> float:
+    if sys.platform.startswith("linux"):
+        try:
+            meminfo = meminfo_path.read_text(encoding="ascii")
+        except (OSError, UnicodeError):
+            meminfo = ""
+        matches = _MEM_AVAILABLE_PATTERN.findall(meminfo)
+        if len(matches) == 1:
+            return int(matches[0]) / (1024**2)
+
+    sysconf = getattr(os, "sysconf", None)
+    if not callable(sysconf):
+        return 0.0
+    try:
+        page_size = sysconf("SC_PAGE_SIZE")
+        page_count = sysconf("SC_AVPHYS_PAGES")
+    except (AttributeError, OSError, ValueError):
+        return 0.0
+    return float(page_size * page_count) / (1024**3)
+
+
 def _discover_ram_gib() -> float:
     if os.name == "nt":
         class _MemoryStatus(ctypes.Structure):
@@ -490,15 +518,7 @@ def _discover_ram_gib() -> float:
             return 0.0
         return status.available_physical / (1024**3) if success else 0.0
 
-    sysconf = getattr(os, "sysconf", None)
-    if not callable(sysconf):
-        return 0.0
-    try:
-        page_size = sysconf("SC_PAGE_SIZE")
-        page_count = sysconf("SC_AVPHYS_PAGES")
-    except (AttributeError, OSError, ValueError):
-        return 0.0
-    return float(page_size * page_count) / (1024**3)
+    return _discover_posix_ram_gib()
 
 
 def _discover_gpu_vram_gib() -> tuple[float, ...]:
