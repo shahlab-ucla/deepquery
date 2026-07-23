@@ -1,0 +1,5 @@
+# Install the repository and its bounded inference dependencies.
+.[poc]
+
+# Used for rights-safe image qualification; not required by the runtime CLI.
+pytest>=8,<9

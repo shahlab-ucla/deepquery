@@ -1,0 +1,46 @@
+{
+  "execution_manifest_schema_version": "1.0",
+  "experiment_id": "context-graph-transport-smoke",
+  "entrypoint": {
+    "module": "wormctx.__main__",
+    "argv": [
+      "demo",
+      "--output",
+      "{output:demo-directory}"
+    ]
+  },
+  "configs": [
+    {
+      "name": "transport-policy",
+      "path": "config/transport_policy.json",
+      "sha256": "f3820ba18d27551ac1ec96fd2df25ee38fad4a7a1e2a19f4a030b1477f9271ca"
+    }
+  ],
+  "inputs": [
+    {
+      "name": "observations",
+      "path": "data/examples/observations.jsonl",
+      "sha256": "aee7c9dff60ba3c514c2e203f3a76c214559ffc761241697360b7c3fa0c63bf9"
+    },
+    {
+      "name": "query-context",
+      "path": "data/examples/query_context.json",
+      "sha256": "d24649fb3d4905bbbf5c23f320c4ae62978da42cfe8b0564e47f652b0820971d"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "demo-directory",
+      "path": "context-graph-transport-smoke",
+      "kind": "directory"
+    }
+  ],
+  "resources": {
+    "cpu_cores": 1,
+    "ram_gib": 1.0,
+    "gpus": 0,
+    "min_vram_gib": 0.0
+  },
+  "required_environment": [],
+  "timeout_seconds": 300
+}

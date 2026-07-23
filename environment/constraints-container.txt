@@ -1,0 +1,7 @@
+# Cross-platform compatibility bounds, not a byte-for-byte lock file.
+# CUDA libraries are intentionally absent: they are supplied by the selected base image.
+pydantic>=2,<3
+numpy>=2,<3
+safetensors>=0.5,<1
+torch>=2.5,<2.9
+pytest>=8,<9

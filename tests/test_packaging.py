@@ -26,6 +26,9 @@ class PackagingTests(unittest.TestCase):
         self.assertEqual(
             included["data/examples"], "wormctx/resources/data/examples"
         )
+        self.assertEqual(
+            included["SOURCE_REVISION"], "wormctx/resources/SOURCE_REVISION"
+        )
 
     def test_repository_root_falls_back_to_installed_resources(self) -> None:
         with tempfile.TemporaryDirectory() as directory:

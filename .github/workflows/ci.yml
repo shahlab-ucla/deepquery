@@ -36,6 +36,25 @@ jobs:
             --observations data/examples/observations.jsonl \
             --query data/examples/query_context.json \
             --policy config/transport_policy.json
+      - name: Portable execution and retrieval verification
+        run: |
+          mkdir -p build/portable-ci
+          python -m wormctx execute \
+            --manifest experiments/context_graph/context_graph_transport_smoke/execution/portable_smoke.json \
+            --config-root . \
+            --input-root . \
+            --output-root build/portable-ci
+          receipt="$(find build/portable-ci/receipts -type f -name '*.execution.json' -print -quit)"
+          python -m wormctx verify-execution \
+            --receipt "${receipt}" \
+            --output-root build/portable-ci
+      - name: Source archive creation and verification
+        run: |
+          python -m wormctx source-bundle create --output-directory dist/source
+          short_revision="$(git rev-parse --short=12 HEAD)"
+          python -m wormctx source-bundle verify \
+            --archive "dist/source/deepquery-${short_revision}.tar.gz" \
+            --receipt "dist/source/deepquery-${short_revision}.tar.gz.receipt.json"
 
   # Semantic conformance is gated behind the optional ontology toolchain.
   # Enable after the pinned Biolink/KGX and LinkML validators are wired.

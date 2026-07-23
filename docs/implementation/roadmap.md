@@ -23,6 +23,11 @@ The repository already provides:
 
 ### 1. Freeze a portable software environment
 
+Foundation implemented: cross-platform dependency bounds, an OCI definition, an Apptainer
+definition, external mount rules, and content-addressed source bundling are present. The
+remaining gate is to build the image on Linux, record its digest and software inventory, and
+run the clean-checkout tests inside it.
+
 Deliverables:
 
 - resolved dependency lock for Python 3.11;
@@ -34,6 +39,12 @@ Deliverables:
 Gate: a clean checkout must run the core tests and rights-safe demo inside the image.
 
 ### 2. Replace specialized launchers with one provider-neutral execution layer
+
+Foundation implemented: strict execution manifests now bind trusted Python modules, hashed
+inputs, rooted paths, resource requests, declared file or directory outputs, write-once
+receipts, and retrieval-side closure verification. The remaining engineering work is signal
+forwarding, structured log capture, explicit checkpoint restart, and adapters for direct
+remote and scheduler submission.
 
 The launcher should accept:
 
@@ -51,6 +62,11 @@ checkpoints, and write `SUCCESS` only after checksum closure.
 Gate: local and remote fixture runs produce equivalent semantic receipts.
 
 ### 3. Measure the synthetic GPU path
+
+Qualification implemented: the repository can detect a CUDA device without collecting host
+identity, enforce a 24-GB-class memory gate, and run a bounded synchronized matrix benchmark.
+The model-level small/full, two-seed execution and verified checkpoint comparison still
+require an accelerator-capable runtime.
 
 Run the small and full graph-conditioned configurations with at least two seeds. Record:
 

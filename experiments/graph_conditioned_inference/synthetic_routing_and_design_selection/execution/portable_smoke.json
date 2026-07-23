@@ -1,0 +1,37 @@
+{
+  "execution_manifest_schema_version": "1.0",
+  "experiment_id": "synthetic-routing-design-selection-smoke",
+  "entrypoint": {
+    "module": "wormctx.poc",
+    "argv": [
+      "run",
+      "--config",
+      "{config:model-config}",
+      "--output-root",
+      "{output:run-directory}"
+    ]
+  },
+  "configs": [
+    {
+      "name": "model-config",
+      "path": "smoke.json",
+      "sha256": "deda6bfdd11958e1e11fff3a99a34d620ee441f23aa47f7e458855e246eec643"
+    }
+  ],
+  "inputs": [],
+  "outputs": [
+    {
+      "name": "run-directory",
+      "path": "synthetic-routing-design-selection-smoke",
+      "kind": "directory"
+    }
+  ],
+  "resources": {
+    "cpu_cores": 2,
+    "ram_gib": 4.0,
+    "gpus": 0,
+    "min_vram_gib": 0.0
+  },
+  "required_environment": [],
+  "timeout_seconds": 3600
+}

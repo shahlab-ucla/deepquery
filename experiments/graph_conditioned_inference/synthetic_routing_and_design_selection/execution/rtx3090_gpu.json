@@ -1,0 +1,37 @@
+{
+  "execution_manifest_schema_version": "1.0",
+  "experiment_id": "synthetic-routing-design-selection-gpu",
+  "entrypoint": {
+    "module": "wormctx.poc",
+    "argv": [
+      "run",
+      "--config",
+      "{config:model-config}",
+      "--output-root",
+      "{output:run-directory}"
+    ]
+  },
+  "configs": [
+    {
+      "name": "model-config",
+      "path": "full_gpu.json",
+      "sha256": "20f331c39cb353b041d7a09233e24eb7d0f61a5a3910104eb3377e981258186b"
+    }
+  ],
+  "inputs": [],
+  "outputs": [
+    {
+      "name": "run-directory",
+      "path": "synthetic-routing-design-selection-gpu",
+      "kind": "directory"
+    }
+  ],
+  "resources": {
+    "cpu_cores": 4,
+    "ram_gib": 8.0,
+    "gpus": 1,
+    "min_vram_gib": 23.0
+  },
+  "required_environment": [],
+  "timeout_seconds": 21600
+}

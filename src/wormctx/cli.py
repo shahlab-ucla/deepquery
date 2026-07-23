@@ -15,6 +15,15 @@ from pydantic import ValidationError
 
 from . import __version__
 from .adapters.local_jsonl import LocalJsonlAdapter
+from .bundles import create_source_bundle, verify_source_bundle
+from .execution import (
+    ExecutionError,
+    ExecutionManifest,
+    ExecutionRoots,
+    execute_manifest,
+    verify_execution_outputs,
+)
+from .hardware import HardwareQualificationError, create_accelerator_receipt
 from .io import write_json
 from .manifests import (
     ManifestError,
@@ -131,6 +140,58 @@ def parser() -> argparse.ArgumentParser:
     # Build products are emitted output, not packaged resources: default to a
     # caller-relative path so a wheel install never writes into site-packages.
     demo.add_argument("--output", type=Path, default=Path("build") / "demo")
+
+    source_bundle = subcommands.add_parser(
+        "source-bundle",
+        help="create or verify a content-addressed Git source archive",
+    )
+    source_bundle_commands = source_bundle.add_subparsers(
+        dest="source_bundle_command",
+        required=True,
+    )
+    create_bundle = source_bundle_commands.add_parser("create")
+    create_bundle.add_argument("--output-directory", type=Path, required=True)
+    create_bundle.add_argument("--revision", default="HEAD")
+    verify_bundle = source_bundle_commands.add_parser("verify")
+    verify_bundle.add_argument("--archive", type=Path, required=True)
+    verify_bundle.add_argument("--receipt", type=Path, required=True)
+
+    hardware = subcommands.add_parser(
+        "hardware",
+        help="qualify an accelerator and optionally run a bounded benchmark",
+    )
+    hardware.add_argument("--minimum-vram-gib", type=float, default=24.0)
+    hardware.add_argument("--allow-cpu-fallback", action="store_true")
+    hardware.add_argument("--benchmark", action="store_true")
+    hardware.add_argument("--device-index", type=int, default=0)
+    hardware.add_argument("--matrix-size", type=int, default=1024)
+    hardware.add_argument("--warmup-iterations", type=int, default=2)
+    hardware.add_argument("--timed-iterations", type=int, default=5)
+    hardware.add_argument("--seed", type=int, default=2025)
+    hardware.add_argument("--output", type=Path)
+
+    execute = subcommands.add_parser(
+        "execute",
+        help="preflight and run a provider-neutral execution manifest",
+    )
+    execute.add_argument("--manifest", type=Path, required=True)
+    execute.add_argument("--config-root", type=Path, required=True)
+    execute.add_argument("--input-root", type=Path, required=True)
+    execute.add_argument("--output-root", type=Path, required=True)
+    execute.add_argument("--python-executable", type=Path)
+    execute.add_argument("--dry-run", action="store_true")
+    execute.add_argument(
+        "--trusted-module",
+        action="append",
+        default=[],
+        help="additional exact Python module explicitly trusted by the operator",
+    )
+    verify_execution = subcommands.add_parser(
+        "verify-execution",
+        help="replay a successful execution receipt against retrieved outputs",
+    )
+    verify_execution.add_argument("--receipt", type=Path, required=True)
+    verify_execution.add_argument("--output-root", type=Path, required=True)
     return command
 
 
@@ -138,7 +199,14 @@ def main(argv: list[str] | None = None) -> None:
     args = parser().parse_args(argv)
     try:
         result = dispatch(args)
-    except (ManifestError, ValidationError, ValueError, OSError) as exc:
+    except (
+        HardwareQualificationError,
+        ExecutionError,
+        ManifestError,
+        ValidationError,
+        ValueError,
+        OSError,
+    ) as exc:
         print(f"error: {exc}", file=sys.stderr)
         raise SystemExit(2) from exc
     if result is not None:
@@ -281,6 +349,60 @@ def dispatch(args: argparse.Namespace) -> dict[str, Any] | list[dict[str, Any]] 
         }
         write_build_receipt(args.output, summary)
         return summary
+    if args.command == "source-bundle":
+        if args.source_bundle_command == "create":
+            receipt = create_source_bundle(
+                root,
+                args.output_directory,
+                revision=args.revision,
+            )
+        else:
+            receipt = verify_source_bundle(args.archive, args.receipt)
+        return receipt.model_dump(mode="json")
+    if args.command == "hardware":
+        hardware_receipt = create_accelerator_receipt(
+            minimum_vram_gib=args.minimum_vram_gib,
+            allow_cpu_fallback=args.allow_cpu_fallback,
+            include_benchmark=args.benchmark,
+            device_index=args.device_index,
+            matrix_size=args.matrix_size,
+            warmup_iterations=args.warmup_iterations,
+            timed_iterations=args.timed_iterations,
+            seed=args.seed,
+        )
+        if args.output:
+            if args.output.exists():
+                raise FileExistsError("accelerator receipt output already exists")
+            write_json(args.output, hardware_receipt)
+        if not hardware_receipt["qualification"]["execution_permitted"]:
+            raise HardwareQualificationError("accelerator qualification rejected")
+        return hardware_receipt
+    if args.command == "execute":
+        manifest = ExecutionManifest.model_validate_json(args.manifest.read_bytes())
+        output_root = args.output_root.resolve()
+        outcome = execute_manifest(
+            manifest,
+            ExecutionRoots(
+                config_root=args.config_root.resolve(),
+                input_root=args.input_root.resolve(),
+                output_root=output_root,
+            ),
+            trusted_modules={
+                "wormctx.__main__",
+                "wormctx.poc",
+                *args.trusted_module,
+            },
+            python_executable=args.python_executable,
+            dry_run=args.dry_run,
+        )
+        return {
+            "status": outcome.status,
+            "manifest_sha256": outcome.manifest_sha256,
+            "returncode": outcome.returncode,
+            "receipt": outcome.receipt_path.relative_to(output_root).as_posix(),
+        }
+    if args.command == "verify-execution":
+        return verify_execution_outputs(args.receipt, args.output_root.resolve())
     raise ValueError(f"unsupported command: {args.command}")
 
 

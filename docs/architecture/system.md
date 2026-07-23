@@ -80,6 +80,19 @@ An experiment may be:
 - `active`: the frozen analysis exists but the terminal result is unavailable;
 - `blocked`: a named source, rights, calibration, or upstream-evidence condition is unmet.
 
+## Portable execution layer
+
+`wormctx.bundles` exports a clean committed revision and verifies its archive structure before
+extraction. `wormctx.execution` turns a data-only manifest into a preflighted `python -m`
+argument vector, checks roots, hashes, resources, and module trust, then checksum-closes
+declared outputs in an exclusive receipt. `wormctx.hardware` independently qualifies a
+requested accelerator without collecting machine identity.
+
+This layer is deliberately below experiment-specific science and above any transport or
+scheduler adapter. The same execution manifest can therefore be evaluated in a local
+environment, an OCI container, an Apptainer image, or a separately authorized remote backend
+without embedding connection details in the experiment.
+
 ## Receipt and trust boundaries
 
 Files are treated as immutable once frozen. Writers use staging files followed by atomic
@@ -94,7 +107,9 @@ channel.
 ## Data flow
 
 ```text
-release manifest
+committed source bundle
+    -> verified portable execution manifest
+    -> release manifest
     -> content-addressed source snapshot
     -> source-specific adapter
     -> contextual observations
@@ -103,10 +118,10 @@ release manifest
     -> optional graph-conditioned router
     -> locked predictions / statistical outputs
     -> checksum and interpretation receipts
+    -> retrieval-side checksum replay
     -> aggregate public summary
 ```
 
 Every arrow is an explicit interface. Failures remain localized: a rights failure blocks
 fetching, a mapping failure blocks normalization, a calibration failure blocks discovery
 claims, and a sealed-test failure blocks final evaluation.
-

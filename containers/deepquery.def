@@ -1,0 +1,53 @@
+Bootstrap: docker
+From: {{ base_image }}
+
+%arguments
+    base_image=python:3.11-slim-bookworm
+
+%labels
+    org.opencontainers.image.title DeepQuery
+    org.opencontainers.image.description Context-resolved biological inference research runtime
+
+%files
+    pyproject.toml /opt/deepquery/pyproject.toml
+    README.md /opt/deepquery/README.md
+    LICENSE /opt/deepquery/LICENSE
+    SOURCE_REVISION /opt/deepquery/SOURCE_REVISION
+    src /opt/deepquery/src
+    config /opt/deepquery/config
+    data/examples /opt/deepquery/data/examples
+    experiments /opt/deepquery/experiments
+    mappings /opt/deepquery/mappings
+    schemas /opt/deepquery/schemas
+    sql /opt/deepquery/sql
+    tests /opt/deepquery/tests
+    environment/constraints-container.txt /opt/deepquery/environment/constraints-container.txt
+    environment/requirements-container.txt /opt/deepquery/environment/requirements-container.txt
+
+%post
+    set -eu
+    cd /opt/deepquery
+    python -m pip install --upgrade pip
+    python -m pip install \
+        --constraint environment/constraints-container.txt \
+        --requirement environment/requirements-container.txt
+    python -m compileall -q src
+    mkdir -p /data/input /data/output
+    chmod 0777 /data/input /data/output
+
+%environment
+    export PYTHONDONTWRITEBYTECODE=1
+    export PYTHONUNBUFFERED=1
+    export PIP_DISABLE_PIP_VERSION_CHECK=1
+    export DEEPQUERY_INPUT_ROOT=/data/input
+    export DEEPQUERY_OUTPUT_ROOT=/data/output
+
+%runscript
+    exec deepquery "$@"
+
+%test
+    set -eu
+    python -m compileall -q /opt/deepquery/src
+    deepquery doctor
+    deepquery-poc doctor \
+        --config /opt/deepquery/experiments/graph_conditioned_inference/synthetic_routing_and_design_selection/config/smoke.json
