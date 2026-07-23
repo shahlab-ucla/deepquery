@@ -126,6 +126,14 @@ Install DeepQuery into the selected interpreter before execution. Relative `PYTH
 entries are not an environment contract because the subprocess intentionally changes into
 the isolated output root.
 
+The first full reference execution completed this sequence on a 24-GB-class Ampere device.
+The source archive, hardware qualification, graph fixture, 24-epoch model run, embedded
+checksums, and 223-MB recursive output closure all verified. The machine-neutral metrics and
+receipt digests are recorded in
+`experiments/graph_conditioned_inference/synthetic_routing_and_design_selection/evidence/`.
+This establishes software and execution feasibility only; it does not validate a biological
+prediction.
+
 ## Output contract
 
 A run root is append-only except for designated scratch and atomic staging files. Required

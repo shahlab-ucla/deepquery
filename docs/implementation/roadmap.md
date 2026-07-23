@@ -46,6 +46,10 @@ receipts, and retrieval-side closure verification. The remaining engineering wor
 forwarding, structured log capture, explicit checkpoint restart, and adapters for direct
 remote and scheduler submission.
 
+A clean source archive has also completed the rights-safe graph fixture on a Linux execution
+host with matching graph counts and input hashes, followed by independent recursive-output
+and graph-build verification.
+
 The launcher should accept:
 
 - experiment contract path;
@@ -63,10 +67,13 @@ Gate: local and remote fixture runs produce equivalent semantic receipts.
 
 ### 3. Measure the synthetic GPU path
 
-Qualification implemented: the repository can detect a CUDA device without collecting host
-identity, enforce a 24-GB-class memory gate, and run a bounded synchronized matrix benchmark.
-The model-level small/full, two-seed execution and verified checkpoint comparison still
-require an accelerator-capable runtime.
+Qualification and the first full run are implemented. The repository detected and qualified
+a 24-GB-class accelerator without collecting host identity, completed the checked 24-epoch
+configuration, reloaded its portable checkpoint, and verified the 223-MB output closure. The
+public-safe result is recorded under
+`experiments/graph_conditioned_inference/synthetic_routing_and_design_selection/evidence/`.
+The remaining model-level gates are a second predeclared seed, deterministic checkpoint
+replay, and a paired comparison across seeds.
 
 Run the small and full graph-conditioned configurations with at least two seeds. Record:
 

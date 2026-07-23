@@ -25,4 +25,8 @@ deepquery execute \
 Status: executable synthetic feasibility benchmark. It measures contract learning and
 engineering behavior, not biological validity.
 
+One full checked GPU run has completed and passed every predeclared engineering gate. Its
+path-free evidence record and interpretation are under [`evidence/`](evidence/README.md).
+The next model-level controls are a second seed and deterministic checkpoint replay.
+
 Implementation: `wormctx.poc.{generation,operators,tensorize,model,training,metrics}`.

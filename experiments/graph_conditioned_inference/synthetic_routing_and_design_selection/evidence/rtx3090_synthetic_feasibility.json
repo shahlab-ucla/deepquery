@@ -1,0 +1,139 @@
+{
+  "schema_version": "deepquery.preliminary-evidence.v1",
+  "experiment_id": "synthetic-routing-design-selection-gpu",
+  "run_id": "rtx3090_feasibility-20260723T194108Z-ab91819e9a",
+  "scope": {
+    "classification": "exploratory_framework_feasibility",
+    "data": "provenance_labeled_simulation",
+    "biological_claims_permitted": false
+  },
+  "source": {
+    "revision": "c5a6d3957350ff4c0be90c2d2dc81d2547da0fc4",
+    "bundle_sha256": "f7256553bd8ca81791b43299e8b0229d4251468399417314f1f5f08ac2e339f2",
+    "bundle_bytes": 660818,
+    "bundle_member_count": 293
+  },
+  "execution": {
+    "manifest_sha256": "40bd4515b451a1aa522c78ebe8222dded7b7cdd0dada5a5b1c04a803ccb15e9c",
+    "receipt_sha256": "c994b99beb75dc32ec0f5454b3178580ac1de5f93393a1f2ce90684f3e3d3041",
+    "status": "succeeded",
+    "declared_output_count": 1,
+    "recursive_output_bytes": 223406823,
+    "recursive_output_closure_verified": true,
+    "internal_checksums_verified": true,
+    "context_graph_build_verified": true,
+    "context_graph_product_count": 11
+  },
+  "accelerator": {
+    "class": "NVIDIA GeForce RTX 3090",
+    "compute_capability": [
+      8,
+      6
+    ],
+    "total_vram_gib": 23.558,
+    "framework": "PyTorch 2.6.0+cu124",
+    "framework_cuda_build": "12.4",
+    "qualification_status": "qualified",
+    "bounded_benchmark": {
+      "matrix_size": 1024,
+      "timed_iterations": 5,
+      "milliseconds_per_iteration": 0.121243,
+      "peak_allocated_vram_bytes": 25296896
+    }
+  },
+  "workload": {
+    "episodes": {
+      "train": 1152,
+      "validation": 288,
+      "test": 288,
+      "total": 1728,
+      "group_disjoint": true
+    },
+    "parameter_count": 12615202,
+    "configured_epochs": 24,
+    "selected_best_epoch": 2,
+    "elapsed_seconds": 38.014306196942925,
+    "peak_vram_gib": 0.8243365287780762,
+    "checkpoint_reloaded_before_locked_test": true
+  },
+  "test_metrics": {
+    "family_accuracy": 1.0,
+    "operator_micro_f1": 1.0,
+    "operator_exact_match": 1.0,
+    "invalid_flag_micro_precision": 0.8333333333333334,
+    "invalid_flag_micro_recall": 1.0,
+    "invalid_flag_micro_f1": 0.9090909090909091,
+    "invalid_flag_exact_match": 0.9166666865348816,
+    "invalid_design_rejection_accuracy": 0.9166666865348816,
+    "conclusion_accuracy": 0.9166666865348816,
+    "hypothesis_accuracy": 0.3333333432674408,
+    "experiment_accuracy": 1.0,
+    "resolution_mae": 0.10453229397535324
+  },
+  "constant_baseline_test": {
+    "family_accuracy": 0.3333333432674408,
+    "operator_micro_f1": 0.7586206896551724,
+    "operator_exact_match": 0.0,
+    "invalid_flag_micro_precision": 0.0,
+    "invalid_flag_micro_recall": 0.0,
+    "invalid_flag_micro_f1": 0.0,
+    "invalid_flag_exact_match": 0.5833333134651184,
+    "invalid_design_rejection_accuracy": 0.5833333134651184,
+    "conclusion_accuracy": 0.4166666567325592,
+    "hypothesis_accuracy": 0.3333333432674408,
+    "experiment_accuracy": 0.6666666865348816,
+    "resolution_mae": 0.2722221910953522
+  },
+  "acceptance": {
+    "passed": true,
+    "gates": {
+      "context_graph_receipt": {
+        "observed": "authoritative_build_snapshot_verified",
+        "required": "authoritative_build_snapshot_verified",
+        "passed": true
+      },
+      "cuda": {
+        "observed": "cuda",
+        "required": "cuda",
+        "passed": true
+      },
+      "operator_micro_f1": {
+        "observed": 1.0,
+        "required_minimum": 0.8,
+        "passed": true
+      },
+      "invalid_flag_recall": {
+        "observed": 1.0,
+        "required_minimum": 0.8,
+        "passed": true
+      },
+      "invalid_flag_f1": {
+        "observed": 0.9090909090909091,
+        "required_minimum": 0.7,
+        "passed": true
+      },
+      "invalid_design_accuracy": {
+        "observed": 0.9166666865348816,
+        "required_minimum": 0.85,
+        "passed": true
+      },
+      "peak_vram_gib": {
+        "observed": 0.8243365287780762,
+        "required_maximum": 22.0,
+        "passed": true
+      },
+      "checkpoint_reload": {
+        "observed": true,
+        "required": true,
+        "passed": true
+      }
+    }
+  },
+  "limitations": [
+    "The episodes are generated simulations rather than biological observations.",
+    "The result demonstrates contract learning and execution integrity, not calibrated biological reasoning.",
+    "Hypothesis accuracy did not exceed the constant baseline.",
+    "A second predeclared seed and deterministic checkpoint replay remain required.",
+    "Real-data comparisons must begin with conventional phenotype, relatedness, and locus or topology baselines."
+  ]
+}
