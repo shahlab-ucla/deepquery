@@ -63,6 +63,8 @@ class PackagingTests(unittest.TestCase):
         self.assertIn("s.source_artifact", ddl)
 
     def test_container_definitions_include_experiment_runners(self) -> None:
+        if not (ROOT / "containers").is_dir():
+            self.skipTest("container build definitions are not runtime-image assets")
         containerfile = (ROOT / "containers" / "Containerfile").read_text(
             encoding="utf-8"
         )
