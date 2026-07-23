@@ -1,0 +1,129 @@
+{
+  "schema_version": "wormctx-grounded-reasoner-benchmark-contract-1.0",
+  "analysis_id": "grounded_reasoner_benchmark_20260721",
+  "classification": "preliminary_provider_neutral_grounded_reasoning_benchmark_scaffold",
+  "validated": false,
+  "biological_claims_permitted": false,
+  "arms": [
+    {
+      "id": "text_only",
+      "kind": "context_only_baseline",
+      "allowed_tools": [],
+      "inline_context": "task_prompt_and_frozen_text"
+    },
+    {
+      "id": "ordinary_rag",
+      "kind": "unstructured_retrieval_baseline",
+      "allowed_tools": ["retrieve_text"],
+      "inline_context": "task_prompt_and_frozen_text"
+    },
+    {
+      "id": "graph_retrieval",
+      "kind": "graph_retrieval_without_predictor",
+      "allowed_tools": ["retrieve_graph"],
+      "inline_context": "task_prompt_and_frozen_text"
+    },
+    {
+      "id": "graph_plus_qualified_predictor",
+      "kind": "full_grounded_reasoning_system",
+      "allowed_tools": [
+        "retrieve_graph",
+        "check_identifiability",
+        "call_locked_predictor"
+      ],
+      "inline_context": "task_prompt_and_frozen_text"
+    },
+    {
+      "id": "tool_ablation_no_predictor",
+      "kind": "full_system_without_predictor",
+      "allowed_tools": ["retrieve_graph", "check_identifiability"],
+      "inline_context": "task_prompt_and_frozen_text"
+    },
+    {
+      "id": "tool_ablation_no_graph",
+      "kind": "full_system_without_graph_retrieval",
+      "allowed_tools": [
+        "check_identifiability",
+        "call_locked_predictor"
+      ],
+      "inline_context": "task_prompt_and_frozen_text"
+    }
+  ],
+  "required_task_capabilities": [
+    "operator_selection",
+    "evidence_attribution",
+    "uncertainty_or_abstention",
+    "locked_predictor_call_when_available"
+  ],
+  "anonymization": {
+    "entity_token_prefix": "ENT-",
+    "task_token_prefix": "TASK-",
+    "algorithm": "hmac_sha256_truncated_12",
+    "secret_stored_in_release": false,
+    "aliases_replaced": true,
+    "original_identifiers_permitted_in_release": false
+  },
+  "contamination": {
+    "benchmark_visibility": "private_held_out",
+    "public_release_permitted": false,
+    "prompt_hash_receipts": true,
+    "per_task_canary_hash_receipts": true,
+    "provider_training_cutoff_required": true,
+    "provider_prior_exposure_attestation_required": true,
+    "external_search_permitted": false
+  },
+  "scoring": {
+    "dimensions": [
+      "prediction",
+      "program_validity",
+      "evidence_fidelity",
+      "abstention",
+      "execution_trace"
+    ],
+    "composite_score_permitted": false,
+    "prediction_numeric_tolerance_source": "frozen_task_authority",
+    "program_required_operator_recall": true,
+    "evidence_scoring": "citation_precision_recall_and_claim_support",
+    "abstention_scoring": "correct_abstention_unsafe_answer_and_overabstention",
+    "execution_trace_scoring": "deterministic_step_receipt_match"
+  },
+  "confirmatory": {
+    "model_change_after_run_freeze_permitted": false,
+    "decoding_change_after_run_freeze_permitted": false,
+    "task_or_arm_exclusion_after_response_permitted": false,
+    "threshold_change_after_response_permitted": false,
+    "endpoint_change_after_response_permitted": false,
+    "predictor_change_after_response_permitted": false,
+    "gold_access_before_response_freeze_permitted": false
+  },
+  "authority_separation": {
+    "roles": ["release", "curator", "gold", "scorer"],
+    "separate_write_once_bundles_required": true,
+    "file_backed_acl_attestations_required": true,
+    "provider_may_read_gold_or_scorer_authority": false,
+    "scorer_may_open_gold_before_response_freeze": false
+  },
+  "provider_adapter": {
+    "supported_transports": ["local_jsonl", "openai_compatible_jsonl"],
+    "credentials_source": "environment_only",
+    "endpoint_value_persisted": false,
+    "credential_value_persisted": false,
+    "deterministic_jsonl_receipts_required": true,
+    "external_call_performed_by_harness": false
+  },
+  "comparison": {
+    "plan_required_before_task_release": true,
+    "unit": "paired_task_by_arm",
+    "stratify_by_task_family": true,
+    "primary_comparisons": [
+      "graph_plus_qualified_predictor_vs_ordinary_rag",
+      "graph_plus_qualified_predictor_vs_graph_retrieval",
+      "graph_plus_qualified_predictor_vs_tool_ablation_no_predictor",
+      "graph_plus_qualified_predictor_vs_tool_ablation_no_graph"
+    ],
+    "familywise_alpha": 0.05,
+    "target_power": 0.8,
+    "sample_size_method": "simulation_or_exact_power_frozen_before_release",
+    "assumptions_receipt_required": true
+  }
+}

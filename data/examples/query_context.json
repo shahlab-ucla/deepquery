@@ -1,0 +1,43 @@
+{
+  "query_id": "wormctx:demo-natural-chemical-query",
+  "description": "Synthetic young-adult chemical-response QTL context in a natural-isolate panel",
+  "context": {
+    "organism_taxon": {
+      "id": "NCBITaxon:6239",
+      "label": "Caenorhabditis elegans"
+    },
+    "genetic_background": [
+      {
+        "id": "wormctx:natural_isolate_panel",
+        "label": "natural isolate panel"
+      }
+    ],
+    "life_stage": [
+      {
+        "id": "wormctx:young_adult",
+        "label": "young adult (demo term; map to pinned WBls)"
+      }
+    ],
+    "anatomy": [],
+    "interventions": [
+      {
+        "intervention_type": "wormctx:chemical_exposure",
+        "reagent": {
+          "id": "wormctx:demo_compound_a",
+          "label": "demo compound A"
+        }
+      }
+    ],
+    "assays": [
+      {
+        "id": "wormctx:dose_response_assay",
+        "label": "dose-response assay (demo term)"
+      }
+    ],
+    "environments": [],
+    "modality": ["quantitative_trait"],
+    "readout_resolution": ["organism"],
+    "context_missing_reasons": []
+  }
+}
+

@@ -1,0 +1,12 @@
+{
+  "schema_version": "deepquery-wormbase-source-summary-1.0",
+  "status": "qualified_with_mapping_and_rights_blockers",
+  "release": "WS298",
+  "bounded_files": 7,
+  "gene_identifier_rows": 52110,
+  "phenotype_association_rows": 439827,
+  "development_association_rows": 74520,
+  "real_normalization_permitted": false,
+  "claim_boundary": "The source inventory and rights-safe fixture path are qualified; review-gated real records are not redistributed."
+}
+

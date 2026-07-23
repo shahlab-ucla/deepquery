@@ -1,0 +1,74 @@
+{
+  "schema_version": "wormctx-omix709-gene-disjoint-baseline-contract-1.0",
+  "analysis_id": "omix709_gene_disjoint_baselines_20260721",
+  "classification": "preliminary_real_developmental_genetics_gene_disjoint_baselines",
+  "validated": false,
+  "biological_claims_permitted": false,
+  "stage_adapter": {
+    "contract_filename": "omix709_semantic_stage_adapter_20260721.json",
+    "contract_sha256": "d89471fa5c12856eb83353a93bc6c3ae8dc082dbb6ace97b1c8b2dd857a1e120",
+    "required_qualification_status": "qualified_with_exclusions",
+    "required_model_launch_status": "eligible_for_preregistered_gene_disjoint_baselines"
+  },
+  "split": {
+    "key": "wormbase_gene_id",
+    "whole_gene": true,
+    "train_genes": 410,
+    "validation_genes": 137,
+    "sealed_test_genes": 137,
+    "exposed_partition": "development_only_exposed_pilot",
+    "exposed_genes_permitted_in_modeling": false
+  },
+  "models": {
+    "family_order": [
+      "constant_control_mean",
+      "compact_flat_ridge",
+      "semantic_cell_aligned_linear",
+      "nonlinear_edge_free"
+    ],
+    "constant_value_source": "control_standardized_expected_mean_from_manifest",
+    "preprocessing": "training_partition_mean_impute_and_zscore",
+    "include_missingness_indicators": true,
+    "zero_variance_policy": "scale_one",
+    "flat_ridge": {
+      "alphas": [0.001, 0.01, 0.1, 1.0, 10.0, 100.0],
+      "penalize_intercept": false
+    },
+    "semantic_linear": {
+      "alphas": [0.001, 0.01, 0.1, 1.0, 10.0, 100.0],
+      "penalize_intercept": false
+    },
+    "nonlinear_edge_free": {
+      "architecture": "one_hidden_layer_edge_free_mlp",
+      "activation": "tanh",
+      "target_trainable_parameters": 25000,
+      "maximum_relative_parameter_delta": 0.15,
+      "learning_rates": [0.001, 0.003],
+      "l2_penalties": [0.0, 0.0001],
+      "seeds": [1701, 1702],
+      "epochs": 200
+    },
+    "primary_selection_metric": "gene_macro_rmse",
+    "selection_tie_breakers": ["gene_macro_mae", "candidate_id"],
+    "refit_on_train_plus_validation_after_selection": true
+  },
+  "evaluation": {
+    "metrics": [
+      "gene_macro_rmse",
+      "gene_macro_mae",
+      "gene_mean_spearman",
+      "calibration_intercept",
+      "calibration_slope"
+    ],
+    "rank_definition": "spearman_of_gene_mean_observed_and_predicted",
+    "calibration_definition": "ols_gene_mean_observed_on_predicted",
+    "resampling_unit": "whole_gene_cluster",
+    "bootstrap_replicates": 2000,
+    "bootstrap_seed": 20260721,
+    "interval_quantiles": [0.025, 0.975],
+    "validation_permitted_for_selection": true,
+    "sealed_test_permitted_for_selection": false,
+    "sealed_test_openings": 1,
+    "gate_name_prefix": "sealed-test-gate-"
+  }
+}

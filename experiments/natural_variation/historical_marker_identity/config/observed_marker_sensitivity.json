@@ -1,0 +1,141 @@
+{
+  "schema_version": "wormctx-abamectin-ws276-observed-sensitivity-1.0",
+  "analysis_id": "abamectin_qtl_ws276_current_isotype_marker_universe_sensitivity_v1",
+  "classification": "exploratory_current_ws276_isotype_marker_universe_sensitivity",
+  "status": "predeclared_preliminary_same_phenotype_source_representation_sensitivity",
+  "strict_reproduction_claim_permitted": false,
+  "biological_claims_permitted": false,
+  "parent_run_id": "abamectin-ws276-reconstruction-20260718T133456Z-46409f4e0c50",
+  "parent_source_git_commit": "46409f4e0c5025cc8b4181e4d1d7a55d588b80f1",
+  "parent_failure_exit_code": 70,
+  "parent_failure_reason": "complete-case marker set is not exactly the historical 21,342 rows",
+  "marker_list_sha256": "1f0a0986ecd10f6f89dd1beb88fa240d506cfa870091c56436c95c0973a75675",
+  "expected_current_markers": 75852,
+  "expected_complete_markers": 75831,
+  "expected_incomplete_markers": 21,
+  "analysis_marker_list_sha256": "181d3dfe2db799b544dc1b17098095f591cbee3f77ef0c4a604211227a1cebe2",
+  "expected_published_markers": 20946,
+  "expected_shared_coordinates": 12601,
+  "expected_published_only": 8345,
+  "expected_current_only": 63251,
+  "expected_analysis_shared_coordinates": 12601,
+  "expected_analysis_published_only": 8345,
+  "expected_analysis_current_only": 63230,
+  "expected_incomplete_published_overlap": 0,
+  "coordinate_identity_caveat": "File S3 lacks REF and ALT, so shared CHROM:POS coordinates do not prove allele identity.",
+  "traits": [
+    "mean.EXT",
+    "mean.TOF",
+    "mean.norm.EXT",
+    "norm.n"
+  ],
+  "alpha": 0.05,
+  "association": {
+    "method": "rrBLUP_GWAS_EMMA",
+    "rrblup_version": "4.6",
+    "r_version": "3.6.0",
+    "min_maf": 0.05,
+    "primary_p3d": false,
+    "calibration_p3d": true,
+    "within_trait_bonferroni_neg_log10_p": 6.18099703203937,
+    "four_trait_familywise_neg_log10_p": 6.78305702336733,
+    "deposited_threshold_reference_only": 4.28448307163607,
+    "p3d_true_can_originate_primary_hit": false
+  },
+  "marker_universe": {
+    "selection": "all markers emitted by the frozen public-candidate preprocessing command used by the A1 diagnostic on the current isotype VCF",
+    "historical_command_identity_proven": false,
+    "phenotype_guided_selection": false,
+    "ld_parameter_retuning": false,
+    "downsample_to_historical_count": false,
+    "restrict_scan_to_published_overlap": false,
+    "chromosome_counts": {
+      "I": 5661,
+      "II": 20201,
+      "III": 12811,
+      "IV": 11282,
+      "V": 18633,
+      "X": 7225,
+      "MtDNA": 39
+    }
+  },
+  "parent_artifacts": {
+    "filtered_vcf": {
+      "bytes": 46032067,
+      "sha256": "15df06950eb3e2d8649a9c1a21081b844ca6af620566311e31279b3edc95ecee"
+    },
+    "filtered_vcf_index": {
+      "bytes": 63798,
+      "sha256": "2ab386a58e57dd9201e34628445f8954d349e5d5409f23865282bf1392f8577b"
+    },
+    "sample_order": {
+      "bytes": 1425,
+      "sha256": "4c063af69f395a0cc465a8da64815beccec52e9e3dff6036d0040d7b2e7b51c3"
+    },
+    "cohort_receipt": {
+      "bytes": 1565,
+      "sha256": "afc5b886a1a807273612088686e2da1f84dda0db9892aba85bedbf7eeefe0b54"
+    },
+    "source_to_analysis": {
+      "bytes": 5917,
+      "sha256": "64ee0f6196b14feeaeec43595d6eb92b779c4f831be284120faf89709672e4ab"
+    },
+    "genotype_matrix": {
+      "bytes": 44961783,
+      "sha256": "6a006610325359ebeb2e7910eb98b58ebbb5dbe8650564bdc70785add8000cb1"
+    },
+    "analysis_marker_list": {
+      "bytes": 843976,
+      "sha256": "181d3dfe2db799b544dc1b17098095f591cbee3f77ef0c4a604211227a1cebe2"
+    },
+    "incomplete_marker_list": {
+      "bytes": 237,
+      "sha256": "ce59fde61770d90c9d9a1eaecc740912ce0175262500015f149a264a00950a4f"
+    },
+    "preprocessing_counts": {
+      "bytes": 170,
+      "sha256": "77fd545deaaf784611b22540ccb873aaafadd5ecd6ab8dd9a56f4fac5435e7ae"
+    },
+    "incomplete_by_chromosome": {
+      "bytes": 67,
+      "sha256": "df6574aea35dbdb09fd776c32d89383fe08ea33315e19e7c801087fd72a0db6d"
+    },
+    "failure_marker": {
+      "bytes": 51,
+      "sha256": "c2e9a30a6a8702b331bab66daf512d2f955a86633e9d6dc2a0261427c7f66cdf"
+    },
+    "deployer_runner_exit": {
+      "bytes": 3,
+      "sha256": "6442bc26a7c562f5afe6467dab36365c709909f6a81afcecfc0c25cff0f1bab0"
+    },
+    "phenotypes": {
+      "mean_EXT.tsv": "471b2b3b5e6d65f8e1ac12f973a0ec929967aa6d4ebef49ed05c28b928bc9832",
+      "mean_TOF.tsv": "a3335cbf4768f9e9573134daecfed65560ee2cf7e961c32c39eaaccbf4660b87",
+      "mean_norm_EXT.tsv": "d9f738abd9d6bb8ea019443dea11590419c31af2bc069ded34fc062cfa49a1e0",
+      "norm_n.tsv": "c7c4c54c1c30fdc0dd5ade0d4e8ea0634417ba05a6c9a2502231082c4d57ac4a"
+    }
+  },
+  "published_intervals": [
+    {"trait": "mean.EXT", "chromosome": "V", "start": 1747612, "peak": 2693128, "end": 4333001},
+    {"trait": "mean.TOF", "chromosome": "V", "start": 1757246, "peak": 2693128, "end": 4333001},
+    {"trait": "mean.TOF", "chromosome": "V", "start": 15983112, "peak": 16276775, "end": 16599066},
+    {"trait": "norm.n", "chromosome": "II", "start": 13756151, "peak": 14121786, "end": 14937792},
+    {"trait": "norm.n", "chromosome": "III", "start": 3061633, "peak": 3526374, "end": 4632949},
+    {"trait": "norm.n", "chromosome": "V", "start": 13606517, "peak": 15965095, "end": 16754986}
+  ],
+  "claims": {
+    "permitted": [
+      "preliminary same-phenotype source-representation sensitivity",
+      "descriptive coordinate concordance",
+      "descriptive rank robustness"
+    ],
+    "prohibited": [
+      "reproduction",
+      "replication",
+      "independent validation",
+      "recovery of the historical marker universe",
+      "causal locus, gene, or allele",
+      "biological negative conclusion"
+    ]
+  }
+}

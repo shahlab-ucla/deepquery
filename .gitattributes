@@ -1,0 +1,10 @@
+# Normalize text to LF in the repository and on checkout so that content hashes
+# are stable across platforms. Several tests assert exact SHA-256 digests of
+# committed fixtures, so a CRLF rewrite on a Windows checkout would break them.
+* text=auto eol=lf
+
+# Byte-exact, hash-pinned fixture: never apply end-of-line conversion.
+tests/fixtures/source_bytes.txt -text
+
+# Embed the exporting commit in source archives that intentionally omit .git/.
+SOURCE_REVISION export-subst

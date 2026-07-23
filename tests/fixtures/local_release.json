@@ -1,0 +1,28 @@
+{
+  "manifest_schema_version": "1.0",
+  "source_id": "wormctx-local-fixture",
+  "provider": "wormctx tests",
+  "release": "fixture-1",
+  "release_is_mutable": false,
+  "adapter": "local_jsonl",
+  "adapter_version": "0.1.0",
+  "taxon": "NCBITaxon:6239",
+  "rights_status": "cleared",
+  "license_uri": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "allowed_hosts": [],
+  "artifacts": [
+    {
+      "artifact_id": "source-bytes",
+      "role": "test_fixture",
+      "url": "source_bytes.txt",
+      "filename": "source_bytes.txt",
+      "media_type": "text/plain",
+      "expected_sha256": "f11034caaddd8c1579ecca29815067aacb1a09430ea36c833812ff269dc3b35a",
+      "expected_size": 24,
+      "rights_status": "cleared",
+      "license_uri": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "acquisition": {"method": "GET"},
+      "enabled": true
+    }
+  ]
+}

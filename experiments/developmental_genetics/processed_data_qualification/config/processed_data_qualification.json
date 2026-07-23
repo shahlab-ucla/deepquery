@@ -1,0 +1,251 @@
+{
+  "schema_version": "wormctx-omix709-processed-scaleup-qualification-1.0",
+  "analysis_id": "omix709_processed_scaleup_qualification_20260721",
+  "classification": "preliminary_real_developmental_genetics_source_qualification",
+  "status": "qualified_with_exclusions",
+  "validated": false,
+  "biological_claims_permitted": false,
+  "sources": [
+    {
+      "role": "gene_metadata",
+      "filename": "Table_S1.xlsx",
+      "url": "https://dulab.genetics.ac.cn/single-cell-phenomics/download/Supplemental%20tables/Table_S1.xlsx",
+      "bytes": 292420,
+      "sha256": "7f4829b56caa7099e4ac89a27c8a8b1b6db485594b4a2157bb1647ac637e558f",
+      "sheets": [
+        {"name": "Legend", "dimension": "C31"},
+        {"name": "1", "dimension": "A1:J2892"},
+        {"name": "2", "dimension": "A1:M1517"}
+      ]
+    },
+    {
+      "role": "reference_control_quantitative_measurements",
+      "filename": "Table_S2.xlsx",
+      "url": "https://dulab.genetics.ac.cn/single-cell-phenomics/download/Supplemental%20tables/Table_S2.xlsx",
+      "bytes": 2402983,
+      "sha256": "3c74f84ca3fae897b270304a9daebfcfbc4d5a155d0537a97994291d405e49a5",
+      "sheets": [
+        {"name": "Legend", "dimension": "A1"},
+        {"name": "1", "dimension": "A1:DB355"},
+        {"name": "2", "dimension": "A1:DB359"},
+        {"name": "3", "dimension": "A1:DB176"},
+        {"name": "4", "dimension": "A1:DB716"},
+        {"name": "5", "dimension": "A1:DB359"},
+        {"name": "6", "dimension": "A1:DB716"}
+      ]
+    },
+    {
+      "role": "knockdown_quantitative_measurements",
+      "filename": "Table_S3.xlsx",
+      "url": "https://dulab.genetics.ac.cn/single-cell-phenomics/download/Supplemental%20tables/Table_S3.xlsx",
+      "bytes": 49016108,
+      "sha256": "d22bd9a0d63e921be2d5f3345bea1518fcc4b23acd0d20f5957f5f3522ca9ab3",
+      "sheets": [
+        {"name": "Legend", "dimension": "A1"},
+        {"name": "1", "dimension": "A1:F2206"},
+        {"name": "2", "dimension": "A1:CAV355"},
+        {"name": "3", "dimension": "A1:CAV359"},
+        {"name": "4", "dimension": "A1:CAV176"},
+        {"name": "5", "dimension": "A1:CAV716"},
+        {"name": "6", "dimension": "A1:CAV359"},
+        {"name": "7", "dimension": "A1:CAV716"},
+        {"name": "8", "dimension": "A1:F2076"}
+      ]
+    },
+    {
+      "role": "knockdown_defect_calls_secondary_outcomes",
+      "filename": "Table_S4.xlsx",
+      "url": "https://dulab.genetics.ac.cn/single-cell-phenomics/download/Supplemental%20tables/Table_S4.xlsx",
+      "bytes": 3239511,
+      "sha256": "64be7eb9c1982c1a802398202096566b90ad3d2dddb3154d806e613a360d11ee",
+      "sheets": [
+        {"name": "Legend", "dimension": "A1"},
+        {"name": "1", "dimension": "A1:CAV354"},
+        {"name": "2", "dimension": "A1:CAV358"},
+        {"name": "3", "dimension": "A1:CAV175"},
+        {"name": "4", "dimension": "A1:CAV670"},
+        {"name": "5", "dimension": "A1:CAV358"},
+        {"name": "6", "dimension": "A1:CAV697"},
+        {"name": "7", "dimension": "A1:AC698"},
+        {"name": "8", "dimension": "A1:AW983"}
+      ]
+    }
+  ],
+  "rights": {
+    "access_class": "public_open_access_record_with_academic_use_terms_and_no_cc_data_license",
+    "permitted_use": "controlled_internal_noncommercial_academic_analysis_only",
+    "source_redistribution_permitted": false,
+    "commercial_use_permitted": false,
+    "public_training_permitted": false,
+    "operator_attestation_required": true,
+    "attestation_text": "I attest that this analysis is controlled, noncommercial academic use.",
+    "review_contact": "data-curator@example.org"
+  },
+  "expected_counts": {
+    "reference_controls": 105,
+    "measurement_embryos": 2075,
+    "measurement_genes": 698
+  },
+  "modalities": [
+    {
+      "id": "cell_cycle_length",
+      "s2_sheet": "1",
+      "s2_title": "Cell cycle length (min)",
+      "s3_sheet": "2",
+      "s3_title": "Cell cycle length (min)",
+      "s4_sheet": "1",
+      "s4_title": "Cell cycle length (q-value)",
+      "s4_embryo_join": "embryo_id",
+      "s4_rows_joined_by_semantic_cell_id": true,
+      "s4_qualification": "qualified"
+    },
+    {
+      "id": "division_timing",
+      "s2_sheet": "2",
+      "s2_title": "Cell division timing (min)",
+      "s3_sheet": "3",
+      "s3_title": "Cell division time (min)",
+      "s4_sheet": "2",
+      "s4_title": "Division asynchrony (q-value)",
+      "s4_embryo_join": "embryo_id",
+      "s4_rows_joined_by_semantic_cell_id": true,
+      "s4_qualification": "qualified"
+    },
+    {
+      "id": "sibling_division_timing_difference",
+      "s2_sheet": "3",
+      "s2_title": "Division asymmetry (min)",
+      "s3_sheet": "4",
+      "s3_title": "Division asymmetry (min)",
+      "s4_sheet": "3",
+      "s4_title": "Division asymmetry (q-value)",
+      "s4_embryo_join": "embryo_id",
+      "s4_rows_joined_by_semantic_cell_id": true,
+      "s4_qualification": "qualified"
+    },
+    {
+      "id": "cnd1_gfp_expression",
+      "s2_sheet": "4",
+      "s2_title": "CND-1::GFP expression level (A.U.)",
+      "s3_sheet": "5",
+      "s3_title": "CND-1::GFP expression level (A.U.)",
+      "s4_sheet": "4",
+      "s4_title": "CND-1::GFP expression status (1, gain; -1, loss)",
+      "s4_embryo_join": "embryo_id",
+      "s4_rows_joined_by_semantic_cell_id": true,
+      "s4_qualification": "blocked_header_identity"
+    },
+    {
+      "id": "division_angle",
+      "s2_sheet": "5",
+      "s2_title": "Cell division angle (A-P)",
+      "s3_sheet": "6",
+      "s3_title": "Cell division angle (A-P)",
+      "s4_sheet": "5",
+      "s4_title": "Division angle (q-value)",
+      "s4_embryo_join": "embryo_id",
+      "s4_rows_joined_by_semantic_cell_id": true,
+      "s4_qualification": "qualified"
+    },
+    {
+      "id": "three_dimensional_position",
+      "s2_sheet": "6",
+      "s2_title": "3D coordinates (x, y, z)",
+      "s3_sheet": "7",
+      "s3_title": "3D coordinates (x, y, z)",
+      "s4_sheet": "6",
+      "s4_title": "Relative cell position (q-value)",
+      "s4_embryo_join": "embryo_id",
+      "s4_rows_joined_by_semantic_cell_id": true,
+      "s4_qualification": "qualified"
+    }
+  ],
+  "overlap": {
+    "exposed_public_names": [
+      "C30H7.2",
+      "C44E4.5",
+      "F15D3.6",
+      "GST-43",
+      "LPD-3",
+      "M04F3.4",
+      "MARF-1",
+      "NDX-7",
+      "PASH-1",
+      "PTR-23",
+      "RIG-5",
+      "TAG-173",
+      "VPR-1",
+      "Y34D9A.7",
+      "Y48G1A.4"
+    ],
+    "exclude_from_claim_bearing": true,
+    "gene_identity_join_key": "wormbase_gene_id",
+    "public_name_used_as_join_key": false,
+    "observed_s1_s3_public_name_alias_mismatches": 1,
+    "alias_mismatch_is_unambiguous_by_wormbase_gene_id": true,
+    "target_gene_overlap_exclusion_established": true,
+    "embryo_level_disjointness_established": false,
+    "embryo_level_disjointness_blocker": "pilot_normalized_id_manifest_required"
+  },
+  "split": {
+    "method": "sha256_sorted_gene_holdout",
+    "salt": "omix709-scale-v1",
+    "key": "wormbase_gene_id",
+    "train_fraction": 0.6,
+    "validation_fraction": 0.2,
+    "test_fraction": 0.2,
+    "whole_gene": true,
+    "assignment_precedes_outcome_value_access": true
+  },
+  "stage_encoding": {
+    "requested_landmarks": [26, 200],
+    "explicit_frame_snapshots": false,
+    "source_representation": "semantic_cell_resolved_measurements",
+    "adapter_required": true,
+    "adapter_contract": "later_frozen_semantic_cell_stage_adapter",
+    "modeling_permitted_before_adapter_freeze": false
+  },
+  "anti_circularity": {
+    "qualification_scope": "source_identity_structure_ordering_and_joinability_only",
+    "outcome_prevalence_inspection_permitted": false,
+    "outcome_values_used_for_split_or_model_selection": false,
+    "s3_modalities_required_to_share_embryo_set": true,
+    "s3_cross_modality_column_order_assumption": "forbidden",
+    "known_s3_modalities_with_differing_embryo_order": [
+      "division_timing",
+      "division_angle"
+    ],
+    "s4_embryo_headers_present": true,
+    "s4_positional_embryo_join_permitted": false,
+    "s4_embryo_join_key": "embryo_id",
+    "qualified_s4_sheets": ["1", "2", "3", "5", "6"],
+    "blocked_s4_sheets": ["4"],
+    "s4_sheet_4_header_audit": {
+      "embryo_columns": 2075,
+      "unique_headers": 2070,
+      "canonical_s3_ids_absent": 349,
+      "alternate_headers": 344,
+      "duplicate_ids": 5,
+      "generic_alias_normalization_permitted": false
+    },
+    "s4_sheets_7_8_usage": "descriptive_only",
+    "s4_outcomes_usage": "secondary_only",
+    "s4_values_permitted_as_predictors": false,
+    "same_measurement_used_to_predict_its_derived_s4_call": false
+  },
+  "claims": {
+    "qualification_findings_permitted": [
+      "content identity and workbook structure",
+      "non-outcome identifier counts and overlap",
+      "cross-workbook modality, column-order, and semantic-cell join contracts",
+      "whether a later frozen semantic-cell stage adapter is required"
+    ],
+    "scientific_claims_permitted": [],
+    "prohibited": [
+      "outcome prevalence or defect-family frequency during qualification",
+      "predictive performance or lineage-topology value",
+      "causal mechanism, penetrance, or complete developmental fate",
+      "transport beyond the frozen OMIX709 processed snapshot"
+    ]
+  }
+}

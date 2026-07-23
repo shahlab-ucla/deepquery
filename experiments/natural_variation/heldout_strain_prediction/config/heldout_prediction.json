@@ -1,0 +1,285 @@
+{
+  "schema_version": "wormctx-abamectin-ws283-heldout-strain-prediction-1.1",
+  "analysis_id": "abamectin_ws283_heldout_strain_prediction_heldout_prediction_v1",
+  "classification": "predeclared_heldout_strain_prediction_scaffold",
+  "status": "blocked_on_state_receipts",
+  "validated": false,
+  "biological_claims_permitted": false,
+  "modern_cohort": {
+    "parent_run_id": "abamectin-ws283-bd41637-20260717T200012Z",
+    "parent_source_commit": "bd41637f5ff2998333964cc954ee9f9f36a351d6",
+    "sample_count": 209,
+    "marker_count": 373279,
+    "chromosome_v_marker_count": 115183,
+    "non_chromosome_v_marker_count": 258096,
+    "sample_order": "baseline_parent_fam_order",
+    "phenotype_condition": "abamectin",
+    "phenotype_traits": ["mean.EXT", "mean.TOF", "mean.norm.EXT", "norm.n"],
+    "required_files": [
+      {
+        "role": "bed",
+        "root_id": "modern_parent",
+        "relative_path": "genotype/abamectin_209_qc.bed",
+        "bytes": 19783790,
+        "sha256": "831be5bc5ebf9df149f860dfb57fb4062a17b81e1f858c67d5e5adf3da650441"
+      },
+      {
+        "role": "bim",
+        "root_id": "modern_parent",
+        "relative_path": "genotype/abamectin_209_qc.bim",
+        "bytes": 9956912,
+        "sha256": "7e8813ee3663b7b1977e3e9818c97458157e8e02572907300d5797e5e7892f0c"
+      },
+      {
+        "role": "fam",
+        "root_id": "modern_parent",
+        "relative_path": "genotype/abamectin_209_qc.fam",
+        "bytes": 3724,
+        "sha256": "66d24925d6cd5094588d671f1c7d5ea01b33680dec95aa168763dd363bacc055"
+      },
+      {
+        "role": "phenotype:mean.EXT",
+        "root_id": "modern_parent",
+        "relative_path": "prepared/cohort/mean_EXT.phen",
+        "bytes": 5791,
+        "sha256": "2c1e696b07f261b3c02d91245459df78a696e81e02a69e870fd828fd8e9088b6"
+      },
+      {
+        "role": "phenotype:mean.TOF",
+        "root_id": "modern_parent",
+        "relative_path": "prepared/cohort/mean_TOF.phen",
+        "bytes": 5795,
+        "sha256": "7f1273b33416714eae138f39019db1ee6b75cf45d70b00bfc082ba8965bbc72a"
+      },
+      {
+        "role": "phenotype:mean.norm.EXT",
+        "root_id": "modern_parent",
+        "relative_path": "prepared/cohort/mean_norm_EXT.phen",
+        "bytes": 6061,
+        "sha256": "2bfd689b0656df52813cea07c73bb82f1b311b09c0a8499335c7a1f36659ad04"
+      },
+      {
+        "role": "phenotype:norm.n",
+        "root_id": "modern_parent",
+        "relative_path": "prepared/cohort/norm_n.phen",
+        "bytes": 5863,
+        "sha256": "4411538477463f8bf4eb5db4039c16efd9fd573af1b5a808c8c7dcdfc985d3be"
+      }
+    ]
+  },
+  "legacy_quarantine": {
+    "analysis_id": "caendr_abamectin_legacy_prediction_audit_20260717",
+    "relationship_prefix": "pheno_only",
+    "original_ids": 203,
+    "abamectin_roster_overlap": 188,
+    "finite_aligned_ids": 165,
+    "accepted_as_heldout_prediction_input": false,
+    "refusal_required": true
+  },
+  "upstream_gates": {
+    "parametric_null_terminal": {
+      "status": "qualified",
+      "run_id": "abamectin-ws283-parametric-null-20260721T161005Z-c01179f4a52e",
+      "success_marker": {
+        "role": "parametric_null_terminal_success",
+        "root_id": "parametric_null_run",
+        "relative_path": "SUCCESS",
+        "bytes": 8,
+        "sha256": "1f513d4ecec4e91ddd48da1a59b6d96f1b76c374dc1da641980782a34f43b102"
+      },
+      "aggregation_summary": {
+        "role": "parametric_null_aggregation_summary",
+        "root_id": "parametric_null_run",
+        "relative_path": "summary/parametric_null_aggregation.json",
+        "bytes": 12033,
+        "sha256": "acf38c598c4edec8c6ff611a5b3a0407b2b6eff6593f066733934857f5bc3bcd"
+      },
+      "rich_summary": {
+        "role": "parametric_null_rich_summary",
+        "root_id": "parametric_null_run",
+        "relative_path": "summary/ws283_parametric_null/ws283_parametric_null_summary.json",
+        "bytes": 143376,
+        "sha256": "6e5ed207ce731b24d3180ed5ce61d8eebf5b2a8e23c700c713ba49105fd496b7"
+      },
+      "expected_calibration_cells": 16,
+      "expected_replicates_per_cell": 100,
+      "expected_completed_maps": 1600
+    },
+    "coordinate_identity": {
+      "status": "qualified",
+      "receipt_schema_version": "wormctx-ws276-ws283-coordinate-identity-1.0",
+      "receipt": {
+        "role": "ws276_ws283_coordinate_identity_receipt",
+        "root_id": "repository",
+        "relative_path": "artifacts/upstream/reference_coordinate_identity/qualification.json",
+        "bytes": 2117,
+        "sha256": "16de24d5cd2721bc1a9cdec6868e212e62bd2d1e9b4279b5b6e5163f83329a2c"
+      }
+    },
+    "state_panel": {
+      "status": "missing",
+      "qualification_schema_version": "wormctx-chrv-haplotype-pav-panel-1.0",
+      "feature_receipt_schema_version": "wormctx-abamectin-ws283-heldout_prediction-state-features-1.0",
+      "qualification_receipt": null,
+      "feature_receipt": null,
+      "feature_matrix": null
+    },
+    "full_kernels": {
+      "status": "qualified",
+      "receipt_schema_version": "wormctx-abamectin-full-kernel-qualification-1.0",
+      "qualification_receipt": {
+        "role": "full_kernel_numerical_qualification_receipt",
+        "root_id": "full_kernel_run",
+        "relative_path": "kernels/qualified/qualification_receipt.json",
+        "bytes": 3179,
+        "sha256": "1841b916a43c04003da97d40f411175242d38420a6173b2f398510c2f42c983c"
+      },
+      "whole_genome_matrix": {
+        "role": "whole_genome_float64_npy",
+        "root_id": "full_kernel_run",
+        "relative_path": "kernels/qualified/whole_genome.npy",
+        "bytes": 349576,
+        "sha256": "0afdc4981783ca4c620798fbe367537622da8ce349669199d868424e7370c9d5"
+      },
+      "genome_excluding_chrv_matrix": {
+        "role": "genome_excluding_chrv_float64_npy",
+        "root_id": "full_kernel_run",
+        "relative_path": "kernels/qualified/genome_excluding_chrv.npy",
+        "bytes": 349576,
+        "sha256": "3dbacfc40c3e1f1cc1b87a60112b57afb5590115ae38b996ca69ca270f1bb261"
+      }
+    },
+    "population_groups": {
+      "status": "qualified",
+      "receipt_schema_version": "wormctx-abamectin-phenotype-blind-groups-1.1",
+      "receipt": {
+        "role": "population_group_receipt",
+        "root_id": "repository",
+        "relative_path": "mappings/abamectin_ws283_pc10_population_groups_20260722.receipt.json",
+        "bytes": 1963,
+        "sha256": "fc6c4ad412155c8c4a12f08b74a7b7881cd58334341bb0b8513ffdbf9e84f515"
+      },
+      "assignments": {
+        "role": "population_group_assignments",
+        "root_id": "repository",
+        "relative_path": "mappings/abamectin_ws283_pc10_population_groups_20260722.tsv",
+        "bytes": 2700,
+        "sha256": "60fee103992f92e2bd2ee62eeba2426a882f36e250334d4814fc09084dfa87c3"
+      },
+      "expected_samples": 209,
+      "minimum_groups": 5,
+      "eigenvalues_sha256": "a8e2775a8a5cb46f4719f1a9a9d992a09c89773b3390eef6cbbff0642299c2cf",
+      "eigenvalue_count": 10,
+      "eigenvalues_used_for_clustering": false,
+      "axis_weighting": "equal_weight_after_per_pc_standardization",
+      "eigenvalue_usage": "verified_provenance_only_not_used_for_clustering",
+      "phenotype_paths_accepted": false,
+      "phenotype_values_accessed": false,
+      "outcome_access_claim_scope": "derivation_execution_path_only",
+      "operator_outcome_blinding_asserted": false,
+      "labels_are_external_ancestry_assignments": false
+    },
+    "every_real_asset_byte_and_sha256_verified": true,
+    "every_real_receipt_semantically_verified": true,
+    "synthetic_mode_may_bypass_real_upstream_inputs": true,
+    "synthetic_mode_biological_claims_permitted": false
+  },
+  "splits": {
+    "method": "leave_one_population_group_out_nested_cv",
+    "expected_samples": 209,
+    "minimum_outer_groups": 5,
+    "minimum_group_size": 5,
+    "outer_test_group_used_for_selection": false,
+    "inner_validation_unit": "whole_population_group",
+    "group_labels_derived_without_phenotypes": true,
+    "every_strain_tested_exactly_once": true
+  },
+  "comparators": [
+    {
+      "id": "training_mean",
+      "method": "outer_training_mean",
+      "chromosome_v_in_genome_kernel": null,
+      "hyperparameters": []
+    },
+    {
+      "id": "whole_genome_gblup",
+      "method": "kernel_ridge_gblup",
+      "chromosome_v_in_genome_kernel": true,
+      "hyperparameters": ["ridge"]
+    },
+    {
+      "id": "chrv_haplotype",
+      "method": "linear_haplotype_kernel_ridge",
+      "chromosome_v_in_genome_kernel": null,
+      "hyperparameters": ["ridge"]
+    },
+    {
+      "id": "genome_excluding_chrv",
+      "method": "kernel_ridge_gblup",
+      "chromosome_v_in_genome_kernel": false,
+      "hyperparameters": ["ridge"]
+    },
+    {
+      "id": "combined_excluding_chrv_plus_haplotype",
+      "method": "validation_weighted_multi_kernel_ridge",
+      "chromosome_v_in_genome_kernel": false,
+      "hyperparameters": ["ridge", "haplotype_weight"]
+    }
+  ],
+  "selection": {
+    "criterion": "inner_group_macro_rmse",
+    "ridge_grid": [0.01, 0.1, 1.0, 10.0, 100.0],
+    "combined_haplotype_weight_grid": [0.25, 0.5, 0.75],
+    "tie_break": "lower_rmse_then_higher_ridge_then_lower_haplotype_weight",
+    "preprocessing_uses_outer_training_only": true,
+    "outer_test_phenotypes_hidden_until_final_prediction": true,
+    "prediction_intervals_from_inner_validation_absolute_residuals": true,
+    "genotype_feature_mask_scope": "full_209_genotype_panel_transductive_no_outcome_values_accessed",
+    "transductive_genotype_panel_access_permitted": true,
+    "transductive_phenotype_access_permitted": false
+  },
+  "evaluation": {
+    "primary_metric": "population_group_macro_rmse",
+    "secondary_metrics": [
+      "sample_rmse",
+      "sample_mae",
+      "pearson",
+      "spearman",
+      "calibration_intercept",
+      "calibration_slope",
+      "coverage_50",
+      "coverage_90"
+    ],
+    "interval_levels": [0.5, 0.9],
+    "calibration_fit": "heldout_observed_on_heldout_predicted_descriptive",
+    "trait_pooling_permitted": false,
+    "group_pooling_for_primary_permitted": false
+  },
+  "receipts": {
+    "publication": "atomic_write_once_directory",
+    "existing_output_policy": "refuse",
+    "checksum_algorithm": "sha256",
+    "terminal_marker": "SUCCESS",
+    "required_payloads": [
+      "input_qualification.json",
+      "outer_splits.json",
+      "predictions.jsonl",
+      "summary.json"
+    ]
+  },
+  "claims": {
+    "permitted": [
+      "leakage-controlled held-out-strain prediction scaffold",
+      "population-group-blocked comparator performance on qualified inputs",
+      "descriptive held-out prediction and calibration summaries"
+    ],
+    "prohibited": [
+      "reuse or rehabilitation of the quarantined legacy 203-isolate audit",
+      "strict reproduction or independent replication",
+      "causal locus, gene, allele, haplotype, PAV, or mechanism",
+      "model or hyperparameter selection using an outer held-out phenotype",
+      "inductive generalization to unseen strains, populations, or genotype panels",
+      "biological validation or prospective utility"
+    ]
+  }
+}

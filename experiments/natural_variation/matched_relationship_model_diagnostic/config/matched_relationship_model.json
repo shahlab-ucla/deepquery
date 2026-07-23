@@ -1,0 +1,117 @@
+{
+  "schema_version": "wormctx-abamectin-ws283-matched_relationship_model-matched-model-1.0",
+  "analysis_id": "abamectin_ws283_matched_relationship_model_matched_whole_grm_diagnostic_v1",
+  "classification": "preliminary_model_match_diagnostic_not_threshold_calibration",
+  "status": "frozen_executable",
+  "validated": false,
+  "biological_claims_permitted": false,
+  "source_parametric_null": {
+    "run_id": "abamectin-ws283-parametric-null-20260721T161005Z-c01179f4a52e",
+    "success_sha256": "1f513d4ecec4e91ddd48da1a59b6d96f1b76c374dc1da641980782a34f43b102",
+    "frozen_contract_sha256": "472d5487babf22e244c00e8631c8c546944bbb661de6542f5892fece2d847e22",
+    "run_manifest_sha256": "b4c76de53b9a001d6a55facd1e77e956cf5e7dfb98eed5d8bf42ea3e1d67818d",
+    "sha256sums_sha256": "7d05e2ae363807865a6dd7399a3e440d7b38bf187cc8c940d4eb221e83237ff2",
+    "parent_verification_sha256": "391b52488a032950dbaca7463a35ca48d58a5948b364d555d28ffa32bff6c0fc",
+    "aggregation_sha256": "acf38c598c4edec8c6ff611a5b3a0407b2b6eff6593f066733934857f5bc3bcd",
+    "summary_sha256": "6e5ed207ce731b24d3180ed5ce61d8eebf5b2a8e23c700c713ba49105fd496b7",
+    "required_total_maps": 1600,
+    "required_selected_phenotypes": 400,
+    "required_selected_simulation_receipts": 400,
+    "required_selected_loco_checkpoints": 400,
+    "full_checksum_closure_required": true
+  },
+  "cells": [
+    {
+      "id": "full_pc0_mean_EXT",
+      "relationship_kind": "full",
+      "endpoint": "pc0",
+      "trait": "mean.EXT",
+      "trait_slug": "mean_EXT",
+      "global_grm_relative_prefix": "grm/global/full",
+      "qcovar_parent_role": null,
+      "qcovar_relative_path": null
+    },
+    {
+      "id": "full_pc10_mean_norm_EXT",
+      "relationship_kind": "full",
+      "endpoint": "pc10",
+      "trait": "mean.norm.EXT",
+      "trait_slug": "mean_norm_EXT",
+      "global_grm_relative_prefix": "grm/global/full",
+      "qcovar_parent_role": "calibration",
+      "qcovar_relative_path": "genotype/qcovars/pc10.qcovar"
+    },
+    {
+      "id": "full_pc10_norm_n",
+      "relationship_kind": "full",
+      "endpoint": "pc10",
+      "trait": "norm.n",
+      "trait_slug": "norm_n",
+      "global_grm_relative_prefix": "grm/global/full",
+      "qcovar_parent_role": "calibration",
+      "qcovar_relative_path": "genotype/qcovars/pc10.qcovar"
+    },
+    {
+      "id": "ldpruned_pc10_mean_TOF",
+      "relationship_kind": "ldpruned",
+      "endpoint": "pc10",
+      "trait": "mean.TOF",
+      "trait_slug": "mean_TOF",
+      "global_grm_relative_prefix": "grm/global/ldpruned",
+      "qcovar_parent_role": "calibration",
+      "qcovar_relative_path": "genotype/qcovars/pc10.qcovar"
+    }
+  ],
+  "execution": {
+    "source_replicates_per_cell": 100,
+    "new_map_count": 400,
+    "association_method": "GCTA_MLMA_with_single_whole_panel_external_GRM",
+    "comparison_method": "paired_by_exact_PARAMETRIC_NULL_cell_and_replicate_against_existing_LOCO_checkpoint",
+    "genotype_parent_role": "baseline",
+    "genotype_relative_prefix": "genotype/abamectin_209_qc",
+    "marker_count": 373279,
+    "sample_count": 209,
+    "maf": 0.05,
+    "autosome_num": 6,
+    "thread_count": 16,
+    "smoke_replicates": [1, 2],
+    "sentinel_replicates": [1, 25, 50, 75, 100],
+    "phenotypes_are_reused_byte_for_byte": true,
+    "phenotype_regeneration_permitted": false,
+    "pooled_cells_permitted": false
+  },
+  "tools": {
+    "gcta_absolute_path": "/opt/deepquery/bin/gcta64",
+    "gcta_version": "1.94.1_2022-11-15",
+    "gcta_sha256": "f3ade5211d2a457ad2c22323675120c61b9db9535905fb0f16987c5cad8f4f0f"
+  },
+  "diagnostics": {
+    "alpha": 0.05,
+    "marker_bonferroni_p": 1.3394806565598387e-7,
+    "qq_quantiles": [0.5, 0.9, 0.95, 0.99, 0.999],
+    "preserve": [
+      "nominal_bonferroni_fwer",
+      "minimum_p_distribution",
+      "per_chromosome_minimum_p_distribution",
+      "qq_quantile_distribution",
+      "lambda_gc",
+      "lambda_gc_excluding_trait_intervals",
+      "lambda_gc_excluding_all_intervals"
+    ],
+    "paired_discordance_required": true
+  },
+  "claims": {
+    "permitted": [
+      "paired diagnostic of analysis-model mismatch using exact retained null phenotypes",
+      "cell-specific comparison of nominal FWER and map diagnostics under LOCO and matched whole-GRM MLMA",
+      "prioritization of a later threshold-grade calibration design"
+    ],
+    "prohibited": [
+      "validated genome-wide threshold",
+      "general discovery calibration",
+      "causal locus gene allele haplotype or mechanism",
+      "pooling cells or treating correlated endpoints as independent replication",
+      "claiming that non-LOCO association is an unbiased discovery model"
+    ]
+  }
+}

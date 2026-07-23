@@ -1,0 +1,51 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install (core + dev)
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e ".[dev]"
+      - name: Lint (ruff)
+        run: python -m ruff check src tests
+      - name: Type check (mypy, advisory)
+        continue-on-error: true
+        run: python -m mypy src
+      - name: Unit tests
+        run: python -m pytest -q
+      - name: Offline demo + verify-build smoke test
+        run: |
+          python -m wormctx demo --output build/demo
+          python -m wormctx verify-build --output build/demo \
+            --observations data/examples/observations.jsonl \
+            --query data/examples/query_context.json \
+            --policy config/transport_policy.json
+
+  # Semantic conformance is gated behind the optional ontology toolchain.
+  # Enable after the pinned Biolink/KGX and LinkML validators are wired.
+  semantic-conformance:
+    if: false
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python -m pip install -e ".[semantic]"
+      - run: linkml-validate --schema schemas/contextual_observation.yaml data/examples/observations.jsonl

@@ -1,0 +1,150 @@
+{
+  "schema_version": "wormctx-abamectin-ws276-reconstruction-1.0",
+  "analysis_id": "abamectin_qtl_ws276_caendr20200815_isotype_reconstruction_v1",
+  "status": "historical_isotype_reconstruction_non_publishable",
+  "strict_reproduction_claim_permitted": false,
+  "biological_claims_permitted": false,
+  "assets": [
+    {
+      "role": "phenotype",
+      "filename": "FileS2_wipheno.csv",
+      "bytes": 51760,
+      "sha256": "c158ff3c976ea25a5bcf2545fe459d6c0216fa015f312bed4e6d62694b7dfcae",
+      "source": "Evans_et_al_2021_PLOS_Pathogens_File_S2_commit_c197efe22cd5175aeb66aab05d56765cf9702e7f"
+    },
+    {
+      "role": "source_vcf",
+      "filename": "WI.20200815.impute.isotype.vcf.gz",
+      "bytes": 74544444,
+      "sha256": "fd22d4722716fc3e88875817b96631953f2797ee028e963f639ac71c6a0c94e8",
+      "source": "CaeNDR_20200815_rehosted_S3_version_Vss3LGA_ElRqrJrHJCFALbxdUAlOwofj"
+    },
+    {
+      "role": "source_vcf_index",
+      "filename": "WI.20200815.impute.isotype.vcf.gz.tbi",
+      "bytes": 66829,
+      "sha256": "6109ab85594e379345cbb9aebac67dad34b00267f2430291863a86c79bf48303",
+      "source": "CaeNDR_20200815_rehosted_S3_version_RfeIcdPAhTgB.boVog328bIE.EQqpKgD"
+    },
+    {
+      "role": "published_s3",
+      "filename": "FileS3_wimap.csv",
+      "bytes": 13387059,
+      "sha256": "7f846221728b568e0eb2967dead051f6e21f0b316a9677bccb6580d640e692b4",
+      "source": "Evans_et_al_2021_PLOS_Pathogens_File_S3_LF_normalized_commit_c197efe22cd5175aeb66aab05d56765cf9702e7f"
+    }
+  ],
+  "traits": [
+    "mean.EXT",
+    "mean.TOF",
+    "mean.norm.EXT",
+    "norm.n"
+  ],
+  "cohort": {
+    "raw_rows": 948,
+    "raw_strains": 237,
+    "finite_per_trait": 210,
+    "missing_per_trait": 27,
+    "mapping_source_commit": "2abedc5d51289f612e9b0931f1237eb039852c0d",
+    "mapping_source_git_blob": "4d6658d1d2f7babff3b43433780b656e6a5d864f",
+    "aliases": {
+      "ECA248": "CB4855",
+      "ECA250": "CB4857",
+      "ECA251": "CB4858",
+      "JU1580": "JU1793"
+    },
+    "collision_policy": "isotype_reference_phenotype_wins",
+    "expected_collision": {
+      "JU1793": [
+        "JU1580",
+        "JU1793"
+      ]
+    },
+    "expected_analysis_samples": 209
+  },
+  "preprocessing": {
+    "bcftools_version": "1.9",
+    "plink_version": "1.90b6.12",
+    "require_no_missing_genotypes": true,
+    "snps_only": true,
+    "biallelic_only": true,
+    "maf": 0.05,
+    "plink_geno_default": 0.1,
+    "ld_window": 50,
+    "ld_step": 10,
+    "ld_r2": 0.8,
+    "expected_complete_markers": 21342
+  },
+  "association": {
+    "method": "rrBLUP_GWAS_EMMA",
+    "rrblup_version": "4.6",
+    "r_version": "3.6.0",
+    "p3d_primary": false,
+    "p3d_sensitivity": true,
+    "min_maf": 0.05,
+    "effective_tests_deposited": 962.616,
+    "threshold_log10p": 4.28448307163607,
+    "ci_markers_each_side": 150,
+    "qtl_grouping_marker_gap": 1000,
+    "expected_published_nonzero_markers": 20946
+  },
+  "expected_significant_markers": {
+    "mean.EXT": 2,
+    "mean.TOF": 2,
+    "mean.norm.EXT": 0,
+    "norm.n": 101
+  },
+  "published_intervals": [
+    {
+      "trait": "mean.EXT",
+      "chromosome": "V",
+      "start": 1747612,
+      "end": 4333001,
+      "peak": 2693128
+    },
+    {
+      "trait": "mean.TOF",
+      "chromosome": "V",
+      "start": 1757246,
+      "end": 4333001,
+      "peak": 2693128
+    },
+    {
+      "trait": "mean.TOF",
+      "chromosome": "V",
+      "start": 15983112,
+      "end": 16599066,
+      "peak": 16276775
+    },
+    {
+      "trait": "norm.n",
+      "chromosome": "II",
+      "start": 13756151,
+      "end": 14937792,
+      "peak": 14121786
+    },
+    {
+      "trait": "norm.n",
+      "chromosome": "III",
+      "start": 3061633,
+      "end": 4632949,
+      "peak": 3526374
+    },
+    {
+      "trait": "norm.n",
+      "chromosome": "V",
+      "start": 13606517,
+      "end": 16754986,
+      "peak": 15965095
+    }
+  ],
+  "provenance_gaps": [
+    "The archived 20200815 release inventory offers hard-filter All Strains, hard-filter Isotypes, and imputed Isotypes; it does not offer a generic all-strain imputed object.",
+    "The completed imputed-isotype diagnostic produced 75,831 complete markers and retained only 12,601 of 20,946 published nonzero coordinates, so it was stopped before association.",
+    "The byte-exact all-strain release object and the hard-filter isotype representation also failed separately frozen 209/210-cohort marker diagnostics; genotype representation, cohort, and preprocessing identity remain unresolved.",
+    "The deposited File S3 retains ECA248, ECA250, and ECA251 labels that are absent from the current isotype-imputed VCF.",
+    "No exact abamectin Nextflow run manifest or immutable container digest survives.",
+    "The exact execution commit, P3D argument receipt, coop version, and BLAS/LAPACK builds were not deposited.",
+    "The effective-test value and threshold are read from File S3 in this legacy isotype lane; they are not recomputed from the separately recovered all-strain hard-filter object."
+  ]
+}

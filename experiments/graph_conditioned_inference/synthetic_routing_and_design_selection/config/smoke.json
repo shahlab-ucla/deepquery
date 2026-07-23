@@ -1,0 +1,43 @@
+{
+  "schema_version": "wormctx-poc-1.0",
+  "run_name": "cpu_or_gpu_smoke",
+  "mode": "exploratory",
+  "simulation": {
+    "seed": 1729,
+    "train_groups_per_family": 8,
+    "validation_groups_per_family": 3,
+    "test_groups_per_family": 3,
+    "episodes_per_group": 4
+  },
+  "model": {
+    "hidden_dim": 64,
+    "transformer_layers": 1,
+    "message_passing_layers": 1,
+    "attention_heads": 4,
+    "dropout": 0.05,
+    "max_nodes": 64,
+    "numeric_feature_dim": 16,
+    "max_hypotheses": 4,
+    "max_experiments": 4
+  },
+  "training": {
+    "seed": 1730,
+    "epochs": 3,
+    "batch_size": 16,
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "gradient_clip": 1.0,
+    "num_workers": 0,
+    "device": "auto",
+    "amp": false,
+    "deterministic": true
+  },
+  "acceptance": {
+    "require_cuda": false,
+    "minimum_invalid_flag_recall": 0.0,
+    "minimum_invalid_flag_f1": 0.0,
+    "minimum_invalid_design_accuracy": 0.0,
+    "minimum_operator_micro_f1": 0.0,
+    "maximum_peak_vram_gib": 22.0
+  }
+}

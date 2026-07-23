@@ -1,0 +1,102 @@
+{
+  "schema_version": "wormctx-abamectin-ws283-pc-calibration-1.0",
+  "analysis_id": "abamectin_qtl_ws283_caendr20250625_pc_calibration_v1",
+  "classification": "exploratory_ws283_population_structure_calibration",
+  "status": "predeclared_preliminary_calibration_sensitivity",
+  "validated": false,
+  "biological_claims_permitted": false,
+  "parent": {
+    "run_id": "abamectin-ws283-bd41637-20260717T200012Z",
+    "source_git_commit": "bd41637f5ff2998333964cc954ee9f9f36a351d6",
+    "post_qc_samples": 209,
+    "post_qc_markers": 373279,
+    "required_files": [
+      {"relative_path": "SUCCESS", "bytes": 8, "sha256": "1f513d4ecec4e91ddd48da1a59b6d96f1b76c374dc1da641980782a34f43b102"},
+      {"relative_path": "receipts/SOURCE_REVISION", "bytes": 41, "sha256": "9f5b5f32d7a01ebd49e08e9081645d9de9109a45e3669b538a35bd331a366524"},
+      {"relative_path": "receipts/frozen_analysis_manifest.json", "bytes": 5633, "sha256": "3b48f348cd98a4f893ddc58a52e1d7681231929c5ff4bda1e932c20f9fe446fd"},
+      {"relative_path": "receipts/post_qc_counts.tsv", "bytes": 67, "sha256": "f288c7a8e7e3e0281e6e06c92600c4e01d393f0477ee153b06310444c444a881"},
+      {"relative_path": "genotype/abamectin_209_qc.bed", "bytes": 19783790, "sha256": "831be5bc5ebf9df149f860dfb57fb4062a17b81e1f858c67d5e5adf3da650441"},
+      {"relative_path": "genotype/abamectin_209_qc.bim", "bytes": 9956912, "sha256": "7e8813ee3663b7b1977e3e9818c97458157e8e02572907300d5797e5e7892f0c"},
+      {"relative_path": "genotype/abamectin_209_qc.fam", "bytes": 3724, "sha256": "66d24925d6cd5094588d671f1c7d5ea01b33680dec95aa168763dd363bacc055"},
+      {"relative_path": "prepared/cohort/mean_EXT.phen", "bytes": 5791, "sha256": "2c1e696b07f261b3c02d91245459df78a696e81e02a69e870fd828fd8e9088b6"},
+      {"relative_path": "prepared/cohort/mean_TOF.phen", "bytes": 5795, "sha256": "7f1273b33416714eae138f39019db1ee6b75cf45d70b00bfc082ba8965bbc72a"},
+      {"relative_path": "prepared/cohort/mean_norm_EXT.phen", "bytes": 6061, "sha256": "2bfd689b0656df52813cea07c73bb82f1b311b09c0a8499335c7a1f36659ad04"},
+      {"relative_path": "prepared/cohort/norm_n.phen", "bytes": 5863, "sha256": "4411538477463f8bf4eb5db4039c16efd9fd573af1b5a808c8c7dcdfc985d3be"},
+      {"relative_path": "association/mean_EXT.loco.mlma", "bytes": 22182133, "sha256": "30c79dd1819e9bf16897c58025aa33ba35e9ab67d972355b86854079727119ec"},
+      {"relative_path": "association/mean_TOF.loco.mlma", "bytes": 22242865, "sha256": "70a73014f28411065ba6e7e577c834996bce49d20fd6e9d7593867ec28f39695"},
+      {"relative_path": "association/mean_norm_EXT.loco.mlma", "bytes": 23760497, "sha256": "58d737ff0f5c42c1fa45571cd5c0c015738dde77eaa2ec7aa8c416dc1b4b03d0"},
+      {"relative_path": "association/norm_n.loco.mlma", "bytes": 22792907, "sha256": "1caeb0117d814b3db7021cd7a20106a914676232df5635605ed15fbd02132fb2"}
+    ]
+  },
+  "tools": [
+    {
+      "name": "plink2",
+      "version": "2.0.0-a.6.9LM_2025-01-29",
+      "absolute_path": "/opt/deepquery/bin/plink2",
+      "sha256": "28e45a65689bacf2b6675898abc6fc2eb2a5de19ae21a60ccec0dd37e6b21ce2"
+    },
+    {
+      "name": "gcta64",
+      "version": "1.94.1_2022-11-15",
+      "absolute_path": "/opt/deepquery/bin/gcta64",
+      "sha256": "f3ade5211d2a457ad2c22323675120c61b9db9535905fb0f16987c5cad8f4f0f"
+    }
+  ],
+  "pca": {
+    "source": "parent_post_qc_bfile",
+    "ld_pruning": {
+      "method": "plink2_indep_pairwise_unphased_hardcall_r2",
+      "window_kb": 500,
+      "step_variants": 1,
+      "r2": 0.2,
+      "indep_order": 2
+    },
+    "computed_pc_count": 10,
+    "association_pc_counts": [0, 3, 5, 10],
+    "approximate_pca": false
+  },
+  "association": {
+    "method": "GCTA_MLMA_LOCO",
+    "gcta_autosome_num": 6,
+    "thread_count": 16,
+    "maf": 0.05,
+    "models": [
+      {"id": "pc0", "pc_count": 0, "source": "immutable_parent_result", "primary": true},
+      {"id": "pc3", "pc_count": 3, "source": "new_qcovar_sensitivity", "primary": false},
+      {"id": "pc5", "pc_count": 5, "source": "new_qcovar_sensitivity", "primary": false},
+      {"id": "pc10", "pc_count": 10, "source": "new_qcovar_sensitivity", "primary": false}
+    ],
+    "covariate_fitting": "gcta_default_preadjustment",
+    "model_selection_from_results_permitted": false
+  },
+  "diagnostics": {
+    "alpha": 0.05,
+    "marker_bonferroni_p": 1.3394806565598387e-7,
+    "historical_effective_test_p_reference_only": 5.192107995846314e-5,
+    "qq_quantiles": [0.5, 0.9, 0.95, 0.99, 0.999],
+    "lambda_exclusions": ["none", "trait_published_intervals", "all_published_intervals"],
+    "ld_clump": {
+      "method": "plink2_unphased",
+      "p1": 1.3394806565598387e-7,
+      "p2": 0.05,
+      "r2": 0.2,
+      "kb": 1000
+    },
+    "top_set_sizes": [100, 1000]
+  },
+  "claims": {
+    "permitted": [
+      "preliminary WS283 population-structure calibration sensitivity",
+      "descriptive genomic-inflation and rank-stability comparison",
+      "descriptive published-interval stability",
+      "descriptive LD-clumped locus counts"
+    ],
+    "prohibited": [
+      "strict reproduction",
+      "independent replication",
+      "causal locus, gene, allele, or mechanism",
+      "biological validation",
+      "selection of the best PC count from known-locus recovery"
+    ]
+  }
+}

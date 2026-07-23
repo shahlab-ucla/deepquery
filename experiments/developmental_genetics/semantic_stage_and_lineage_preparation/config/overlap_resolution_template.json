@@ -1,0 +1,77 @@
+{
+  "schema_version": "wormctx-omix709-pilot-scaleup-overlap-attestation-request-1.0",
+  "request_id": "omix709_pilot_scaleup_overlap_attestation_20260721",
+  "status": "awaiting_source_curator_attestation",
+  "classification": "identity_only_no_outcome_access",
+  "pilot": {
+    "normalized_product_bytes": 62315263,
+    "normalized_product_sha256": "51fcda2051bb0d7cff376581e29e80be20da013211b4c40cb16a2186b7039659",
+    "extracted_inventory_sha256": "76ef53c6e1fd38ef298f012ea9af42aad7ae6558c12ca86dc0b0b6dd7da8a2f2",
+    "reference_archive": {
+      "omix_file_id": "OMIX709-05-53",
+      "filename": "OMIX709-05-53.rar",
+      "embryos": 105,
+      "bytes": 33609151,
+      "sha256": "cf85a12ec6b6eabf900e303a630e366f61e2a7aeff0b050feb38bb26a06c07a4"
+    },
+    "addendum_archive": {
+      "omix_file_id": "OMIX709-05-55",
+      "filename": "OMIX709-05-55.rar",
+      "embryos": 146,
+      "external_controls": 8,
+      "perturbation_embryos": 138,
+      "perturbation_targets": 15,
+      "bytes": 51428713,
+      "sha256": "429f8888f3549738e66e28c7f2af440233982b96950350fd97b5d2b6d68d49c8"
+    }
+  },
+  "scaleup": {
+    "main_lineage_archive": {
+      "omix_file_id": "OMIX709-05-54",
+      "filename": "OMIX709-05-54.rar",
+      "embryos_reported_by_omix": 2075,
+      "content_identity_not_yet_frozen": true
+    },
+    "processed_source_bundle_sha256": "3b2bd2534beb81234492a79d947083ab523ac2afbe737e9454c1516dcb6c9aed",
+    "split_manifest_sha256": "60cdd6c3e4a236e86ed0a2cb95b4ea1b5ee1fbfc14004ffb54fa774c4287ba60",
+    "measurement_embryos": 2075,
+    "measurement_genes": 698,
+    "development_only_exposed_pilot_embryos": 41,
+    "development_only_exposed_pilot_genes": 14,
+    "claim_bearing_embryos": 2034,
+    "claim_bearing_genes": 684
+  },
+  "source_records": [
+    {
+      "role": "authoritative_repository_record",
+      "url": "https://ngdc.cncb.ac.cn/omix/release/OMIX709",
+      "observed_distinction": "OMIX709-05-54 is Lineage_tracing_RNAi with 2075 embryos; OMIX709-05-55 is Lineage_tracing_RNAi_add with 146 embryos"
+    },
+    {
+      "role": "depositor_lab_download_record",
+      "url": "https://dulab.genetics.ac.cn/single-cell-phenomics/download.html",
+      "observed_distinction": "Raw_data_RNAi and Raw_data_RNAi_add are listed as separate lineage folders; Table S3 and the additional-KD Table S6 are listed separately"
+    },
+    {
+      "role": "primary_publication",
+      "url": "https://doi.org/10.1016/j.cels.2022.07.001"
+    }
+  ],
+  "requested_assertions": {
+    "table_s3_uses_only_omix709_05_54_embryos": null,
+    "omix709_05_54_and_05_55_are_biological_embryo_disjoint": null,
+    "identifier_namespaces_are_complete_and_not_reused_across_archives": null,
+    "any_reused_embryos_are_exhaustively_listed_in_overlap_pairs": null
+  },
+  "required_response": {
+    "attestor_name": null,
+    "attestor_role_and_source_authority": null,
+    "attested_utc": null,
+    "evidence_record_identifier": null,
+    "evidence_record_sha256": null,
+    "overlap_pairs": []
+  },
+  "decision_rule": "This request is not an overlap receipt. Model launch remains blocked until a source-authorized response is converted into and passes the frozen stage-adapter overlap-receipt validator, or an investigator approves a separately preregistered gene-quarantine contract amendment.",
+  "outcome_values_used_for_identity_decision": false,
+  "operator_access_note": "A metadata-preview command inadvertently rendered part of one development-only pilot record because the normalized JSON is canonicalized onto one line. No scale-up S3/S4 outcome or claim-bearing/sealed outcome was opened, and the displayed pilot values were not used."
+}

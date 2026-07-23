@@ -1,0 +1,52 @@
+{
+  "schema_version": "wormctx-real-baseline-1.0",
+  "analysis_id": "caendr_abamectin_legacy_prediction_audit_20260717",
+  "analysis_kind": "kinship_prediction_audit_not_qtl",
+  "status": "exploratory_unvalidated",
+  "validated": false,
+  "rights_status": "review_required",
+  "use_scope": "read_only_audit",
+  "phenotypes": {
+    "role": "phenotypes",
+    "relative_path": "data/caendr/drug_traits/abamectin_wipheno.csv",
+    "sha256": "c158ff3c976ea25a5bcf2545fe459d6c0216fa015f312bed4e6d62694b7dfcae"
+  },
+  "kinship": {
+    "role": "kinship",
+    "relative_path": "runs/e2_kinship/pheno_only.rel",
+    "sha256": "4ae27b8f942f6655466cf0a227d3ad95854b04086666274208f2eabb8bdc711e"
+  },
+  "kinship_ids": {
+    "role": "kinship_ids",
+    "relative_path": "runs/e2_kinship/pheno_only.rel.id",
+    "sha256": "38a9454d2d3ecd5c0109aa1ec66e3f48d6800472efc5f4e62973944bd4e97bed"
+  },
+  "eigenvectors": {
+    "role": "eigenvectors",
+    "relative_path": "runs/e2_kinship/pheno_only.eigenvec",
+    "sha256": "d02a46f10ebd14d97a776de4069a28e9dea732f8ad3aff089c148e064725758f"
+  },
+  "phenotype_contract": {
+    "condition": "abamectin",
+    "traits": ["mean.EXT", "mean.TOF", "mean.norm.EXT", "norm.n"],
+    "strain_column": "strain",
+    "condition_column": "condition",
+    "trait_column": "trait",
+    "value_column": "phenotype",
+    "replicate_policy": "finite_arithmetic_mean_within_condition_trait_strain"
+  },
+  "folds": {
+    "method": "capacity_constrained_deterministic_kmeans_on_standardized_pcs",
+    "seed": 20260717,
+    "expected_group_count": 5,
+    "maximum_group_size_difference": 1,
+    "uses_phenotype_values": false,
+    "min_samples": 40
+  },
+  "known_limitations": [
+    "The 203-isolate kinship cohort came from a general expression table, not the abamectin phenotype.",
+    "This artifact is retained only to reproduce the earlier leakage-controlled prediction audit.",
+    "It cannot reproduce the published QTL scan or support locus, gene, or mechanism claims."
+  ],
+  "biological_claims_permitted": false
+}

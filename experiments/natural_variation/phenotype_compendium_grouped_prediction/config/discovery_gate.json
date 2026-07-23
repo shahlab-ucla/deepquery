@@ -1,0 +1,141 @@
+{
+  "schema_version": "wormctx-caendr-compendium-discovery-gate-config-1.0",
+  "analysis_id": "caendr_compendium_discovery_gate_20260723",
+  "classification": "retrospective_discovery_only_technical_benchmark",
+  "inputs": [
+    {
+      "role": "source_compendium",
+      "logical_path": "data/caendr/phenotypes/20250625_all_phenotype_data.csv",
+      "bytes": 24381463,
+      "sha256": "5cfe6bda64743ffb42c7b1410010603681417e0903de2e68aae755a4b71ea764"
+    },
+    {
+      "role": "stage1_qualification_receipt",
+      "logical_path": "compendium-runs/caendr-compendium-qualification-20260722T220130Z/source_qualification_receipt.json",
+      "bytes": 7423,
+      "sha256": "8244de1bb947de1900d5a8f02786e3b7f4f1e766b837a51bb463c2e1de054774"
+    },
+    {
+      "role": "stage1_discovery_trait_list",
+      "logical_path": "compendium-runs/caendr-compendium-qualification-20260722T220130Z/eligible_discovery_traits.txt",
+      "bytes": 39121,
+      "sha256": "cb62d17814566a48c5e6ff959fa7f71350dd84f414e863d85c62c1c1e6647b0d"
+    },
+    {
+      "role": "stage1_validation_trait_list",
+      "logical_path": "compendium-runs/caendr-compendium-qualification-20260722T220130Z/eligible_validation_traits.txt",
+      "bytes": 8567,
+      "sha256": "110d49079a54b2ca13cb413eed5d74508be9532282521a3a55ffdde532d75546"
+    },
+    {
+      "role": "stage2_kernel_qualification_receipt",
+      "logical_path": "compendium-runs/caendr-compendium-203-kernel-20260722T222615Z/qualification/frozen/kernel_qualification_receipt.json",
+      "bytes": 4669,
+      "sha256": "3eb03450379984b9e93feee05478dbecbd88340144193629cef23b80962aa4e6"
+    },
+    {
+      "role": "stage2_population_groups",
+      "logical_path": "compendium-runs/caendr-compendium-203-kernel-20260722T222615Z/qualification/frozen/population_groups.tsv",
+      "bytes": 2618,
+      "sha256": "456112a2010143369a10bf0589bfc09cf417d3cc1a4ffbf0af112cc3ce0962c9"
+    },
+    {
+      "role": "stage2_float64_kernel",
+      "logical_path": "compendium-runs/caendr-compendium-203-kernel-20260722T222615Z/qualification/frozen/whole_genome_kernel.float64.npy",
+      "bytes": 329800,
+      "sha256": "9213083c18d4a9208182475b1e268bc2e10603bc1cbe62b359122115bf5e2660"
+    },
+    {
+      "role": "stage2_pca10_scores",
+      "logical_path": "compendium-runs/caendr-compendium-203-kernel-20260722T222615Z/genotype/compendium_203_qc_pca10.eigenvec",
+      "bytes": 22827,
+      "sha256": "5b283fbea1d8ef0f63e27da3669cd968a6b6fb839d196669b9f0b2c8ff54070c"
+    }
+  ],
+  "python_tool": {
+    "version": "3.11.15_numpy_2.4.6",
+    "sha256": "6d6055b1e62c291795e8484f10b7f00bbe15cf3148a7215e6ff6d1058c417f77",
+    "maximum_threads": 1
+  },
+  "partition_contract": {
+    "discovery_traits": 1184,
+    "validation_traits": 261,
+    "discovery_trait_sha256": "cb62d17814566a48c5e6ff959fa7f71350dd84f414e863d85c62c1c1e6647b0d",
+    "validation_trait_sha256": "110d49079a54b2ca13cb413eed5d74508be9532282521a3a55ffdde532d75546",
+    "bucket_identity_must_not_change": true
+  },
+  "mask_contract": {
+    "panel_samples": 203,
+    "minimum_finite_samples": 143,
+    "derivation": "ceil_0.70_times_203_and_stage1_147_minus_four_absent",
+    "value_finiteness_evaluated": true,
+    "value_magnitude_or_rank_evaluated": false,
+    "trait_variance_used_for_qualification": false,
+    "minimum_qualified_discovery_traits": 800
+  },
+  "fold_contract": {
+    "method": "leave_one_genotype_pc_group_out",
+    "expected_groups": 10,
+    "minimum_heldout_samples": 3,
+    "minimum_training_samples": 120,
+    "minimum_samples_per_nonheldout_group": 3,
+    "every_finite_sample_tested_exactly_once": true,
+    "phenotype_magnitude_used_for_folds": false
+  },
+  "model_ladder": {
+    "models": [
+      {
+        "id": "training_mean",
+        "hyperparameters": {}
+      },
+      {
+        "id": "pc10_ridge_fixed",
+        "hyperparameters": {
+          "ridge": 1.0
+        }
+      },
+      {
+        "id": "whole_genome_gblup_fixed",
+        "hyperparameters": {
+          "ridge": 1.0
+        }
+      }
+    ],
+    "hyperparameter_tuning_permitted": false,
+    "outer_test_used_for_selection": false,
+    "pc_centering_and_scaling": "outer_training_samples_only",
+    "outcome_centering": "outer_training_samples_only",
+    "missing_outcome_imputation_permitted": false,
+    "constant_traits_retained_as_nonestimable": true
+  },
+  "smoke_contract": {
+    "traits": 8,
+    "selection": "sha256_namespace_plus_trait_name_ascending",
+    "selection_namespace": "wormctx-caendr-discovery-smoke-trait-selection-20260723-v1:",
+    "permutations_per_trait": 4,
+    "permutation_scope": "outer_training_outcomes_only",
+    "permutation_seed_namespace": "wormctx-caendr-discovery-training-null-20260723-v1:",
+    "maximum_threads": 1,
+    "maximum_wall_seconds": 900,
+    "performance_claims_permitted": false
+  },
+  "validation_custody": {
+    "locked": true,
+    "runner_command_exists": false,
+    "outcome_value_field_evaluated": false,
+    "trait_specific_masks_computed": false,
+    "per_trait_availability_reported": false,
+    "list_used_only_for_exclusion_and_identity": true
+  },
+  "claim_boundary": {
+    "biological_claims_permitted": false,
+    "predictive_performance_claims_permitted": false,
+    "independent_validation_established": false,
+    "technical_smoke_only": true
+  },
+  "legacy_numeric_quarantine": {
+    "accepted_as_inputs": false,
+    "paths_accepted_by_runner": false,
+    "values_accessed": false
+  }
+}

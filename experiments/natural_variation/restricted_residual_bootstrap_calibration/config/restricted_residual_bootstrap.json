@@ -1,0 +1,174 @@
+{
+  "schema_version": "wormctx-abamectin-ws283-restricted_residual_bootstrap-covariance-bootstrap-1.0",
+  "analysis_id": "abamectin_ws283_restricted_residual_bootstrap_mvnpermute_pc10_loco_v1",
+  "classification": "preliminary_covariance_preserving_loco_calibration",
+  "status": "frozen_smoke_eligible_full_launch_not_yet_qualified",
+  "validated": false,
+  "biological_claims_permitted": false,
+  "source_runs": [
+    {
+      "role": "baseline",
+      "run_id": "abamectin-ws283-bd41637-20260717T200012Z",
+      "terminal_marker": "SUCCESS",
+      "failure_marker_absent_required": true
+    },
+    {
+      "role": "calibration",
+      "run_id": "abamectin-ws283-pc-calibration-20260720T215332Z-192322baefdf",
+      "terminal_marker": "SUCCESS",
+      "failure_marker_absent_required": true
+    },
+    {
+      "role": "parametric_null",
+      "run_id": "abamectin-ws283-parametric-null-20260721T161005Z-c01179f4a52e",
+      "terminal_marker": "SUCCESS",
+      "failure_marker_absent_required": true
+    }
+  ],
+  "assets": [
+    {"role": "baseline_success", "root_id": "baseline", "relative_path": "SUCCESS", "bytes": 8, "sha256": "1f513d4ecec4e91ddd48da1a59b6d96f1b76c374dc1da641980782a34f43b102"},
+    {"role": "baseline_checksums", "root_id": "baseline", "relative_path": "receipts/SHA256SUMS.txt", "bytes": 4301, "sha256": "48df76ddcc131c658f8b7a23dd61de586373876b0be4894408e27c0e517ffb2c"},
+    {"role": "baseline_bed", "root_id": "baseline", "relative_path": "genotype/abamectin_209_qc.bed", "bytes": 19783790, "sha256": "831be5bc5ebf9df149f860dfb57fb4062a17b81e1f858c67d5e5adf3da650441"},
+    {"role": "baseline_bim", "root_id": "baseline", "relative_path": "genotype/abamectin_209_qc.bim", "bytes": 9956912, "sha256": "7e8813ee3663b7b1977e3e9818c97458157e8e02572907300d5797e5e7892f0c"},
+    {"role": "baseline_fam", "root_id": "baseline", "relative_path": "genotype/abamectin_209_qc.fam", "bytes": 3724, "sha256": "66d24925d6cd5094588d671f1c7d5ea01b33680dec95aa168763dd363bacc055"},
+    {"role": "phenotype_mean_EXT", "root_id": "baseline", "relative_path": "prepared/cohort/mean_EXT.phen", "bytes": 5791, "sha256": "2c1e696b07f261b3c02d91245459df78a696e81e02a69e870fd828fd8e9088b6"},
+    {"role": "phenotype_mean_TOF", "root_id": "baseline", "relative_path": "prepared/cohort/mean_TOF.phen", "bytes": 5795, "sha256": "7f1273b33416714eae138f39019db1ee6b75cf45d70b00bfc082ba8965bbc72a"},
+    {"role": "phenotype_mean_norm_EXT", "root_id": "baseline", "relative_path": "prepared/cohort/mean_norm_EXT.phen", "bytes": 6061, "sha256": "2bfd689b0656df52813cea07c73bb82f1b311b09c0a8499335c7a1f36659ad04"},
+    {"role": "phenotype_norm_n", "root_id": "baseline", "relative_path": "prepared/cohort/norm_n.phen", "bytes": 5863, "sha256": "4411538477463f8bf4eb5db4039c16efd9fd573af1b5a808c8c7dcdfc985d3be"},
+    {"role": "calibration_success", "root_id": "calibration", "relative_path": "SUCCESS", "bytes": 8, "sha256": "1f513d4ecec4e91ddd48da1a59b6d96f1b76c374dc1da641980782a34f43b102"},
+    {"role": "calibration_checksums", "root_id": "calibration", "relative_path": "receipts/SHA256SUMS.txt", "bytes": 15286, "sha256": "e8014265b2d58d2a50627421cfab8dc6d0b6247c222f63aa78d066dd9b27e6f8"},
+    {"role": "pc10_qcovar", "root_id": "calibration", "relative_path": "genotype/qcovars/pc10.qcovar", "bytes": 40581, "sha256": "ee9c79353418b251214afb354e5cb4824906b4740ce23cd9d7d8f7e54cdac246"},
+    {"role": "parametric_null_success", "root_id": "parametric_null", "relative_path": "SUCCESS", "bytes": 8, "sha256": "1f513d4ecec4e91ddd48da1a59b6d96f1b76c374dc1da641980782a34f43b102"},
+    {"role": "parametric_null_contract", "root_id": "parametric_null", "relative_path": "receipts/frozen_parametric_null_contract.json", "bytes": 13632, "sha256": "472d5487babf22e244c00e8631c8c546944bbb661de6542f5892fece2d847e22"},
+    {"role": "parametric_null_checksums", "root_id": "parametric_null", "relative_path": "receipts/SHA256SUMS.txt", "bytes": 3864094, "sha256": "7d05e2ae363807865a6dd7399a3e440d7b38bf187cc8c940d4eb221e83237ff2"},
+    {"role": "full_grm_bin", "root_id": "parametric_null", "relative_path": "grm/global/full.grm.bin", "bytes": 87780, "sha256": "1814aaad5497d4fc55316bf3103261b41565c56286f26ad9aa075005a5b1167d"},
+    {"role": "full_grm_n_bin", "root_id": "parametric_null", "relative_path": "grm/global/full.grm.N.bin", "bytes": 87780, "sha256": "2cfdcba2c96c052386bcdad3d47eecd6ee9afaec853c0c1163c73f1fa77ee1e3"},
+    {"role": "full_grm_id", "root_id": "parametric_null", "relative_path": "grm/global/full.grm.id", "bytes": 1843, "sha256": "46e000074595bf0bb977a6170d35b6b9e9375b06968dd1a1cbb74cd3f16f22fd"},
+    {"role": "fit_mean_EXT", "root_id": "parametric_null", "relative_path": "null/fits/full_pc10_mean_EXT/qualified_fit.json", "bytes": 6881, "sha256": "a8c7b68c13532df9ba6d07599de1e507e8d51791b0da61e9c790c8ccf0c4d79c"},
+    {"role": "fit_mean_TOF", "root_id": "parametric_null", "relative_path": "null/fits/full_pc10_mean_TOF/qualified_fit.json", "bytes": 6869, "sha256": "e7a307cd522d7f87c98a3a524c9c53a1003ab9869580cf7e9854ca9d47628b16"},
+    {"role": "fit_mean_norm_EXT", "root_id": "parametric_null", "relative_path": "null/fits/full_pc10_mean_norm_EXT/qualified_fit.json", "bytes": 6895, "sha256": "38ef663850f945ac4703e5a70aa3e5f99ff57d485412e418b17759bf30642cbd"},
+    {"role": "fit_norm_n", "root_id": "parametric_null", "relative_path": "null/fits/full_pc10_norm_n/qualified_fit.json", "bytes": 6838, "sha256": "44c15905b5f08d60a457d9387fb88d2d0b11ba85a2468f88d79671a4979b2f13"},
+    {"role": "hsq_mean_EXT", "root_id": "parametric_null", "relative_path": "null/fits/full_pc10_mean_EXT/reml.hsq", "bytes": 442, "sha256": "edc92b663019c725364b65e751dcc074cc964947155a51633de11cf45b8e5b06"},
+    {"role": "hsq_mean_TOF", "root_id": "parametric_null", "relative_path": "null/fits/full_pc10_mean_TOF/reml.hsq", "bytes": 422, "sha256": "344c6620a7beac2b943dbc42360b72f7cbf875be07b56dd3d2959324efc828d8"},
+    {"role": "hsq_mean_norm_EXT", "root_id": "parametric_null", "relative_path": "null/fits/full_pc10_mean_norm_EXT/reml.hsq", "bytes": 393, "sha256": "1b6a6916b65ff70acafa82a5c899bd0950a4aed5483b35cee5607617666529d0"},
+    {"role": "hsq_norm_n", "root_id": "parametric_null", "relative_path": "null/fits/full_pc10_norm_n/reml.hsq", "bytes": 405, "sha256": "43d16c7321a3642b1ed90eb9d0ef40962fa3c7c452a0cd89173fb4b1361b5620"},
+    {"role": "matched_relationship_model_contract", "root_id": "repository", "relative_path": "experiments/natural_variation/matched_relationship_model_diagnostic/config/matched_relationship_model.json", "bytes": 4620, "sha256": "50b38ca48dcd9b2c37911a8e627672f11511b3f22dac6f7a8fe4e422404b1074"},
+    {"role": "matched_relationship_model_result", "root_id": "repository", "relative_path": "artifacts/upstream/matched_relationship_model_diagnostic/summary.json", "bytes": 6268, "sha256": "b533f618c1d64d7c29c4fbd5ee1a7b4f10a066e42062aeb3d310e37bd7f51067"}
+  ],
+  "traits": [
+    {"trait": "mean.EXT", "trait_slug": "mean_EXT", "phenotype_role": "phenotype_mean_EXT", "fit_role": "fit_mean_EXT", "hsq_role": "hsq_mean_EXT"},
+    {"trait": "mean.TOF", "trait_slug": "mean_TOF", "phenotype_role": "phenotype_mean_TOF", "fit_role": "fit_mean_TOF", "hsq_role": "hsq_mean_TOF"},
+    {"trait": "mean.norm.EXT", "trait_slug": "mean_norm_EXT", "phenotype_role": "phenotype_mean_norm_EXT", "fit_role": "fit_mean_norm_EXT", "hsq_role": "hsq_mean_norm_EXT"},
+    {"trait": "norm.n", "trait_slug": "norm_n", "phenotype_role": "phenotype_norm_n", "fit_role": "fit_norm_n", "hsq_role": "hsq_norm_n"}
+  ],
+  "bootstrap": {
+    "method": "Abney_2015_MVNpermute_restricted_residual_space",
+    "null_covariance": "Omega=Vg*K_full_209+Ve*I",
+    "transform_formula": "y_star=X*beta_GLS+L*U1*P*U1T*Linv*(y-X*beta_GLS)",
+    "cholesky_convention": "Omega=L*LT_lower_triangular",
+    "permutation_target": "198_restricted_whitened_residual_coordinates",
+    "phenotype_label_permutation_permitted": false,
+    "genotype_label_permutation_permitted": false,
+    "sign_flip_permitted": false,
+    "covariance_reestimated_per_replicate_by_gcta_loco": true,
+    "replicates_per_trait": 2000,
+    "trait_count": 4,
+    "total_maps": 8000,
+    "random_generator": "numpy.PCG64DXSM",
+    "seed_derivation": "SHA256_length_delimited_v1",
+    "master_seed_sha256": "e996c5005e5d0f037ae9c3f2d3ef6a1d8e9f0f0e61bc8cdf07875d0dc7f46e8f",
+    "phenotype_float_format": ".17g",
+    "byte_replay_required": true,
+    "smoke_replicates": [1, 2],
+    "sentinel_replicates": [1, 250, 500, 1000, 1500, 2000]
+  },
+  "multiplicity": {
+    "overall_alpha": 0.05,
+    "within_trait_statistic": "minimum_p_across_373279_markers_and_six_chromosomes",
+    "across_trait_method": "Bonferroni_union_bound_four_predeclared_traits",
+    "trait_alpha": 0.0125,
+    "empirical_p_correction": "plus_one",
+    "empirical_p_formula": "(1+count(null_min_p<=observed_min_p))/(B+1)",
+    "pooled_trait_null_permitted": false,
+    "cross_trait_exchangeability_assumed": false,
+    "critical_rank": 25,
+    "threshold_rule": "observed_min_p_strictly_less_than_25th_sorted_null_min_p"
+  },
+  "precision_power": {
+    "p_value_resolution": 0.0004997501249375312,
+    "expected_tail_draws_at_trait_alpha": 25.0125,
+    "monte_carlo_se_at_trait_alpha": 0.002484325864293974,
+    "monte_carlo_se_at_nominal_005": 0.004873397172404482,
+    "diagnostic_null_fwer": 0.05,
+    "diagnostic_one_sided_alpha_per_trait": 0.0125,
+    "diagnostic_critical_events": 123,
+    "power_if_true_fwer_006": 0.4019127198769063,
+    "power_if_true_fwer_0075": 0.9916530709101778,
+    "alternative_effect_power_claims_permitted": false,
+    "production_threshold_claim_permitted": false
+  },
+  "execution": {
+    "association_method": "GCTA_MLMA_LOCO",
+    "endpoint": "pc10",
+    "sample_count": 209,
+    "fixed_effect_count": 11,
+    "restricted_residual_rank": 198,
+    "marker_count": 373279,
+    "maf": 0.05,
+    "autosome_num": 6,
+    "workers": 2,
+    "threads_per_worker": 8,
+    "maximum_concurrent_gcta_threads": 16,
+    "smoke_map_count": 8,
+    "full_map_count": 8000,
+    "full_launch_requires_separate_explicit_mode": true,
+    "checkpoint_before_raw_map_removal": true,
+    "retain_all_phenotypes": true,
+    "retain_only_sentinel_maps": true,
+    "no_data_dependent_early_stop": true
+  },
+  "tool": {
+    "name": "gcta64",
+    "absolute_path": "/opt/deepquery/bin/gcta64",
+    "version": "1.94.1_2022-11-15",
+    "sha256": "f3ade5211d2a457ad2c22323675120c61b9db9535905fb0f16987c5cad8f4f0f"
+  },
+  "stop_go": {
+    "go_requires": [
+      "all_source_hashes_and_parent_terminal_markers_verified",
+      "four_transform_receipts_rank_198_and_reconstruction_qualified",
+      "eight_smoke_maps_and_checkpoints_qualified",
+      "smoke_walltime_projection_within_48_hours_for_8000_maps",
+      "projected_peak_disk_below_25_gib_and_free_disk_above_100_gib",
+      "no_competing_gcta_or_plink_process"
+    ],
+    "stop_on": [
+      "any_source_hash_or_ID_order_mismatch",
+      "any_transform_rank_reconstruction_or_positive_definiteness_failure",
+      "any_GCTA_option_sample_PC10_or_convergence_mismatch",
+      "any_missing_or_nonatomic_checkpoint",
+      "smoke_projection_above_48_hours",
+      "projected_peak_disk_at_or_above_25_gib",
+      "competing_GCTA_or_PLINK_process",
+      "any_request_for_outcome_dependent_early_stopping"
+    ],
+    "full_launch_blocked_until_smoke_qualified": true,
+    "outcome_based_launch_decisions_permitted": false
+  },
+  "claims": {
+    "permitted": [
+      "preliminary covariance-preserving calibration of the frozen PC10 GCTA MLMA-LOCO pipeline",
+      "trait-specific empirical genome-wide minimum-p distributions",
+      "four-trait family-wise control by an explicit Bonferroni union bound",
+      "diagnosis of nominal tail inflation under the fitted 209-strain covariance"
+    ],
+    "prohibited": [
+      "naive phenotype-label or genotype-label permutation",
+      "validated production threshold or exact finite-sample permutation claim",
+      "cross-trait pooled null or unverified cross-trait exchangeability",
+      "biological locus gene allele haplotype mechanism or causal claim",
+      "alternative-effect power claim",
+      "data-dependent early stopping or trait selection"
+    ]
+  }
+}

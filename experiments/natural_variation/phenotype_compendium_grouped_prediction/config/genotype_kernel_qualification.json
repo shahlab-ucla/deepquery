@@ -1,0 +1,181 @@
+{
+  "schema_version": "wormctx-caendr-compendium-203-kernel-config-1.0",
+  "analysis_id": "caendr_compendium_203_fresh_kernel_20260722",
+  "classification": "phenotype_free_genotype_kernel_qualification",
+  "biological_claims_permitted": false,
+  "phenotype_paths_accepted_by_kernel_runner": false,
+  "inputs": [
+    {
+      "role": "source_vcf",
+      "logical_path": "data/caendr/vcf/WI.20250625.impute.isotype.vcf.gz",
+      "bytes": 131250981,
+      "sha256": "0ca37ba74d61f3da83789fedcfa8e6c6e0c9c293ee6edf718b5bdc52be53d81d"
+    },
+    {
+      "role": "source_vcf_index",
+      "logical_path": "data/caendr/vcf/WI.20250625.impute.isotype.vcf.gz.tbi",
+      "bytes": 68982,
+      "sha256": "acc262801401b2b256f76b85e887d4974712925e93648e0cd25a4cfb3633a13c"
+    },
+    {
+      "role": "identity_only_legacy_roster",
+      "logical_path": "runs/e2_kinship/pheno_only.rel.id",
+      "bytes": 1794,
+      "sha256": "38a9454d2d3ecd5c0109aa1ec66e3f48d6800472efc5f4e62973944bd4e97bed"
+    },
+    {
+      "role": "stage1_qualification_receipt",
+      "logical_path": "compendium-runs/caendr-compendium-qualification-20260722T220130Z/source_qualification_receipt.json",
+      "bytes": 7423,
+      "sha256": "8244de1bb947de1900d5a8f02786e3b7f4f1e766b837a51bb463c2e1de054774"
+    },
+    {
+      "role": "stage1_discovery_trait_list",
+      "logical_path": "compendium-runs/caendr-compendium-qualification-20260722T220130Z/eligible_discovery_traits.txt",
+      "bytes": 39121,
+      "sha256": "cb62d17814566a48c5e6ff959fa7f71350dd84f414e863d85c62c1c1e6647b0d"
+    },
+    {
+      "role": "stage1_validation_trait_list",
+      "logical_path": "compendium-runs/caendr-compendium-qualification-20260722T220130Z/eligible_validation_traits.txt",
+      "bytes": 8567,
+      "sha256": "110d49079a54b2ca13cb413eed5d74508be9532282521a3a55ffdde532d75546"
+    }
+  ],
+  "source_vcf_contract": {
+    "release": "CaeNDR_20250625",
+    "assembly": "PRJNA13758.WS283_inferred_not_declared_in_vcf_header",
+    "expected_samples": 684,
+    "ordered_sample_sha256": "056afe68db88dedd3ecd57369c8e190f31b03b8d0ba3b9ba0dd62229d14d6e0e",
+    "input_chromosomes": ["I", "II", "III", "IV", "V", "X", "MtDNA"],
+    "analysis_chromosome_map": {
+      "I": 1,
+      "II": 2,
+      "III": 3,
+      "IV": 4,
+      "V": 5,
+      "X": 6
+    },
+    "mtdna_excluded": true
+  },
+  "roster_contract": {
+    "expected_samples": 203,
+    "expected_header": ["#FID", "IID"],
+    "expected_fid": "0",
+    "ordered_iid_sha256": "c63716f9b9560c3ef682189a4683cecbc2ca18fb16de78f05131f17d0f5416e6",
+    "set_must_equal_vcf_compendium_intersection": true,
+    "legacy_numeric_fields_accepted": false,
+    "identity_roster_only": true
+  },
+  "partition_identity": {
+    "stage1_schema_version": "wormctx-caendr-compendium-source-qualification-1.1",
+    "eligible_traits": 1445,
+    "discovery_traits": 1184,
+    "validation_traits": 261,
+    "discovery_trait_sha256": "cb62d17814566a48c5e6ff959fa7f71350dd84f414e863d85c62c1c1e6647b0d",
+    "validation_trait_sha256": "110d49079a54b2ca13cb413eed5d74508be9532282521a3a55ffdde532d75546",
+    "trait_bucket_identity_must_not_change": true,
+    "validation_outcomes_locked": true
+  },
+  "qc_contract": {
+    "chromosomes": [1, 2, 3, 4, 5, 6],
+    "snps_only_just_acgt": true,
+    "biallelic_max_alleles": 2,
+    "duplicate_marker_policy": "exclude_all",
+    "variant_id_template": "@:#",
+    "mind": 0.05,
+    "geno": 0.05,
+    "maf": 0.05,
+    "hardy_weinberg_filter": false,
+    "phenotype_directed_filtering": false,
+    "minimum_qualified_markers": 100000
+  },
+  "kernel_contract": {
+    "method": "gcta_make_grm_alg0",
+    "autosome_num": 6,
+    "samples": 203,
+    "pairwise_marker_counts_must_equal_marker_count": true,
+    "emit_float64_npy": true,
+    "psd_absolute_tolerance": 0.00001
+  },
+  "group_contract": {
+    "pca_ld_pruning": {
+      "window": "500kb",
+      "step_variants": 1,
+      "r2": 0.2,
+      "indep_order": 2
+    },
+    "pc_count": 10,
+    "algorithm": "standardized_pc10_deterministic_farthest_first_kmeans_silhouette_v1",
+    "candidate_k": [5, 6, 7, 8, 9, 10, 11, 12],
+    "minimum_group_size": 5,
+    "phenotype_values_accessed": false,
+    "labels_are_external_ancestry_assignments": false
+  },
+  "tools": [
+    {
+      "id": "bcftools",
+      "version": "1.23.1",
+      "sha256": "b1f934635295ad2740bfdd7ae11df361fd2e6a9bbe8edc5d9c8b0567392141b5"
+    },
+    {
+      "id": "plink2",
+      "version": "2.0.0-a.6.9LM_2025-01-29",
+      "sha256": "28e45a65689bacf2b6675898abc6fc2eb2a5de19ae21a60ccec0dd37e6b21ce2"
+    },
+    {
+      "id": "gcta64",
+      "version": "1.94.1_2022-11-15",
+      "sha256": "f3ade5211d2a457ad2c22323675120c61b9db9535905fb0f16987c5cad8f4f0f"
+    },
+    {
+      "id": "python",
+      "version": "3.11.15_numpy_2.4.6",
+      "sha256": "6d6055b1e62c291795e8484f10b7f00bbe15cf3148a7215e6ff6d1058c417f77"
+    }
+  ],
+  "legacy_numeric_quarantine": [
+    {
+      "id": "legacy_relationship_matrix",
+      "bytes": 449269,
+      "sha256": "4ae27b8f942f6655466cf0a227d3ad95854b04086666274208f2eabb8bdc711e",
+      "accepted_as_input": false,
+      "permitted_use": "identity_and_exclusion_receipt_only"
+    },
+    {
+      "id": "legacy_pca_eigenvectors",
+      "bytes": 45792,
+      "sha256": "d02a46f10ebd14d97a776de4069a28e9dea732f8ad3aff089c148e064725758f",
+      "accepted_as_input": false,
+      "permitted_use": "identity_and_exclusion_receipt_only"
+    },
+    {
+      "id": "legacy_pca_eigenvalues",
+      "bytes": 156,
+      "sha256": "9f8154423b5291a8258ce87bab3b9b9ac9707a1d475f5b19232ecfca133e07ad",
+      "accepted_as_input": false,
+      "permitted_use": "identity_and_exclusion_receipt_only"
+    },
+    {
+      "id": "legacy_h2_screen",
+      "bytes": 110969,
+      "sha256": "4fd5fe0292d3b15d0360372035d753fb4e0a36296d1267abd2090c80066dfe05",
+      "accepted_as_input": false,
+      "permitted_use": "identity_and_exclusion_receipt_only"
+    },
+    {
+      "id": "legacy_h2_greml",
+      "bytes": 83623,
+      "sha256": "c10febf9dc43d6fffddd554a50d06d6ea5399bad0fad7bf0873513f3e8f5021d",
+      "accepted_as_input": false,
+      "permitted_use": "identity_and_exclusion_receipt_only"
+    },
+    {
+      "id": "legacy_gblup_top15",
+      "bytes": 1435,
+      "sha256": "b15dbe0a6d958fd67e5376121106e8c4af9280b87adccc59d6ff8a676b94ebeb",
+      "accepted_as_input": false,
+      "permitted_use": "identity_and_exclusion_receipt_only"
+    }
+  ]
+}

@@ -1,0 +1,181 @@
+{
+  "schema_version": "wormctx-abamectin-qtl-1.0",
+  "analysis_id": "abamectin_qtl_ws283_caendr20250625_v1",
+  "status": "technical_dry_run_non_publishable",
+  "validated": false,
+  "biological_claims_permitted": false,
+  "phenotype_rights_status": "cc_by_publication_source_transform_receipt_missing",
+  "inputs": [
+    {
+      "role": "phenotype",
+      "relative_path": "data/caendr/drug_traits/abamectin_wipheno.csv",
+      "sha256": "c158ff3c976ea25a5bcf2545fe459d6c0216fa015f312bed4e6d62694b7dfcae",
+      "bytes": 51760,
+      "use": "analysis_input"
+    },
+    {
+      "role": "genotype_bed",
+      "relative_path": "runs/e2_kinship/iso_impute.bed",
+      "sha256": "b44ef3612b419ab91dfda91b814198098f4c5c955df0e779bd066f002396b4d3",
+      "bytes": 502845339,
+      "use": "analysis_input"
+    },
+    {
+      "role": "genotype_bim",
+      "relative_path": "runs/e2_kinship/iso_impute.bim",
+      "sha256": "0440f0260b6f21462f5ecc207e7f70bf5214ebeef8f5e704ece8abad92292221",
+      "bytes": 78599828,
+      "use": "analysis_input"
+    },
+    {
+      "role": "genotype_fam",
+      "relative_path": "runs/e2_kinship/iso_impute.fam",
+      "sha256": "e273fe575c173401c243759ac0ac1ade2a1f23bc3cae1cca180e7a6e5e875b30",
+      "bytes": 12548,
+      "use": "analysis_input"
+    },
+    {
+      "role": "source_vcf",
+      "relative_path": "data/caendr/vcf/WI.20250625.impute.isotype.vcf.gz",
+      "sha256": "0ca37ba74d61f3da83789fedcfa8e6c6e0c9c293ee6edf718b5bdc52be53d81d",
+      "bytes": 131250981,
+      "use": "lineage_only"
+    },
+    {
+      "role": "source_vcf_index",
+      "relative_path": "data/caendr/vcf/WI.20250625.impute.isotype.vcf.gz.tbi",
+      "sha256": "acc262801401b2b256f76b85e887d4974712925e93648e0cd25a4cfb3633a13c",
+      "bytes": 68982,
+      "use": "lineage_only"
+    }
+  ],
+  "tools": [
+    {
+      "name": "plink2",
+      "version": "2.0.0-a.6.9LM_2025-01-29",
+      "absolute_path": "/opt/deepquery/bin/plink2",
+      "sha256": "28e45a65689bacf2b6675898abc6fc2eb2a5de19ae21a60ccec0dd37e6b21ce2"
+    },
+    {
+      "name": "gcta64",
+      "version": "1.94.1_2022-11-15",
+      "absolute_path": "/opt/deepquery/bin/gcta64",
+      "sha256": "f3ade5211d2a457ad2c22323675120c61b9db9535905fb0f16987c5cad8f4f0f"
+    }
+  ],
+  "phenotype": {
+    "source": "Evans_et_al_2021_PLOS_Pathogens_File_S2",
+    "condition": "abamectin",
+    "columns": ["", "strain", "condition", "trait", "phenotype"],
+    "traits": ["mean.EXT", "mean.TOF", "mean.norm.EXT", "norm.n"],
+    "input_rows": 948,
+    "input_strains": 237,
+    "finite_strains_per_trait": 210,
+    "common_missing_strains": 27,
+    "expected_common_genotyped_strains": 209,
+    "expected_finite_absent_from_genotype": ["JU1580"],
+    "one_row_per_strain_trait": true,
+    "identical_finite_cohort_all_traits": true
+  },
+  "cohort": {
+    "match_key": "fam_iid_equals_phenotype_strain",
+    "order": "source_fam_order",
+    "fam_fid": "0",
+    "all_traits_required": true,
+    "expected_samples": 209
+  },
+  "marker_qc": {
+    "chromosomes": [1, 2, 3, 4, 5, 6],
+    "chromosome_presentation": {
+      "1": "I",
+      "2": "II",
+      "3": "III",
+      "4": "IV",
+      "5": "V",
+      "6": "X"
+    },
+    "snps_only": true,
+    "biallelic_only": true,
+    "maf": 0.05,
+    "geno": 0.05,
+    "mind": 0.05,
+    "hardy_weinberg_filter": false,
+    "phenotype_directed_marker_filtering": false
+  },
+  "association": {
+    "method": "GCTA_MLMA_LOCO",
+    "gcta_autosome_num": 6,
+    "fixed_pc_covariates": 0,
+    "thread_count": 16,
+    "alpha": 0.05,
+    "published_effective_tests": 963,
+    "top_hits_per_trait": 10,
+    "same_common_cohort_all_traits": true
+  },
+  "published_intervals": [
+    {
+      "id": "mean_EXT_VL",
+      "trait": "mean.EXT",
+      "chromosome": 5,
+      "start": 1747612,
+      "end": 4333001,
+      "published_peak": 2693128,
+      "source_table": "Evans_et_al_2021_File_S3"
+    },
+    {
+      "id": "mean_TOF_VL",
+      "trait": "mean.TOF",
+      "chromosome": 5,
+      "start": 1757246,
+      "end": 4333001,
+      "published_peak": 2693128,
+      "source_table": "Evans_et_al_2021_File_S3"
+    },
+    {
+      "id": "mean_TOF_VR_glc-1",
+      "trait": "mean.TOF",
+      "chromosome": 5,
+      "start": 15983112,
+      "end": 16599066,
+      "published_peak": 16276775,
+      "source_table": "Evans_et_al_2021_File_S3"
+    },
+    {
+      "id": "norm_n_II",
+      "trait": "norm.n",
+      "chromosome": 2,
+      "start": 13756151,
+      "end": 14937792,
+      "published_peak": 14121786,
+      "source_table": "Evans_et_al_2021_File_S3"
+    },
+    {
+      "id": "norm_n_III",
+      "trait": "norm.n",
+      "chromosome": 3,
+      "start": 3061633,
+      "end": 4632949,
+      "published_peak": 3526374,
+      "source_table": "Evans_et_al_2021_File_S3"
+    },
+    {
+      "id": "norm_n_V",
+      "trait": "norm.n",
+      "chromosome": 5,
+      "start": 13606517,
+      "end": 16754986,
+      "published_peak": 15965095,
+      "source_table": "Evans_et_al_2021_File_S3"
+    }
+  ],
+  "traits_without_expected_published_interval": ["mean.norm.EXT"],
+  "provenance": {
+    "genotype_release": "CaeNDR_20250625",
+    "coordinate_system": "WS283_inferred_not_declared_in_vcf_header",
+    "phenotype_publication_doi": "10.1371/journal.ppat.1009297",
+    "phenotype_repo_commit": "c197efe22cd5175aeb66aab05d56765cf9702e7f",
+    "retained_plink_conversion_status": "sample_order_verified_but_generating_script_conflicts_with_retained_log",
+    "modernized_poc_limitation": true,
+    "numeric_chromosome_6_modeling_note": "biological_X_treated_as_sixth_diploid_inbred_chromosome_for_GCTA_LOCO_POC"
+  }
+}

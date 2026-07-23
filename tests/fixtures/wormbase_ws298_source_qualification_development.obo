@@ -1,0 +1,12 @@
+format-version: 1.2
+data-version: fixture/2026-07-22
+ontology: wbls/wbls-simple
+property_value: terms:license http://creativecommons.org/publicdomain/zero/1.0/
+
+[Term]
+id: WBls:9000001
+name: synthetic early embryo stage
+
+[Term]
+id: WBls:9000002
+name: synthetic late embryo stage

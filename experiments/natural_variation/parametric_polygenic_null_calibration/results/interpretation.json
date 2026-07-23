@@ -1,0 +1,9 @@
+{
+  "schema_version": "deepquery-parametric-null-interpretation-1.0",
+  "status": "complete",
+  "causal_interpretation_permitted": false,
+  "marker_null_treated_as_block_test_calibration": false,
+  "decision": "continue_with_descriptive_state_model_scaffolding",
+  "claim_boundary": "Calibration behavior is relationship-model dependent and does not validate a discovery threshold."
+}
+

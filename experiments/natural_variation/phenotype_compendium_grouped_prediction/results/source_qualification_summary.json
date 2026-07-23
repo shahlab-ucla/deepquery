@@ -1,0 +1,11 @@
+{
+  "schema_version": "deepquery-phenotype-compendium-source-summary-1.0",
+  "status": "complete",
+  "source_traits": 1461,
+  "eligible_traits": 1445,
+  "discovery_traits": 1184,
+  "locked_validation_traits": 261,
+  "models_executed_during_source_qualification": false,
+  "claim_boundary": "Counts describe source qualification and frozen splits, not predictive performance."
+}
+

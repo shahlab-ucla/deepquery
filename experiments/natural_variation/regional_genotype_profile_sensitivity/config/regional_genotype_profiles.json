@@ -1,0 +1,115 @@
+{
+  "schema_version": "wormctx-abamectin-ws283-chrv-vcf-haplotype-sensitivity-1.0",
+  "analysis_id": "abamectin_ws283_chrv_vcf_haplotype_sensitivity_20260723",
+  "classification": "predeclared_descriptive_small_variant_haplotype_sensitivity",
+  "status": "frozen_before_state_derivation_and_outcome_analysis",
+  "validated": false,
+  "biological_claims_permitted": false,
+  "cohort": {
+    "samples": 209,
+    "sample_order": "baseline_parent_fam_order",
+    "fam_sha256": "66d24925d6cd5094588d671f1c7d5ea01b33680dec95aa168763dd363bacc055",
+    "ordered_iid_sha256": "180c661c0a61f970434a3e4753db07a40d4814ff97e78b8fca50166d29dc5d00"
+  },
+  "source": {
+    "upstream_ws283_imputed_vcf": {
+      "relative_path": "vcf/WI.20250625.impute.isotype.vcf.gz",
+      "bytes": 131250981,
+      "sha256": "0ca37ba74d61f3da83789fedcfa8e6c6e0c9c293ee6edf718b5bdc52be53d81d",
+      "role": "provenance_only_not_read_by_this_runner"
+    },
+    "vcf_derived_qc_bfile": {
+      "bed": {"bytes": 19783790, "sha256": "831be5bc5ebf9df149f860dfb57fb4062a17b81e1f858c67d5e5adf3da650441"},
+      "bim": {"bytes": 9956912, "sha256": "7e8813ee3663b7b1977e3e9818c97458157e8e02572907300d5797e5e7892f0c"},
+      "fam": {"bytes": 3724, "sha256": "66d24925d6cd5094588d671f1c7d5ea01b33680dec95aa168763dd363bacc055"},
+      "markers": 373279,
+      "chromosome_v_markers": 115183
+    },
+    "phenotypes": {
+      "mean_EXT": {"bytes": 5791, "sha256": "2c1e696b07f261b3c02d91245459df78a696e81e02a69e870fd828fd8e9088b6"},
+      "mean_TOF": {"bytes": 5795, "sha256": "7f1273b33416714eae138f39019db1ee6b75cf45d70b00bfc082ba8965bbc72a"},
+      "mean_norm_EXT": {"bytes": 6061, "sha256": "2bfd689b0656df52813cea07c73bb82f1b311b09c0a8499335c7a1f36659ad04"},
+      "norm_n": {"bytes": 5863, "sha256": "4411538477463f8bf4eb5db4039c16efd9fd573af1b5a808c8c7dcdfc985d3be"}
+    },
+    "pc10_qcovar": {
+      "bytes": 40581,
+      "sha256": "ee9c79353418b251214afb354e5cb4824906b4740ce23cd9d7d8f7e54cdac246"
+    },
+    "coordinate_identity_receipt": {
+      "relative_path": "artifacts/upstream/reference_coordinate_identity/qualification.json",
+      "sha256": "16de24d5cd2721bc1a9cdec6868e212e62bd2d1e9b4279b5b6e5163f83329a2c"
+    }
+  },
+  "regions": [
+    {"id": "chrv_left", "chromosome": 5, "start": 1747612, "end": 4333001},
+    {"id": "chrv_right", "chromosome": 5, "start": 13606517, "end": 16754986}
+  ],
+  "derivation": {
+    "phenotype_paths_accepted": false,
+    "outcome_blind": true,
+    "input_kind": "imputed_small_variant_genotypes_not_pangenome_paths_or_pav",
+    "plink2_maf": 0.05,
+    "plink2_geno": 0.05,
+    "ld_pruning": "indep-pairwise 50 5 0.8",
+    "regional_representation": "first_10_svd_scores_of_standardized_pruned_dosages",
+    "candidate_cluster_k": [2, 3, 4, 5, 6, 7, 8],
+    "cluster_algorithm": "deterministic_farthest_first_kmeans",
+    "cluster_selection": "maximum_sample_silhouette_then_lower_k",
+    "cluster_label_canonicalization": "lexicographic_minimum_member_iid",
+    "minimum_carriers_per_state": 5,
+    "missing_dosage_policy": "marker_mean_imputation_recorded",
+    "reference_state_policy": "largest_carrier_count_then_lexicographic_state",
+    "one_state_per_sample_per_region": true
+  },
+  "relationships": [
+    {
+      "id": "full_chr5_excluded",
+      "expected_markers": 258096,
+      "grm_bin_sha256": "7bf73e52897bae6a902c506a3cdf3a3d175f99684d62f13afd16d1a18d1f5493",
+      "grm_n_bin_sha256": "0246e398839b179093a1af811087f64286e1bd1277883818d8542aab8f015432",
+      "grm_id_sha256": "46e000074595bf0bb977a6170d35b6b9e9375b06968dd1a1cbb74cd3f16f22fd"
+    },
+    {
+      "id": "ldpruned_chr5_excluded",
+      "expected_markers": 1080,
+      "grm_bin_sha256": "19c13d86c7aea74582202f550b310e3474b7650c0e450d4dd244d49178a4a33e",
+      "grm_n_bin_sha256": "f5ebe7107f35f8366e73a997dccc6dda9e98a1be85ebd3828b83eaff02e8a56c",
+      "grm_id_sha256": "46e000074595bf0bb977a6170d35b6b9e9375b06968dd1a1cbb74cd3f16f22fd"
+    }
+  ],
+  "analysis": {
+    "traits": ["mean.EXT", "mean.TOF", "mean.norm.EXT", "norm.n"],
+    "endpoints": ["pc0", "pc10"],
+    "cells": 16,
+    "null_covariance": "profile_REML_one_GRM_under_covariate_only_null",
+    "test": "fixed_covariance_GLS_regional_state_omnibus",
+    "calibration": "Abney_2015_restricted_whitened_residual_coordinate_permutation",
+    "permutations_per_cell": 2000,
+    "within_cell_family": "Westfall_Young_single_step_minP_across_two_regions",
+    "seed": 20260723,
+    "reestimate_covariance_per_permutation": false,
+    "report_boundary_h2_without_replacing_endpoint": true,
+    "partial_results_evidentiary": false
+  },
+  "execution": {
+    "restricted_residual_bootstrap_terminal_success_required_before_heavy_launch": true,
+    "run_write_once": true,
+    "atomic_receipts": true,
+    "terminal_checksum_closure": true,
+    "thread_cap_after_restricted_residual_bootstrap": 8,
+    "gpu_required": false
+  },
+  "claims": {
+    "permitted": [
+      "descriptive outcome-blind regional small-variant genotype-profile states",
+      "descriptive kinship-aware chromosome-V regional sensitivity",
+      "comparison of full and LD-pruned chromosome-V-excluded relationship controls"
+    ],
+    "prohibited": [
+      "calling these states pangenome paths, presence-absence variants, structural haplotypes, or phased molecular haplotypes",
+      "causal locus, gene, allele, mechanism, replication, or prospective utility",
+      "model or endpoint selection from recovery of a published interval",
+      "using this sensitivity to release the genuine regional-state qualification-v1 pangenome/PAV gate"
+    ]
+  }
+}

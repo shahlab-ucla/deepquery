@@ -1,0 +1,7 @@
+!gaf-version: 2.0
+!generated-by: WormBase
+!date-generated: 2025-11-05
+!project-URL: https://wormbase.org
+!project-release: WS298
+WB	WBGene90000001	source_qualification-a		WBPhenotype:9000001	WB_REF:WBPaper90000001	IMP	WB:WBVar90000001	P		K00A0.1	gene	taxon:6239	20251105	WB		
+WB	WBGene90000002	source_qualification-b	NOT	WBPhenotype:9000002	WB_REF:WBPaper90000002	IMP	WB:WBVar90000002	P		K00B0.2	gene	taxon:6239	20251105	WB		

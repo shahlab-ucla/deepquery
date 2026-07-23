@@ -1,0 +1,99 @@
+id: https://w3id.org/wormctx/schema/source-manifest
+name: wormctx_source_manifest
+title: Source release and artifact lock profile
+prefixes:
+  linkml: https://w3id.org/linkml/
+  wormctx: https://w3id.org/wormctx/
+default_prefix: wormctx
+imports:
+  - linkml:types
+
+classes:
+  Any:
+    class_uri: linkml:Any
+
+  AcquisitionRequest:
+    attributes:
+      method: {required: true, range: string}
+      parameters: {range: Any}
+      body_sha256: {range: string, pattern: "^[a-fA-F0-9]{64}$"}
+      accept: {range: string}
+      non_secret_headers: {range: Any}
+      pagination_state: {range: string}
+  ArtifactSpec:
+    attributes:
+      artifact_id: {identifier: true, required: true, range: string}
+      role: {required: true, range: string}
+      url: {required: true, range: uri}
+      filename: {required: true, range: string}
+      media_type: {range: string}
+      compression: {range: string}
+      expected_sha256: {required: true, range: string, pattern: "^[a-fA-F0-9]{64}$"}
+      expected_size: {range: integer}
+      rights_status: {required: true, range: RightsStatus}
+      license_uri: {range: uri}
+      acquisition: {required: true, range: AcquisitionRequest, inlined: true}
+      enabled: {required: true, range: boolean}
+  ReleaseManifest:
+    tree_root: true
+    attributes:
+      manifest_schema_version: {required: true, range: string}
+      source_id: {required: true, range: string}
+      provider: {required: true, range: string}
+      release: {required: true, range: string}
+      release_is_mutable: {required: true, range: boolean}
+      adapter: {required: true, range: string}
+      adapter_version: {required: true, range: string}
+      landing_page: {range: uri}
+      taxon: {range: uriorcurie}
+      sequence_assembly: {range: string}
+      annotation_release: {range: string}
+      bioproject: {range: uriorcurie}
+      coordinate_convention: {range: string}
+      rights_status: {required: true, range: RightsStatus}
+      license_uri: {range: uri}
+      allowed_hosts: {multivalued: true, range: string}
+      artifacts: {required: true, multivalued: true, range: ArtifactSpec, inlined_as_list: true}
+  ArtifactReceipt:
+    tree_root: true
+    attributes:
+      artifact_receipt_schema_version:
+        range: string
+        description: Version 2.0 identifies a portable digest-derived blob locator; absent means legacy 1.1.
+      source_id: {required: true, range: string}
+      release: {required: true, range: string}
+      artifact_id: {required: true, range: string}
+      manifest_sha256: {required: true, range: string}
+      artifact_spec_sha256: {required: true, range: string}
+      adapter: {required: true, range: string}
+      adapter_version: {required: true, range: string}
+      role: {required: true, range: string}
+      filename: {required: true, range: string}
+      requested_url: {required: true, range: uri}
+      final_url: {required: true, range: uri}
+      redirect_chain: {required: true, multivalued: true, range: uri}
+      fetched_at: {required: true, range: datetime}
+      sha256: {required: true, range: string, pattern: "^[a-fA-F0-9]{64}$"}
+      expected_sha256: {required: true, range: string, pattern: "^[a-fA-F0-9]{64}$"}
+      byte_size: {required: true, range: integer}
+      blob_uri: {required: true, range: uriorcurie}
+      blob_locator:
+        range: string
+        description: POSIX-style path relative to the active raw root; required for version 2.0.
+      blob_path:
+        range: string
+        description: Legacy absolute path; forbidden for version 2.0.
+      rights_status: {required: true, range: RightsStatus}
+      license_uri: {required: true, range: uri}
+      response_status: {range: integer}
+      response_content_type: {range: string}
+      response_etag: {range: string}
+      response_last_modified: {range: string}
+
+enums:
+  RightsStatus:
+    permissible_values:
+      cleared:
+      review_required:
+      metadata_only:
+      restricted:

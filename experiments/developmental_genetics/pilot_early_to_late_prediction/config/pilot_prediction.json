@@ -1,0 +1,163 @@
+{
+  "schema_version": "wormctx-omix709-developmental-robustness-1.0",
+  "analysis_id": "omix709_addendum_developmental_robustness_v1",
+  "classification": "preliminary_real_developmental_genetics_feasibility",
+  "status": "predeclared_internal_academic_poc",
+  "validated": false,
+  "biological_claims_permitted": false,
+  "sources": [
+    {
+      "role": "reference_control",
+      "filename": "OMIX709-05-53.rar",
+      "url": "https://download.cncb.ac.cn/OMIX/OMIX709/OMIX709-05-53.rar",
+      "bytes": 33609151,
+      "sha256": "cf85a12ec6b6eabf900e303a630e366f61e2a7aeff0b050feb38bb26a06c07a4",
+      "expected_extracted_root": "Raw_data_Control",
+      "expected_extracted_files": 105,
+      "expected_extracted_bytes": 115269650
+    },
+    {
+      "role": "addendum",
+      "filename": "OMIX709-05-55.rar",
+      "url": "https://download.cncb.ac.cn/OMIX/OMIX709/OMIX709-05-55.rar",
+      "bytes": 51428713,
+      "sha256": "429f8888f3549738e66e28c7f2af440233982b96950350fd97b5d2b6d68d49c8",
+      "expected_extracted_root": "Raw_data_RNAi_add",
+      "expected_extracted_files": 146,
+      "expected_extracted_bytes": 179671587
+    }
+  ],
+  "supplemental_processed_bundle": [
+    {
+      "role": "gene_metadata_scaleup",
+      "filename": "Table_S1.xlsx",
+      "url": "https://dulab.genetics.ac.cn/single-cell-phenomics/download/Supplemental%20tables/Table_S1.xlsx",
+      "bytes": 292420,
+      "sha256": "7f4829b56caa7099e4ac89a27c8a8b1b6db485594b4a2157bb1647ac637e558f",
+      "enabled_in_primary_lane": false
+    },
+    {
+      "role": "control_phenotype_scaleup",
+      "filename": "Table_S2.xlsx",
+      "url": "https://dulab.genetics.ac.cn/single-cell-phenomics/download/Supplemental%20tables/Table_S2.xlsx",
+      "bytes": 2402983,
+      "sha256": "3c74f84ca3fae897b270304a9daebfcfbc4d5a155d0537a97994291d405e49a5",
+      "enabled_in_primary_lane": false
+    },
+    {
+      "role": "knockdown_phenotype_scaleup",
+      "filename": "Table_S3.xlsx",
+      "url": "https://dulab.genetics.ac.cn/single-cell-phenomics/download/Supplemental%20tables/Table_S3.xlsx",
+      "bytes": 49016108,
+      "sha256": "d22bd9a0d63e921be2d5f3345bea1518fcc4b23acd0d20f5957f5f3522ca9ab3",
+      "enabled_in_primary_lane": false
+    },
+    {
+      "role": "defect_call_scaleup",
+      "filename": "Table_S4.xlsx",
+      "url": "https://dulab.genetics.ac.cn/single-cell-phenomics/download/Supplemental%20tables/Table_S4.xlsx",
+      "bytes": 3239511,
+      "sha256": "64be7eb9c1982c1a802398202096566b90ad3d2dddb3154d806e613a360d11ee",
+      "enabled_in_primary_lane": false
+    }
+  ],
+  "rights": {
+    "access_class": "public_open_access_record_with_academic_use_terms_and_no_cc_data_license",
+    "permitted_use": "controlled_internal_noncommercial_academic_analysis_only",
+    "source_redistribution_permitted": false,
+    "commercial_use_permitted": false,
+    "public_training_permitted": false,
+    "operator_attestation_required": true,
+    "review_contact": "data-curator@example.org"
+  },
+  "data": {
+    "raw_header": [
+      "", "time", "cell_name", "X", "Y", "Z", "size",
+      "raw-expression", "blot-correction"
+    ],
+    "reference_control_embryos": 105,
+    "external_control_embryos": 8,
+    "perturbation_embryos": 138,
+    "perturbation_conditions": 15,
+    "total_embryos": 251,
+    "condition_counts": {
+      "C30H7.2": 9,
+      "C44E4.5": 11,
+      "CTR": 8,
+      "F15D3.6": 11,
+      "GST-43": 9,
+      "LPD-3": 9,
+      "M04F3.4": 10,
+      "MARF-1": 7,
+      "NDX-7": 9,
+      "PASH-1": 9,
+      "PTR-23": 10,
+      "RIG-5": 10,
+      "TAG-173": 9,
+      "VPR-1": 10,
+      "Y34D9A.7": 10,
+      "Y48G1A.4": 5
+    },
+    "time_interval_seconds": 75,
+    "stage_landmarks": [4, 8, 12, 26, 50, 100, 200, 350],
+    "primary_prefix_stage": 26,
+    "endpoint_stage": 200
+  },
+  "split": {
+    "method": "leave_one_perturbation_target_out",
+    "indivisible_unit": "whole_embryo",
+    "calibration_source": "reference_controls_only",
+    "external_controls_used_for_selection": false,
+    "gene_identity_features_permitted": false,
+    "target_representation": "semantic_cell_id",
+    "fold_local_preprocessing": true
+  },
+  "evaluation": {
+    "seed": 1729,
+    "alpha": 0.05,
+    "ridge_alpha": 1.0,
+    "max_threads": 2,
+    "minimum_external_controls": 8,
+    "maximum_external_false_positives": 1,
+    "minimum_supportive_targets": 5
+  },
+  "endpoints": [
+    {
+      "id": "control_calibrated_earliest_detectable_deviation",
+      "primary_observable": "relative_semantic_cell_birth_timing",
+      "threshold": "reference_control_leave_one_out_max_statistic_95_percentile",
+      "claim": "retrospective_assay_relative_detection_only"
+    },
+    {
+      "id": "early_prefix_prediction_of_later_reporter_burden",
+      "prefix_stage": 26,
+      "outcome_stage": 200,
+      "outcome": "control_standardized_CND1_reporter_deviation_burden",
+      "model_ladder": [
+        "constant", "target_blind_flat_ridge", "semantic_lineage_ridge",
+        "topology_shuffle_negative_control"
+      ]
+    }
+  ],
+  "normalized_artifact": {
+    "bytes": 62315263,
+    "sha256": "51fcda2051bb0d7cff376581e29e80be20da013211b4c40cb16a2186b7039659"
+  },
+  "claims": {
+    "scientific_status_values": [
+      "supportive", "not_supportive", "not_estimable"
+    ],
+    "permitted": [
+      "preliminary feasibility of lineage-resolved developmental perturbation analysis",
+      "retrospective earliest assay-detectable deviation under a frozen threshold",
+      "held-out-target prediction of later CND-1 reporter deviation"
+    ],
+    "prohibited": [
+      "first causal molecular event or causal mechanism",
+      "complete terminal-cell fate or neuronal-fate inference",
+      "epistasis or genetic interaction from single RNAi perturbations",
+      "RNAi penetrance estimate, validated biomarker, or confirmatory error control",
+      "transport to natural variation, another background, or another environment"
+    ]
+  }
+}

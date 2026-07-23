@@ -1,0 +1,52 @@
+{
+  "schema_version": "deepquery-matched-relationship-model-summary-1.0",
+  "classification": "preliminary_model_match_diagnostic_not_threshold_calibration",
+  "status": "complete",
+  "terminal_closure": {
+    "completed_maps": 400,
+    "source_phenotypes_reused": 400,
+    "phenotypes_regenerated": 0
+  },
+  "nominal_bonferroni_fwer": [
+    {
+      "cell": "full_pc0_mean_EXT",
+      "chromosome_excluded_relationship_events": 51,
+      "chromosome_excluded_relationship_rate": 0.51,
+      "matched_whole_relationship_events": 0,
+      "matched_whole_relationship_rate": 0.0
+    },
+    {
+      "cell": "full_pc10_mean_norm_EXT",
+      "chromosome_excluded_relationship_events": 4,
+      "chromosome_excluded_relationship_rate": 0.04,
+      "matched_whole_relationship_events": 0,
+      "matched_whole_relationship_rate": 0.0
+    },
+    {
+      "cell": "full_pc10_norm_n",
+      "chromosome_excluded_relationship_events": 34,
+      "chromosome_excluded_relationship_rate": 0.34,
+      "matched_whole_relationship_events": 0,
+      "matched_whole_relationship_rate": 0.0
+    },
+    {
+      "cell": "ldpruned_pc10_mean_TOF",
+      "chromosome_excluded_relationship_events": 0,
+      "chromosome_excluded_relationship_rate": 0.0,
+      "matched_whole_relationship_events": 0,
+      "matched_whole_relationship_rate": 0.0
+    }
+  ],
+  "interpretation": {
+    "generator_fitter_mismatch_is_material": true,
+    "matched_whole_relationship_is_nominally_calibrated": false,
+    "matched_whole_relationship_is_conservative_at_observed_resolution": true,
+    "whole_relationship_selected_as_discovery_model": false,
+    "threshold_grade_calibration_still_required": true
+  },
+  "claim_boundary": [
+    "This diagnostic localizes model mismatch; it is not evidence for a biological association.",
+    "Zero exceedances do not establish calibration and may reflect over-conditioning."
+  ]
+}
+

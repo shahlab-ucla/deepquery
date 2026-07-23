@@ -1,0 +1,546 @@
+id: https://w3id.org/wormctx/schema/contextual-observation
+name: wormctx_contextual_observation
+title: C. elegans contextual observation profile
+description: >-
+  A LinkML profile for reified experimental observations, qualified claims,
+  evidence lines, context, and source provenance. Biolink/KGX is a derived view.
+license: https://creativecommons.org/publicdomain/zero/1.0/
+prefixes:
+  linkml: https://w3id.org/linkml/
+  wormctx: https://w3id.org/wormctx/
+  biolink: https://w3id.org/biolink/vocab/
+  prov: http://www.w3.org/ns/prov#
+  ECO: http://purl.obolibrary.org/obo/ECO_
+  OBI: http://purl.obolibrary.org/obo/OBI_
+  RO: http://purl.obolibrary.org/obo/RO_
+  GO: http://purl.obolibrary.org/obo/GO_
+  SO: http://purl.obolibrary.org/obo/SO_
+  CHEBI: http://purl.obolibrary.org/obo/CHEBI_
+  UO: http://purl.obolibrary.org/obo/UO_
+  PATO: http://purl.obolibrary.org/obo/PATO_
+  ENVO: http://purl.obolibrary.org/obo/ENVO_
+  ECTO: http://purl.obolibrary.org/obo/ECTO_
+  STATO: http://purl.obolibrary.org/obo/STATO_
+  NCBITaxon: http://purl.obolibrary.org/obo/NCBITaxon_
+  WBPhenotype: http://purl.obolibrary.org/obo/WBPhenotype_
+  WBbt: http://purl.obolibrary.org/obo/WBbt_
+  WBls: http://purl.obolibrary.org/obo/WBls_
+  # Canonical Bioregistry/Biolink WormBase resolver (genes: WBGene...; strains
+  # are WBStrain... via the WormBase strain namespace). Not a search endpoint.
+  WB: https://identifiers.org/wormbase:
+default_prefix: wormctx
+default_range: string
+imports:
+  - linkml:types
+
+classes:
+  Any:
+    class_uri: linkml:Any
+
+  NamedReference:
+    description: A compact reference to an entity or ontology term.
+    attributes:
+      id:
+        identifier: true
+        required: true
+        range: uriorcurie
+      label:
+        range: string
+      categories:
+        range: uriorcurie
+        multivalued: true
+      source_value:
+        range: string
+      mapping_record_id:
+        range: uriorcurie
+      mapping_status:
+        range: MappingStatus
+      reportedness:
+        range: Reportedness
+
+  QuantitativeValue:
+    attributes:
+      value:
+        range: double
+      lower_bound:
+        range: double
+      upper_bound:
+        range: double
+      comparator:
+        range: string
+      unit:
+        range: NamedReference
+        inlined: true
+      text:
+        range: string
+
+  ResultAssetReference:
+    description: An immutable, checksummed reference to a non-inline result payload.
+    attributes:
+      id:
+        identifier: true
+        required: true
+        range: uriorcurie
+      uri:
+        required: true
+        range: uri
+      checksum_sha256:
+        required: true
+        range: string
+        pattern: ^[a-fA-F0-9]{64}$
+      media_type:
+        required: true
+        range: string
+      byte_size:
+        range: integer
+        minimum_value: 0
+      role:
+        range: string
+
+  ComparisonGroup:
+    description: A named arm or cohort used to interpret a measurement or effect.
+    attributes:
+      id:
+        identifier: true
+        required: true
+        range: uriorcurie
+      label:
+        required: true
+        range: string
+      role:
+        required: true
+        range: ComparisonGroupRole
+      size:
+        range: integer
+        minimum_value: 1
+      members:
+        range: NamedReference
+        multivalued: true
+        inlined_as_list: true
+      genetic_background:
+        range: NamedReference
+        multivalued: true
+        inlined_as_list: true
+      notes:
+        range: string
+
+  Measurement:
+    description: A reported scalar, interval, or textual measurement of one feature.
+    attributes:
+      id:
+        identifier: true
+        required: true
+        range: uriorcurie
+      measured_feature:
+        required: true
+        range: NamedReference
+        inlined: true
+      value:
+        required: true
+        range: QuantitativeValue
+        inlined: true
+      statistic:
+        range: NamedReference
+        inlined: true
+      uncertainty:
+        range: QuantitativeValue
+        inlined: true
+      uncertainty_type:
+        range: NamedReference
+        inlined: true
+      confidence_level:
+        range: double
+        minimum_value: 0
+        maximum_value: 1
+      p_value:
+        range: double
+        minimum_value: 0
+        maximum_value: 1
+      penetrance:
+        range: QuantitativeValue
+        inlined: true
+      sample_size:
+        range: integer
+        minimum_value: 1
+      biological_replicates:
+        range: integer
+        minimum_value: 1
+      technical_replicates:
+        range: integer
+        minimum_value: 1
+      measurement_time:
+        range: QuantitativeValue
+        inlined: true
+      comparison_group_ids:
+        range: uriorcurie
+        multivalued: true
+      asset_ids:
+        range: uriorcurie
+        multivalued: true
+      notes:
+        range: string
+
+  ObservationResult:
+    description: The reported result, distinct from the semantic outcome in object.
+    attributes:
+      id:
+        identifier: true
+        required: true
+        range: uriorcurie
+      result_type:
+        required: true
+        range: ResultType
+      summary:
+        range: string
+      comparison_groups:
+        range: ComparisonGroup
+        multivalued: true
+        inlined_as_list: true
+      measurements:
+        range: Measurement
+        multivalued: true
+        inlined_as_list: true
+      asset_references:
+        range: ResultAssetReference
+        multivalued: true
+        inlined_as_list: true
+
+  Intervention:
+    attributes:
+      intervention_type:
+        required: true
+        range: uriorcurie
+      target:
+        range: NamedReference
+        inlined: true
+      reagent:
+        range: NamedReference
+        inlined: true
+      route:
+        range: NamedReference
+        inlined: true
+      dose:
+        range: QuantitativeValue
+        inlined: true
+      duration:
+        range: QuantitativeValue
+        inlined: true
+      notes:
+        range: string
+
+  ContextGap:
+    attributes:
+      dimension:
+        required: true
+        range: ContextDimension
+      reason:
+        required: true
+        range: MissingContextReason
+      source_value:
+        range: string
+      notes:
+        range: string
+
+  ExperimentalContext:
+    attributes:
+      organism_taxon:
+        required: true
+        range: NamedReference
+        inlined: true
+      genetic_background:
+        range: NamedReference
+        multivalued: true
+        inlined_as_list: true
+      life_stage:
+        range: NamedReference
+        multivalued: true
+        inlined_as_list: true
+      anatomy:
+        range: NamedReference
+        multivalued: true
+        inlined_as_list: true
+      interventions:
+        range: Intervention
+        multivalued: true
+        inlined_as_list: true
+      assays:
+        range: NamedReference
+        multivalued: true
+        inlined_as_list: true
+      environments:
+        range: NamedReference
+        multivalued: true
+        inlined_as_list: true
+      modality:
+        range: string
+        multivalued: true
+      readout_resolution:
+        range: ReadoutResolution
+        multivalued: true
+      absolute_time:
+        range: QuantitativeValue
+        inlined: true
+      context_gaps:
+        range: ContextGap
+        multivalued: true
+        inlined_as_list: true
+      context_missing_reasons:
+        description: Deprecated coarse fallback; use dimension-specific context_gaps.
+        range: MissingContextReason
+        multivalued: true
+
+  EvidenceLine:
+    description: Simplified evidence record supporting, disputing, or contextualizing a claim.
+    attributes:
+      id:
+        identifier: true
+        required: true
+        range: uriorcurie
+      evidence_type:
+        required: true
+        range: NamedReference
+        inlined: true
+      direction:
+        required: true
+        range: EvidenceDirection
+      source_record_id:
+        required: true
+        range: string
+      publications:
+        range: NamedReference
+        multivalued: true
+        inlined_as_list: true
+      figure_or_table:
+        range: string
+      notes:
+        range: string
+
+  SourceSnapshot:
+    attributes:
+      source_id:
+        required: true
+        range: string
+      source_release:
+        required: true
+        range: string
+      source_artifact:
+        required: true
+        range: string
+      source_url:
+        range: uri
+      retrieved_at:
+        range: datetime
+      checksum_sha256:
+        range: string
+        pattern: ^[a-fA-F0-9]{64}$
+      license_uri:
+        range: uri
+      transformation_activity:
+        range: uriorcurie
+        slot_uri: prov:wasGeneratedBy
+      transformer_version:
+        range: string
+
+  ContextualObservation:
+    tree_root: true
+    description: A reified observation or qualified claim with experimental context.
+    attributes:
+      id:
+        identifier: true
+        required: true
+        range: uriorcurie
+      subject:
+        required: true
+        range: NamedReference
+        inlined: true
+      predicate:
+        required: true
+        range: uriorcurie
+      object:
+        required: true
+        range: NamedReference
+        inlined: true
+      interpretation:
+        required: true
+        range: Interpretation
+      observation_status:
+        required: true
+        range: ObservationStatus
+      proposition_negated:
+        range: boolean
+      context:
+        required: true
+        range: ExperimentalContext
+        inlined: true
+      result:
+        range: ObservationResult
+        inlined: true
+      evidence_lines:
+        required: true
+        multivalued: true
+        minimum_cardinality: 1
+        range: EvidenceLine
+        inlined_as_list: true
+      provenance:
+        required: true
+        range: SourceSnapshot
+        inlined: true
+      record_origin:
+        required: true
+        range: RecordOrigin
+      assertion_method:
+        range: NamedReference
+        inlined: true
+      biolink_knowledge_level:
+        range: BiolinkKnowledgeLevel
+      biolink_agent_type:
+        range: BiolinkAgentType
+      qualifiers:
+        range: NamedReference
+        multivalued: true
+        inlined_as_list: true
+
+  ObservationCollection:
+    tree_root: true
+    attributes:
+      schema_version:
+        required: true
+        range: string
+      observations:
+        required: true
+        multivalued: true
+        range: ContextualObservation
+        inlined_as_list: true
+
+  DatasetProfile:
+    description: Dataset-level coverage metadata emitted by every source adapter.
+    attributes:
+      dataset_id: {identifier: true, required: true, range: uriorcurie}
+      source_id: {required: true, range: string}
+      source_release: {required: true, range: string}
+      source_artifact: {required: true, range: string}
+      taxon: {required: true, range: uriorcurie}
+      genetic_background: {multivalued: true, range: uriorcurie}
+      life_stage: {multivalued: true, range: uriorcurie}
+      intervention_type: {multivalued: true, range: uriorcurie}
+      perturbation_target: {multivalued: true, range: uriorcurie}
+      compound_or_reagent: {multivalued: true, range: uriorcurie}
+      assay: {multivalued: true, range: uriorcurie}
+      anatomy: {multivalued: true, range: uriorcurie}
+      modality: {multivalued: true, range: string}
+      readout_resolution: {multivalued: true, range: ReadoutResolution}
+      observation_count: {required: true, range: integer}
+      direct_or_derived: {required: true, range: string}
+      rights_status: {range: string}
+      license_uri: {range: uri}
+      missing_context: {range: Any}
+
+enums:
+  BiolinkKnowledgeLevel:
+    description: >-
+      Pinned Biolink 4.4.3 KnowledgeLevelEnum profile. Text co-occurrence is an
+      agent_type (text_mining_agent), not a knowledge level, so it is not listed.
+    permissible_values:
+      knowledge_assertion:
+      logical_entailment:
+      prediction:
+      statistical_association:
+      observation:
+      not_provided:
+  BiolinkAgentType:
+    description: Pinned Biolink 4.4.3 AgentTypeEnum profile.
+    permissible_values:
+      manual_agent:
+      automated_agent:
+      data_analysis_pipeline:
+      computational_model:
+      text_mining_agent:
+      image_processing_agent:
+      manual_validation_of_automated_agent:
+      not_provided:
+  ComparisonGroupRole:
+    permissible_values:
+      case:
+      control:
+      reference:
+      baseline:
+      exposure:
+      other:
+  ResultType:
+    permissible_values:
+      qualitative:
+      quantitative:
+      categorical:
+      trajectory:
+      image_derived:
+      textual_claim:
+      mixed:
+  MappingStatus:
+    permissible_values:
+      asserted:
+      mapped_exact:
+      mapped_broad:
+      mapped_narrow:
+      mapped_related:
+      unmapped:
+  Reportedness:
+    permissible_values:
+      reported:
+      not_reported:
+      not_applicable:
+      ambiguous:
+      explicitly_absent:
+  Interpretation:
+    permissible_values:
+      observation:
+      association:
+      causal_claim:
+  ObservationStatus:
+    permissible_values:
+      positive:
+      explicit_negative:
+      uncertain:
+  EvidenceDirection:
+    permissible_values:
+      supports:
+      disputes:
+      neutral:
+  RecordOrigin:
+    permissible_values:
+      curated:
+      author_reported:
+      extracted:
+      computed:
+  ReadoutResolution:
+    permissible_values:
+      organism:
+      tissue:
+      cell:
+      subcellular:
+      spatial:
+      temporal:
+      trajectory:
+  MissingContextReason:
+    permissible_values:
+      not_reported:
+      not_applicable:
+      ambiguous:
+      explicitly_absent:
+      not_available:
+      not_curated:
+      not_yet_normalized:
+  ContextDimension:
+    description: >-
+      The context dimensions a ContextGap may describe. Mirrors the runtime
+      KNOWN_CONTEXT_DIMENSIONS set enforced by the Pydantic models.
+    permissible_values:
+      organism_taxon:
+      genetic_background:
+      life_stage:
+      anatomy:
+      intervention:
+      assay:
+      environment:
+      modality:
+      readout_resolution:
+      absolute_time:

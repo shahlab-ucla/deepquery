@@ -1,0 +1,115 @@
+{
+  "schema_version": "wormctx-developmental-topology-benchmark-1.0",
+  "analysis_id": "omix709_gene_disjoint_topology_benchmark_v1",
+  "status": "coordinates_prepared_blocked_pending_overlap_and_outcome_tensor",
+  "classification": "predeclared_executable_scaffold_no_biological_results",
+  "sealed_outcomes_inspected": false,
+  "real_preparation_binding": {
+    "stage_adapter_contract_sha256": "d89471fa5c12856eb83353a93bc6c3ae8dc082dbb6ace97b1c8b2dd857a1e120",
+    "stage_adapter_open_qualification_sha256": "6a7f96444f84399ce7c5d29b981e255c66e046353e12d3c318ba00fbf0379436",
+    "split_manifest_sha256": "60cdd6c3e4a236e86ed0a2cb95b4ea1b5ee1fbfc14004ffb54fa774c4287ba60",
+    "readiness_contract_sha256": "16808c931c45918fd9fc5a78a6d4e226a2f765df1b03e8125555885e0a7b5310",
+    "topology_coordinate_artifact_sha256": "2606b97db3b7d4a8f9900669cf192f1e010a46694f1688c8276590e40b555b21",
+    "topology_arrays_sha256": "1829d7258cdb3140160d65c3529ff3f1185d028c48b39190b2726cb8aa256ded",
+    "lineage_cells": 399,
+    "lineage_edges": 398,
+    "outcome_values_read": false,
+    "pilot_overlap_closed": false,
+    "real_training_permitted": false
+  },
+  "split_binding": {
+    "split_unit": "whole_gene",
+    "expected_train_genes": 410,
+    "expected_validation_genes": 137,
+    "expected_sealed_test_genes": 137,
+    "exposed_pilot_genes_permitted": false,
+    "fold_local_preprocessing": true,
+    "gene_identity_as_numeric_feature_permitted": false
+  },
+  "adapter_input_contract": {
+    "numeric_features": "float32[batch,node,numeric_feature]",
+    "node_mask": "bool[batch,node]",
+    "parent_index": "int64[batch,node]; -1 denotes root or padding",
+    "semantic_id": "int64[batch,node]",
+    "depth_id": "int64[batch,node]",
+    "stage_id": "int64[batch,node]",
+    "graph_construction_may_read_outcomes": false
+  },
+  "model_ladder": [
+    "real_lineage",
+    "rewired_lineage",
+    "edge_free_self_loop",
+    "semantic_identity_only",
+    "depth_stage_only"
+  ],
+  "capacity_contract": {
+    "shared_architecture": "DevelopmentalTopologyRegressor",
+    "shared_initialization_within_seed": true,
+    "identical_parameter_count_required": true,
+    "parent_child_messages_are_bidirectional": true,
+    "edge_free_routes_all_three_relation_types_as_self_messages": true
+  },
+  "hyperparameter_grid": {
+    "hidden_dim": [32, 64],
+    "message_passing_layers": [1, 2, 3],
+    "dropout": [0.0, 0.1],
+    "learning_rate": [0.0003, 0.001],
+    "weight_decay": [0.0, 0.0001]
+  },
+  "selection": {
+    "split_unit": "whole_gene",
+    "tuning_partition": "validation",
+    "sealed_partition": "sealed_test",
+    "primary_metric": "gene_macro_rmse",
+    "minimize": true,
+    "allowed_seeds": [1729, 2718, 3141],
+    "sealed_test_openings": 1
+  },
+  "negative_controls": {
+    "rewired_tree": {
+      "preserve_exact_parent_outdegree": true,
+      "preserve_node_depth": true,
+      "base_seed": 104729,
+      "replicates": 20
+    },
+    "gene_label_permutation": {
+      "whole_gene_only": true,
+      "training_partition_only": true,
+      "seeds": [5003, 5009, 5011, 5021, 5023, 5039, 5051, 5059, 5077, 5081]
+    }
+  },
+  "learning_curves": {
+    "fractions": [0.25, 0.5, 0.75, 1.0],
+    "subset_unit": "whole_gene",
+    "outcome_blind_subset_generation": true,
+    "nested_within_seed": true
+  },
+  "metrics": {
+    "prediction": ["rmse", "mae", "pearson_r", "gene_macro_rmse", "gene_macro_mae"],
+    "calibration": [
+      "gaussian_nll",
+      "coverage_50",
+      "coverage_80",
+      "coverage_95",
+      "standardized_residual_mean",
+      "standardized_residual_rmse"
+    ],
+    "localization": [
+      "top1_accuracy",
+      "top3_accuracy",
+      "mean_reciprocal_rank",
+      "mean_tree_distance"
+    ]
+  },
+  "claim_gate": {
+    "topology_increment_requires": [
+      "real_lineage_selected_without_sealed_test_access",
+      "real_lineage_improves_over_edge_free_self_loop_on_sealed_test",
+      "real_lineage_exceeds_degree_depth_preserving_rewired_null_distribution",
+      "uncertainty_interval_reported",
+      "all_failures_and_per_gene_predictions_retained"
+    ],
+    "negative_result_policy": "retire topology as a predictive mechanism if the frozen gate is not met",
+    "biological_claims_permitted_before_adapter_and_model_run": false
+  }
+}

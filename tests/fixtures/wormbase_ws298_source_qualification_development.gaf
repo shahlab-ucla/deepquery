@@ -1,0 +1,7 @@
+!gaf-version: 2.0
+!generated-by: WormBase
+!date-generated: 2025-11-05
+!project-URL: https://wormbase.org
+!project-release: WS298
+WB	WBGene90000001	source_qualification-a		WBls:9000001	WB_REF:WBPaper90000003	IDA	WB:Expr90000001	L		K00A0.1	gene	taxon:6239	20251105	WB		
+WB	WBGene90000003	source_qualification-c		WBls:9000002	WB_REF:WBPaper90000004	IDA	WB:Expr90000002	L		K00C0.3	gene	taxon:6239	20251105	WB		

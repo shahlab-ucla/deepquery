@@ -1,0 +1,16 @@
+name: wormctx-ws276-reconstruction
+channels:
+  - conda-forge
+  - bioconda
+  # The archived R 3.6.0 binary remains in Anaconda's historical R channel.
+  - r
+  # The historical R build requires libuuid 1.0.3 from defaults/main.
+  - defaults
+dependencies:
+  # Historical method-level pins recovered from cegwas2-nf.  The remote runner
+  # records the solver's complete explicit transaction and every tool binary.
+  - r-base==3.6.0
+  - r-rrblup==4.6=r36h6115d3f_1
+  - bcftools==1.9=h68d8f2e_9
+  - htslib==1.9=h4da6232_3
+  - plink==1.90b6.12=heea4ae3_0

@@ -1,0 +1,188 @@
+{
+  "schema_version": "wormctx-caendr-compendium-qualification-config-1.1",
+  "analysis_id": "caendr_20250625_phenotype_compendium_qualification_20260722",
+  "classification": "retrospective_source_qualification_only",
+  "biological_claims_permitted": false,
+  "source": {
+    "asset": {
+      "logical_path": "data/caendr/phenotypes/20250625_all_phenotype_data.csv",
+      "bytes": 24381463,
+      "sha256": "5cfe6bda64743ffb42c7b1410010603681417e0903de2e68aae755a4b71ea764"
+    },
+    "expected_header": [
+      "submitted_by",
+      "species_name",
+      "trait_name",
+      "strain_name",
+      "trait_value"
+    ],
+    "expected_data_rows": 300485,
+    "expected_trait_count": 1461
+  },
+  "genotype_panel": {
+    "asset": {
+      "logical_path": "qtl-runs/abamectin-ws283-bd41637-20260717T200012Z/genotype/abamectin_209_qc.fam",
+      "bytes": 3724,
+      "sha256": "66d24925d6cd5094588d671f1c7d5ea01b33680dec95aa168763dd363bacc055"
+    },
+    "expected_samples": 209,
+    "expected_fid": "0",
+    "expected_ordered_iid_sha256": "180c661c0a61f970434a3e4753db07a40d4814ff97e78b8fca50166d29dc5d00",
+    "exact_order_required": true
+  },
+  "legacy_quarantine": [
+    {
+      "id": "legacy_h2_screen_203",
+      "asset": {
+        "logical_path": "runs/e3_traits/h2_screen.csv",
+        "bytes": 110969,
+        "sha256": "4fd5fe0292d3b15d0360372035d753fb4e0a36296d1267abd2090c80066dfe05"
+      },
+      "expected_header": ["trait", "n", "h2_HE", "is_expr", "h2_clip"],
+      "expected_rows": 1458,
+      "legacy_panel_sample_ceiling": 203,
+      "expected_n_histogram": {
+        "159": 3,
+        "160": 6,
+        "165": 1,
+        "166": 3,
+        "180": 3,
+        "182": 1,
+        "183": 5,
+        "184": 1,
+        "185": 3,
+        "186": 1,
+        "187": 3,
+        "191": 9,
+        "194": 12,
+        "195": 3,
+        "196": 12,
+        "197": 7,
+        "198": 13,
+        "199": 4,
+        "200": 4,
+        "201": 36,
+        "202": 56,
+        "203": 1272
+      },
+      "numerical_result_fields_used_for_design": false,
+      "permitted_use": "fingerprint_and_structural_quarantine_only",
+      "prohibited_uses": [
+        "trait_selection",
+        "hyperparameter_selection",
+        "model_comparison",
+        "preliminary_evidence",
+        "biological_claims"
+      ]
+    },
+    {
+      "id": "legacy_h2_greml_203",
+      "asset": {
+        "logical_path": "runs/e3_traits/h2_greml.csv",
+        "bytes": 83623,
+        "sha256": "c10febf9dc43d6fffddd554a50d06d6ea5399bad0fad7bf0873513f3e8f5021d"
+      },
+      "expected_header": ["trait", "n", "h2_greml"],
+      "expected_rows": 1458,
+      "legacy_panel_sample_ceiling": 203,
+      "expected_n_histogram": {
+        "159": 3,
+        "160": 6,
+        "165": 1,
+        "166": 3,
+        "180": 3,
+        "182": 1,
+        "183": 5,
+        "184": 1,
+        "185": 3,
+        "186": 1,
+        "187": 3,
+        "191": 9,
+        "194": 12,
+        "195": 3,
+        "196": 12,
+        "197": 7,
+        "198": 13,
+        "199": 4,
+        "200": 4,
+        "201": 36,
+        "202": 56,
+        "203": 1272
+      },
+      "numerical_result_fields_used_for_design": false,
+      "permitted_use": "fingerprint_and_structural_quarantine_only",
+      "prohibited_uses": [
+        "trait_selection",
+        "hyperparameter_selection",
+        "model_comparison",
+        "preliminary_evidence",
+        "biological_claims"
+      ]
+    },
+    {
+      "id": "legacy_gblup_top15_203",
+      "asset": {
+        "logical_path": "runs/e3_traits/gblup_baseline_top15.csv",
+        "bytes": 1435,
+        "sha256": "b15dbe0a6d958fd67e5376121106e8c4af9280b87adccc59d6ff8a676b94ebeb"
+      },
+      "expected_header": ["trait", "n", "h2", "gblup_r", "gblup_rho"],
+      "expected_rows": 15,
+      "legacy_panel_sample_ceiling": 203,
+      "expected_n_histogram": {
+        "202": 3,
+        "203": 12
+      },
+      "numerical_result_fields_used_for_design": false,
+      "permitted_use": "fingerprint_and_structural_quarantine_only",
+      "prohibited_uses": [
+        "trait_selection",
+        "hyperparameter_selection",
+        "model_comparison",
+        "preliminary_evidence",
+        "biological_claims"
+      ]
+    }
+  ],
+  "qualification_history": {
+    "prior_model_free_run_id": "caendr-compendium-qualification-20260722T215851Z",
+    "prior_config_sha256": "b3c544d4db2e85d4af4f2c5bcb8d43c24e977ff7a39c8bd904f6b9cf01b3b04f",
+    "prior_receipt": {
+      "logical_path": "compendium-runs/caendr-compendium-qualification-20260722T215851Z/source_qualification_receipt.json",
+      "bytes": 6811,
+      "sha256": "d18d69f1b4653d153e7c6a428c7ab488277ecdf00cc24217d3ee561639c1aec2"
+    },
+    "prior_minimum_panel_samples": 168,
+    "prior_eligible_traits": 0,
+    "revised_threshold_basis": "source_panel_overlap_histogram_only_no_model_results",
+    "phenotype_magnitude_or_rank_used_for_revision": false
+  },
+  "eligibility_contract": {
+    "selection_scope": "all_traits_passing_outcome_independent_availability_and_schema_rules",
+    "required_species": "c_elegans",
+    "minimum_panel_fraction": 0.7,
+    "minimum_panel_samples": 147,
+    "duplicate_trait_strain_rows_permitted": false,
+    "nonfinite_values_permitted": false,
+    "outcome_magnitude_or_rank_used": false,
+    "top_n_selection_permitted": false,
+    "constant_outcome_policy": "retain_in_manifest_and_mark_non_estimable_only_at_model_execution"
+  },
+  "partition_contract": {
+    "algorithm": "sha256_namespace_plus_trait_name_modulo_5",
+    "namespace": "wormctx-caendr-compendium-trait-partition-20260722-v1:",
+    "modulus": 5,
+    "validation_buckets": [0],
+    "discovery_buckets": [1, 2, 3, 4],
+    "legacy_outcomes_used_for_partition": false,
+    "validation_locked_until_model_and_metric_contract_frozen": true,
+    "operator_prior_outcome_blinding_asserted": false
+  },
+  "future_benchmark_contract": {
+    "models_executed_in_this_stage": false,
+    "trait_selection": "all_mechanically_eligible_traits_no_top_n",
+    "discovery_validation_order": "freeze_model_metric_and_missingness_contract_on_discovery_before_validation",
+    "legacy_203_outputs_accepted_as_baselines": false,
+    "claims": "retrospective_technical_benchmark_only"
+  }
+}

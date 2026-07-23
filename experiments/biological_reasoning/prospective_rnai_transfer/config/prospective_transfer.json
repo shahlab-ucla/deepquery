@@ -1,0 +1,123 @@
+{
+  "schema_version": "wormctx-prospective_transfer-prospective-transfer-contract-1.0",
+  "analysis_id": "prospective_transfer_prospective_rnai_transfer_closure_v1",
+  "classification": "synthetic_only_preregistration_and_closure_scaffold",
+  "status": "blocked_on_models_experiment_and_transfer_backgrounds",
+  "validated": false,
+  "biological_claims_permitted": false,
+  "panel": {
+    "total_genes": 12,
+    "candidates": 8,
+    "positive_controls": 2,
+    "negative_controls": 2,
+    "selection_arms": ["graph_eig", "random", "expert", "uncertainty_only"],
+    "candidates_per_selection_arm": 2,
+    "candidate_sources_frozen_before_results": true,
+    "sealed_test_gene_selection_permitted": false
+  },
+  "forecasts": {
+    "architectures": ["graph", "edge_free"],
+    "transfer_regimes": ["zero_shot", "low_shot", "retrained"],
+    "later_outcome": "later_reporter_deviation_standardized",
+    "lineage_vocabulary": [
+      "AB",
+      "MS",
+      "E",
+      "C",
+      "D",
+      "P4",
+      "distributed",
+      "none_detected"
+    ],
+    "uncertainty": "prediction_interval_and_scalar_uncertainty",
+    "nominal_interval_coverage": 0.9,
+    "minimum_architecture_coverage": 0.75,
+    "selective_risk_metric": "rmse_among_answered_forecasts",
+    "uncertainty_calibration_metric": "mean_absolute_error_vs_scalar_uncertainty",
+    "abstention_permitted": true,
+    "forced_prediction_permitted": false,
+    "forecasts_frozen_before_result_access": true
+  },
+  "assay": {
+    "intervention": "RNAi",
+    "reference_background": "N2",
+    "natural_background_count": 2,
+    "biological_replicates_per_gene_background": 3,
+    "minimum_embryos_per_replicate": 20,
+    "plate_unit": "background_by_biological_replicate",
+    "control_requirements_per_plate": "at_least_one_positive_and_one_negative_control",
+    "control_gate_level": "strict_per_plate",
+    "randomized_layout_required": true,
+    "operator_blinded_to_forecasts": true,
+    "scorer_blinded_to_gene_background_and_model": true,
+    "unblinding_after_result_lock_only": true,
+    "exclusion_codes": [
+      "technical_failure",
+      "insufficient_embryos",
+      "contamination",
+      "predeclared_image_qc_failure"
+    ]
+  },
+  "power": {
+    "method": "clustered_simulation_frozen_before_results",
+    "family_alpha": 0.05,
+    "target_power": 0.8,
+    "minimum_detectable_standardized_effect": 0.5,
+    "assumed_intraclass_correlation": 0.1,
+    "assumptions_receipt_required": true,
+    "underpowered_result_policy": "retain_and_label_inconclusive"
+  },
+  "transfer": {
+    "backgrounds": 3,
+    "reference_plus_haplotype_selected_natural_isolates": true,
+    "independent_developmental_dataset_alternative_permitted": true,
+    "regimes": ["zero_shot", "low_shot", "retrained"],
+    "holdout_unit": "strain_by_gene",
+    "zero_shot_training": "N2_only",
+    "low_shot_adaptation": "natural_background_controls_only",
+    "retrained_test_rule": "one_outcome_blind_natural_background_holdout_per_candidate_gene",
+    "test_cells_may_enter_training_or_adaptation": false
+  },
+  "interpretation": {
+    "positive_control_minimum_absolute_effect": 0.5,
+    "negative_control_maximum_absolute_effect": 0.25,
+    "minimum_analyzable_replicates_per_cell": 2,
+    "maximum_graph_rmse_for_predictive_signal": 0.75,
+    "minimum_graph_rmse_advantage": 0.05,
+    "minimum_graph_lineage_accuracy_advantage": 0.1,
+    "minimum_transfer_improvement": 0.05,
+    "branches": [
+      "control_failure_inconclusive",
+      "insufficient_data_inconclusive",
+      "insufficient_forecast_coverage_inconclusive",
+      "graph_advantage_supported",
+      "predictive_signal_without_graph_advantage",
+      "no_predictive_signal"
+    ]
+  },
+  "closure": {
+    "preregistration_publication": "atomic_write_once_directory",
+    "blinded_result_publication": "complete_atomic_write_once_before_partial_release",
+    "result_publication": "separate_atomic_write_once_directory",
+    "checksum_algorithm": "sha256",
+    "result_must_bind_preregistration_sha256": true,
+    "adaptations_must_bind_blinded_result_lock_sha256": true,
+    "result_must_bind_blinded_result_lock_sha256": true,
+    "missing_or_extra_result_policy": "refuse",
+    "result_replacement_policy": "refuse"
+  },
+  "claims": {
+    "permitted": [
+      "synthetic-only prospective transfer preregistration and checksum-closure scaffold",
+      "future result summaries under frozen controls and interpretation branches",
+      "future descriptive comparison of graph and edge-free forecasts"
+    ],
+    "prohibited": [
+      "causal gene, pathway, or mechanism inference",
+      "prospective validation before a real preregistered experiment is complete",
+      "external transfer claims before an independent transfer arm is complete",
+      "biological claims from synthetic fixtures",
+      "selection or threshold changes after result access"
+    ]
+  }
+}

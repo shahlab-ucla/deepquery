@@ -1,0 +1,433 @@
+{
+  "schema_version": "wormctx-abamectin-regional_state-heldout_prediction-real-input-handoff-1.1",
+  "analysis_id": "abamectin_ws283_regional_state_heldout_prediction_real_input_handoff_20260721",
+  "classification": "outcome_independent_execution_path_partial_real_input_qualification",
+  "biological_claims_permitted": false,
+  "root_ids_are_non_sensitive_logical_names": true,
+  "coordinate_identity": {
+    "status": "qualified",
+    "mapping_mode": "sequence_identical_coordinate_identity",
+    "source": {
+      "assembly": "PRJNA13758.WS276",
+      "status": "qualified",
+      "vcf_header_declares_reference_or_assembly": false,
+      "fasta": {
+        "role": "ws276_reference_fasta",
+        "root_id": "ws276_reference",
+        "relative_path": "source/caendr_ws276.genome.fa",
+        "bytes": 101957874,
+        "sha256": "948855c154b81f6b257852eab401a289160e8e7c6ec9b6bb653fab73a167dcc3"
+      },
+      "fai": {
+        "role": "ws276_reference_fai",
+        "root_id": "coordinate_identity_run",
+        "relative_path": "ws276_reference.fa.fai",
+        "bytes": 181,
+        "sha256": "491045ba6a2bec8c00111acdd0a4822f7837d3ff42bce9907118b9e30fe58d2d"
+      },
+      "chromosome_v_length": 20924180,
+      "chromosome_v_canonical_sha256": "efab4bdd926f57b7a3eea2418698efc9e23b583a1b615e84ab08ea68122cafde",
+      "intervals": [
+        {
+          "id": "chrv_left",
+          "chromosome": 5,
+          "start": 1747612,
+          "end": 4333001,
+          "canonical_sequence_sha256": "137ae2f8614e7ed37e983d19af6a064a0b1efc69d9e68f244621dd45b04e1fbe",
+          "canonicalization": "uppercase_sequence_without_fasta_headers_or_whitespace"
+        },
+        {
+          "id": "chrv_right",
+          "chromosome": 5,
+          "start": 13606517,
+          "end": 16754986,
+          "canonical_sequence_sha256": "74a7d6449c995a1b45579ffce55779f17b6c40d871a4a836d73e73a394a574e2",
+          "canonicalization": "uppercase_sequence_without_fasta_headers_or_whitespace"
+        }
+      ],
+      "acquisition": null
+    },
+    "target": {
+      "assembly": "PRJNA13758.WS283_inferred_not_declared_in_vcf_header",
+      "status": "qualified",
+      "vcf_header_declares_reference_or_assembly": false,
+      "fasta": {
+        "role": "ws283_reference_fasta",
+        "root_id": "caendr_data",
+        "relative_path": "ref/20250625_c_elegans_WS283.genome.fa",
+        "bytes": 101957874,
+        "sha256": "948855c154b81f6b257852eab401a289160e8e7c6ec9b6bb653fab73a167dcc3"
+      },
+      "fai": {
+        "role": "ws283_reference_fai",
+        "root_id": "caendr_data",
+        "relative_path": "ref/20250625_c_elegans_WS283.genome.fa.fai",
+        "bytes": 181,
+        "sha256": "491045ba6a2bec8c00111acdd0a4822f7837d3ff42bce9907118b9e30fe58d2d"
+      },
+      "chromosome_v_length": 20924180,
+      "chromosome_v_canonical_sha256": "efab4bdd926f57b7a3eea2418698efc9e23b583a1b615e84ab08ea68122cafde",
+      "intervals": [
+        {
+          "id": "chrv_left",
+          "chromosome": 5,
+          "start": 1747612,
+          "end": 4333001,
+          "canonical_sequence_sha256": "137ae2f8614e7ed37e983d19af6a064a0b1efc69d9e68f244621dd45b04e1fbe",
+          "canonicalization": "uppercase_sequence_without_fasta_headers_or_whitespace"
+        },
+        {
+          "id": "chrv_right",
+          "chromosome": 5,
+          "start": 13606517,
+          "end": 16754986,
+          "canonical_sequence_sha256": "74a7d6449c995a1b45579ffce55779f17b6c40d871a4a836d73e73a394a574e2",
+          "canonicalization": "uppercase_sequence_without_fasta_headers_or_whitespace"
+        }
+      ],
+      "acquisition": null
+    },
+    "qualification_receipt": {
+      "role": "ws276_ws283_coordinate_identity_receipt",
+      "root_id": "repository",
+      "relative_path": "artifacts/upstream/reference_coordinate_identity/qualification.json",
+      "bytes": 2117,
+      "sha256": "16de24d5cd2721bc1a9cdec6868e212e62bd2d1e9b4279b5b6e5163f83329a2c"
+    },
+    "numerical_coordinate_equality_required": true,
+    "interval_sequence_identity_required": true,
+    "vcf_filename_or_release_date_is_identity_evidence": false,
+    "equal_fasta_byte_length_is_identity_evidence": false,
+    "assembly_identity_inferred": false,
+    "liftover_fallback_permitted_in_v1": false
+  },
+  "state_panel": {
+    "status": "missing",
+    "expected_samples": 209,
+    "exact_sample_order": "baseline_parent_fam_order",
+    "accepted_definition_methods_v1": [
+      "outcome_blind_pangenome_path_cluster",
+      "outcome_blind_presence_absence_locus"
+    ],
+    "observed_small_variant_vcf": {
+      "role": "ws283_imputed_isotype_small_variant_vcf",
+      "root_id": "caendr_data",
+      "relative_path": "vcf/WI.20250625.impute.isotype.vcf.gz",
+      "bytes": 131250981,
+      "sha256": "0ca37ba74d61f3da83789fedcfa8e6c6e0c9c293ee6edf718b5bdc52be53d81d"
+    },
+    "observed_small_variant_vcf_definition_method": "beagle_imputed_small_variant_genotypes",
+    "observed_small_variant_vcf_accepted_as_v1_haplotype_or_pav": false,
+    "divergent_region_bed_accepted_as_presence_absence_calls": false,
+    "qualified_panel_assets": [],
+    "qualified_panel_evidence": null,
+    "phenotype_accessed_for_block_definition": false,
+    "decision_required": "acquire_genuine_pangenome_or_pav_calls_or_version_an_explicit_v2_vcf_haplotype_contract"
+  },
+  "ldpruned_chr5_excluded_grm": {
+    "status": "qualified",
+    "relationship_kind": "ldpruned",
+    "chromosome_excluded": 5,
+    "files": [
+      {
+        "role": "ldpruned_chr5_excluded_grm_bin",
+        "root_id": "grm_sensitivity",
+        "relative_path": "genotype/grms/leave_chr5_out.grm.bin",
+        "bytes": 87780,
+        "sha256": "19c13d86c7aea74582202f550b310e3474b7650c0e450d4dd244d49178a4a33e"
+      },
+      {
+        "role": "ldpruned_chr5_excluded_grm_n_bin",
+        "root_id": "grm_sensitivity",
+        "relative_path": "genotype/grms/leave_chr5_out.grm.N.bin",
+        "bytes": 87780,
+        "sha256": "f5ebe7107f35f8366e73a997dccc6dda9e98a1be85ebd3828b83eaff02e8a56c"
+      },
+      {
+        "role": "ldpruned_chr5_excluded_grm_id",
+        "root_id": "grm_sensitivity",
+        "relative_path": "genotype/grms/leave_chr5_out.grm.id",
+        "bytes": 1843,
+        "sha256": "46e000074595bf0bb977a6170d35b6b9e9375b06968dd1a1cbb74cd3f16f22fd"
+      },
+      {
+        "role": "ldpruned_chr5_excluded_marker_list",
+        "root_id": "grm_sensitivity",
+        "relative_path": "genotype/marker_lists/relationship/grm_exclude_chr5.snplist",
+        "bytes": 10993,
+        "sha256": "61d7d87b08e25fd9f3eb63e368d524d93c2801109d74f2de27ee17b2de448ae5"
+      },
+      {
+        "role": "ldpruned_grm_verification_receipt",
+        "root_id": "grm_sensitivity",
+        "relative_path": "receipts/grm_verification.json",
+        "bytes": 5595,
+        "sha256": "91adbad29221913a773bd1b68b084f4dcb9ba50037e9e33cf3b9df63d7c4369e"
+      }
+    ],
+    "verification": {
+      "samples": 209,
+      "relationship_markers": 1080,
+      "triangular_float32_entries": 21945,
+      "pairwise_marker_count_min": 1080,
+      "pairwise_marker_count_max": 1080,
+      "positive_semidefinite_within_float32_tolerance": true,
+      "minimum_eigenvalue": -1.2150051739833544e-8,
+      "psd_tolerance": 0.00022542030435122266,
+      "fam_sha256": "66d24925d6cd5094588d671f1c7d5ea01b33680dec95aa168763dd363bacc055",
+      "ordered_iid_sha256": "180c661c0a61f970434a3e4753db07a40d4814ff97e78b8fca50166d29dc5d00"
+    }
+  },
+  "full_kernels": {
+    "status": "qualified",
+    "input_files": [
+      {
+        "role": "modern_cohort_bed",
+        "root_id": "ws283_parent",
+        "relative_path": "genotype/abamectin_209_qc.bed",
+        "bytes": 19783790,
+        "sha256": "831be5bc5ebf9df149f860dfb57fb4062a17b81e1f858c67d5e5adf3da650441"
+      },
+      {
+        "role": "modern_cohort_bim",
+        "root_id": "ws283_parent",
+        "relative_path": "genotype/abamectin_209_qc.bim",
+        "bytes": 9956912,
+        "sha256": "7e8813ee3663b7b1977e3e9818c97458157e8e02572907300d5797e5e7892f0c"
+      },
+      {
+        "role": "modern_cohort_fam",
+        "root_id": "ws283_parent",
+        "relative_path": "genotype/abamectin_209_qc.fam",
+        "bytes": 3724,
+        "sha256": "66d24925d6cd5094588d671f1c7d5ea01b33680dec95aa168763dd363bacc055"
+      }
+    ],
+    "sample_count": 209,
+    "total_marker_count": 373279,
+    "chromosome_v_marker_count": 115183,
+    "non_chromosome_v_marker_count": 258096,
+    "chromosome_v_code": 5,
+    "marker_selection_rule": "bim_column_2_in_file_order_partitioned_by_bim_column_1_equals_5",
+    "outputs": [
+      {
+        "id": "whole_genome",
+        "marker_count": 373279,
+        "preserve_gcta_grm_triple": true,
+        "emit_symmetric_float64_npy": true
+      },
+      {
+        "id": "genome_excluding_chrv",
+        "marker_count": 258096,
+        "preserve_gcta_grm_triple": true,
+        "emit_symmetric_float64_npy": true
+      }
+    ],
+    "defer_compute_until_parametric_null_terminal_to_avoid_contention": true,
+    "required_verification": [
+      "sha256_and_bytes",
+      "exact_fam_iid_order",
+      "209_by_209_shape",
+      "finite",
+      "symmetric",
+      "psd_with_recorded_tolerance",
+      "pairwise_marker_counts",
+      "marker_list_sha256"
+    ],
+    "qualified_output_assets": [
+      {
+        "role": "whole_genome_grm_bin",
+        "root_id": "full_kernel_run",
+        "relative_path": "grm/whole_genome.grm.bin",
+        "bytes": 87780,
+        "sha256": "1814aaad5497d4fc55316bf3103261b41565c56286f26ad9aa075005a5b1167d"
+      },
+      {
+        "role": "whole_genome_grm_n_bin",
+        "root_id": "full_kernel_run",
+        "relative_path": "grm/whole_genome.grm.N.bin",
+        "bytes": 87780,
+        "sha256": "2cfdcba2c96c052386bcdad3d47eecd6ee9afaec853c0c1163c73f1fa77ee1e3"
+      },
+      {
+        "role": "whole_genome_grm_id",
+        "root_id": "full_kernel_run",
+        "relative_path": "grm/whole_genome.grm.id",
+        "bytes": 1843,
+        "sha256": "46e000074595bf0bb977a6170d35b6b9e9375b06968dd1a1cbb74cd3f16f22fd"
+      },
+      {
+        "role": "whole_genome_float64_npy",
+        "root_id": "full_kernel_run",
+        "relative_path": "kernels/qualified/whole_genome.npy",
+        "bytes": 349576,
+        "sha256": "0afdc4981783ca4c620798fbe367537622da8ce349669199d868424e7370c9d5"
+      },
+      {
+        "role": "genome_excluding_chrv_grm_bin",
+        "root_id": "full_kernel_run",
+        "relative_path": "grm/genome_excluding_chrv.grm.bin",
+        "bytes": 87780,
+        "sha256": "7bf73e52897bae6a902c506a3cdf3a3d175f99684d62f13afd16d1a18d1f5493"
+      },
+      {
+        "role": "genome_excluding_chrv_grm_n_bin",
+        "root_id": "full_kernel_run",
+        "relative_path": "grm/genome_excluding_chrv.grm.N.bin",
+        "bytes": 87780,
+        "sha256": "0246e398839b179093a1af811087f64286e1bd1277883818d8542aab8f015432"
+      },
+      {
+        "role": "genome_excluding_chrv_grm_id",
+        "root_id": "full_kernel_run",
+        "relative_path": "grm/genome_excluding_chrv.grm.id",
+        "bytes": 1843,
+        "sha256": "46e000074595bf0bb977a6170d35b6b9e9375b06968dd1a1cbb74cd3f16f22fd"
+      },
+      {
+        "role": "genome_excluding_chrv_float64_npy",
+        "root_id": "full_kernel_run",
+        "relative_path": "kernels/qualified/genome_excluding_chrv.npy",
+        "bytes": 349576,
+        "sha256": "3dbacfc40c3e1f1cc1b87a60112b57afb5590115ae38b996ca69ca270f1bb261"
+      },
+      {
+        "role": "full_kernel_marker_manifest",
+        "root_id": "full_kernel_run",
+        "relative_path": "markers/frozen/marker_manifest.json",
+        "bytes": 1064,
+        "sha256": "c28105396ada9dd0d825718652e7455400eb72fc6d491ac10b1472331637df21"
+      },
+      {
+        "role": "full_kernel_run_manifest",
+        "root_id": "full_kernel_run",
+        "relative_path": "receipts/run_manifest.json",
+        "bytes": 910,
+        "sha256": "c2c8f4239e67107e38c440a147420bdee3f584fab5cb47e25cc8e2f4024db274"
+      },
+      {
+        "role": "full_kernel_checksum_receipt",
+        "root_id": "full_kernel_run",
+        "relative_path": "receipts/SHA256SUMS.txt",
+        "bytes": 4216,
+        "sha256": "9d90c10a21c53ffe63265547accb0ae33ed7b8df2ffd747d5591d7dbec7a9102"
+      }
+    ],
+    "numerical_qualification_receipt": {
+      "role": "full_kernel_numerical_qualification_receipt",
+      "root_id": "full_kernel_run",
+      "relative_path": "kernels/qualified/qualification_receipt.json",
+      "bytes": 3179,
+      "sha256": "1841b916a43c04003da97d40f411175242d38420a6173b2f398510c2f42c983c"
+    }
+  },
+  "population_groups": {
+    "status": "qualified",
+    "expected_samples": 209,
+    "source_files": [
+      {
+        "role": "population_group_source_fam",
+        "root_id": "ws283_parent",
+        "relative_path": "genotype/abamectin_209_qc.fam",
+        "bytes": 3724,
+        "sha256": "66d24925d6cd5094588d671f1c7d5ea01b33680dec95aa168763dd363bacc055"
+      },
+      {
+        "role": "population_group_source_pca10",
+        "root_id": "pc_calibration",
+        "relative_path": "genotype/ws283_ld_pruned_pca10.eigenvec",
+        "bytes": 23526,
+        "sha256": "ee428230538b3de1f613afaa5d0552a69869cfbaf92297a775def1340aeed468"
+      },
+      {
+        "role": "population_group_source_eigenvalues",
+        "root_id": "pc_calibration",
+        "relative_path": "genotype/ws283_ld_pruned_pca10.eigenval",
+        "bytes": 77,
+        "sha256": "a8e2775a8a5cb46f4719f1a9a9d992a09c89773b3390eef6cbbff0642299c2cf"
+      }
+    ],
+    "source_ordered_iid_sha256": "180c661c0a61f970434a3e4753db07a40d4814ff97e78b8fca50166d29dc5d00",
+    "pca_header_present": true,
+    "pca_dimensions": 10,
+    "algorithm": {
+      "id": "standardized_pc10_deterministic_farthest_first_kmeans_silhouette_v1",
+      "pc_columns": ["PC1", "PC2", "PC3", "PC4", "PC5", "PC6", "PC7", "PC8", "PC9", "PC10"],
+      "standardization": "column_mean_zero_population_sd_one",
+      "initialization": "nearest_origin_then_farthest_first_with_lexicographic_iid_ties",
+      "assignment_tie_break": "lowest_center_index",
+      "candidate_k": [5, 6, 7, 8, 9, 10, 11, 12],
+      "minimum_group_size": 5,
+      "selection": "maximum_sample_silhouette_then_lower_k",
+      "label_canonicalization": "lexicographic_minimum_member_iid",
+      "axis_weighting": "equal_weight_after_per_pc_standardization",
+      "eigenvalue_usage": "verified_provenance_only_not_used_for_clustering"
+    },
+    "phenotype_paths_accepted_by_derivation_cli": false,
+    "phenotype_values_accessed": false,
+    "outcome_access_claim_scope": "derivation_execution_path_only",
+    "operator_outcome_blinding_asserted": false,
+    "labels_are_external_ancestry_assignments": false,
+    "output_assets": [
+      {
+        "role": "phenotype_blind_population_groups",
+        "root_id": "repository",
+        "relative_path": "mappings/abamectin_ws283_pc10_population_groups_20260722.tsv",
+        "bytes": 2700,
+        "sha256": "60fee103992f92e2bd2ee62eeba2426a882f36e250334d4814fc09084dfa87c3"
+      },
+      {
+        "role": "phenotype_blind_population_group_receipt",
+        "root_id": "repository",
+        "relative_path": "mappings/abamectin_ws283_pc10_population_groups_20260722.receipt.json",
+        "bytes": 1963,
+        "sha256": "fc6c4ad412155c8c4a12f08b74a7b7881cd58334341bb0b8513ffdbf9e84f515"
+      }
+    ]
+  },
+  "phenotype_provenance": {
+    "status": "blocked_on_raw_measurement_provenance",
+    "publication_doi": "10.1371/journal.ppat.1009297",
+    "source_repository_commit": "c197efe22cd5175aeb66aab05d56765cf9702e7f",
+    "observed_derived_strain_trait_tables": [
+      {
+        "role": "abamectin_derived_strain_trait_table",
+        "root_id": "caendr_data",
+        "relative_path": "drug_traits/abamectin_wipheno.csv",
+        "bytes": 51760,
+        "sha256": "c158ff3c976ea25a5bcf2545fe459d6c0216fa015f312bed4e6d62694b7dfcae"
+      },
+      {
+        "role": "abamectin_derived_pilot_table",
+        "root_id": "caendr_data",
+        "relative_path": "drug_traits/abamectin_pilot.csv",
+        "bytes": 48715,
+        "sha256": "53e62fd0b804e4018ed14a7acb64735aceb48d84c43c57bee2a005e5942b5f37"
+      }
+    ],
+    "raw_well_plate_replicate_assets_present": false,
+    "phenotype_transform_receipt_present": false,
+    "missing_required_evidence": [
+      "raw_well_or_animal_measurements",
+      "plate_and_replicate_identifiers",
+      "exclusion_rules_and_excluded_observations",
+      "trait_transformation_code_or_receipt",
+      "measurement_uncertainty_or_replicate_dispersion"
+    ],
+    "derived_strain_trait_tables_accepted_as_raw_measurements": false
+  },
+  "null_resource_guard": {
+    "run_id": "abamectin-ws283-parametric-null-20260721T161005Z-c01179f4a52e",
+    "audit_observation": "terminal_success_checksum_qualified",
+    "active_run_must_not_be_duplicated": true,
+    "heavyweight_derivations_wait_for_terminal_marker": true,
+    "heavyweight_derivations_released": true,
+    "marker_null_is_not_block_test_calibration": true,
+    "terminal_ended_utc": "2026-07-22T17:45:11Z",
+    "success_sha256": "1f513d4ecec4e91ddd48da1a59b6d96f1b76c374dc1da641980782a34f43b102",
+    "run_manifest_sha256": "b4c76de53b9a001d6a55facd1e77e956cf5e7dfb98eed5d8bf42ea3e1d67818d",
+    "aggregation_sha256": "acf38c598c4edec8c6ff611a5b3a0407b2b6eff6593f066733934857f5bc3bcd",
+    "rich_summary_sha256": "6e5ed207ce731b24d3180ed5ce61d8eebf5b2a8e23c700c713ba49105fd496b7",
+    "checksum_receipt_sha256": "7d05e2ae363807865a6dd7399a3e440d7b38bf187cc8c940d4eb221e83237ff2"
+  }
+}

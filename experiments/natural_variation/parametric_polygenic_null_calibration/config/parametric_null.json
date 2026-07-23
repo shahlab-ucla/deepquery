@@ -1,0 +1,368 @@
+{
+  "schema_version": "wormctx-abamectin-ws283-parametric-polygenic-null-1.0",
+  "analysis_id": "abamectin_qtl_ws283_parametric_polygenic_null_v1",
+  "classification": "preliminary_model_specific_parametric_null_calibration",
+  "status": "predeclared_preliminary_calibration",
+  "validated": false,
+  "biological_claims_permitted": false,
+  "parents": [
+    {
+      "role": "baseline",
+      "run_id": "abamectin-ws283-bd41637-20260717T200012Z",
+      "source_git_commit": "bd41637f5ff2998333964cc954ee9f9f36a351d6",
+      "checksum_file_count": 44,
+      "checksum_receipt_relative_path": "receipts/SHA256SUMS.txt",
+      "source_revision_relative_path": "receipts/SOURCE_REVISION",
+      "required_files": [
+        {
+          "relative_path": "SUCCESS",
+          "bytes": 8,
+          "sha256": "1f513d4ecec4e91ddd48da1a59b6d96f1b76c374dc1da641980782a34f43b102"
+        },
+        {
+          "relative_path": "receipts/SOURCE_REVISION",
+          "bytes": 41,
+          "sha256": "9f5b5f32d7a01ebd49e08e9081645d9de9109a45e3669b538a35bd331a366524"
+        },
+        {
+          "relative_path": "receipts/SHA256SUMS.txt",
+          "bytes": 4301,
+          "sha256": "48df76ddcc131c658f8b7a23dd61de586373876b0be4894408e27c0e517ffb2c"
+        },
+        {
+          "relative_path": "genotype/abamectin_209_qc.bed",
+          "bytes": 19783790,
+          "sha256": "831be5bc5ebf9df149f860dfb57fb4062a17b81e1f858c67d5e5adf3da650441"
+        },
+        {
+          "relative_path": "genotype/abamectin_209_qc.bim",
+          "bytes": 9956912,
+          "sha256": "7e8813ee3663b7b1977e3e9818c97458157e8e02572907300d5797e5e7892f0c"
+        },
+        {
+          "relative_path": "genotype/abamectin_209_qc.fam",
+          "bytes": 3724,
+          "sha256": "66d24925d6cd5094588d671f1c7d5ea01b33680dec95aa168763dd363bacc055"
+        },
+        {
+          "relative_path": "prepared/cohort/mean_EXT.phen",
+          "bytes": 5791,
+          "sha256": "2c1e696b07f261b3c02d91245459df78a696e81e02a69e870fd828fd8e9088b6"
+        },
+        {
+          "relative_path": "prepared/cohort/mean_TOF.phen",
+          "bytes": 5795,
+          "sha256": "7f1273b33416714eae138f39019db1ee6b75cf45d70b00bfc082ba8965bbc72a"
+        },
+        {
+          "relative_path": "prepared/cohort/mean_norm_EXT.phen",
+          "bytes": 6061,
+          "sha256": "2bfd689b0656df52813cea07c73bb82f1b311b09c0a8499335c7a1f36659ad04"
+        },
+        {
+          "relative_path": "prepared/cohort/norm_n.phen",
+          "bytes": 5863,
+          "sha256": "4411538477463f8bf4eb5db4039c16efd9fd573af1b5a808c8c7dcdfc985d3be"
+        }
+      ]
+    },
+    {
+      "role": "calibration",
+      "run_id": "abamectin-ws283-pc-calibration-20260720T215332Z-192322baefdf",
+      "source_git_commit": "192322baefdfa246a8422de17e5a380fa7c5d93f",
+      "checksum_file_count": 150,
+      "checksum_receipt_relative_path": "receipts/SHA256SUMS.txt",
+      "source_revision_relative_path": "receipts/SOURCE_REVISION",
+      "required_files": [
+        {
+          "relative_path": "SUCCESS",
+          "bytes": 8,
+          "sha256": "1f513d4ecec4e91ddd48da1a59b6d96f1b76c374dc1da641980782a34f43b102"
+        },
+        {
+          "relative_path": "receipts/SOURCE_REVISION",
+          "bytes": 41,
+          "sha256": "3772a845f27715c1f446fd977317c5d620f3b4ca2f4572c0c3e004f4383c72ec"
+        },
+        {
+          "relative_path": "receipts/SHA256SUMS.txt",
+          "bytes": 15286,
+          "sha256": "e8014265b2d58d2a50627421cfab8dc6d0b6247c222f63aa78d066dd9b27e6f8"
+        },
+        {
+          "relative_path": "genotype/ws283_ld_pruned.prune.in",
+          "bytes": 14073,
+          "sha256": "fef5c5420e6f805a24f7e12695fdf683155b46613527dd76afae0fd14bc79b3e"
+        },
+        {
+          "relative_path": "genotype/qcovars/pc10.qcovar",
+          "bytes": 40581,
+          "sha256": "ee9c79353418b251214afb354e5cb4824906b4740ce23cd9d7d8f7e54cdac246"
+        },
+        {
+          "relative_path": "association/pc0/mean_EXT.loco.mlma",
+          "bytes": 22182133,
+          "sha256": "30c79dd1819e9bf16897c58025aa33ba35e9ab67d972355b86854079727119ec"
+        },
+        {
+          "relative_path": "association/pc0/mean_TOF.loco.mlma",
+          "bytes": 22242865,
+          "sha256": "70a73014f28411065ba6e7e577c834996bce49d20fd6e9d7593867ec28f39695"
+        },
+        {
+          "relative_path": "association/pc0/mean_norm_EXT.loco.mlma",
+          "bytes": 23760497,
+          "sha256": "58d737ff0f5c42c1fa45571cd5c0c015738dde77eaa2ec7aa8c416dc1b4b03d0"
+        },
+        {
+          "relative_path": "association/pc0/norm_n.loco.mlma",
+          "bytes": 22792907,
+          "sha256": "1caeb0117d814b3db7021cd7a20106a914676232df5635605ed15fbd02132fb2"
+        },
+        {
+          "relative_path": "association/pc10/mean_EXT.loco.mlma",
+          "bytes": 22150635,
+          "sha256": "ba044656c7f35be05ac9603cd41821a6e9348df5154b557157254d7a40de1f4c"
+        },
+        {
+          "relative_path": "association/pc10/mean_TOF.loco.mlma",
+          "bytes": 22214026,
+          "sha256": "98b59c535bfaa5969cc97b39e1f8f6612fac8707ef67e796f6ae21bcb1c8843c"
+        },
+        {
+          "relative_path": "association/pc10/mean_norm_EXT.loco.mlma",
+          "bytes": 23730011,
+          "sha256": "dcb4949f73f5c69a730c7be9a936acab18731a537e87347316c6480984bd5736"
+        },
+        {
+          "relative_path": "association/pc10/norm_n.loco.mlma",
+          "bytes": 22808900,
+          "sha256": "77ccb4a8c49ac6bb6bcc01ee106cdce9ee3d43473b4d176d2363d8632f67971f"
+        }
+      ]
+    },
+    {
+      "role": "sensitivity",
+      "run_id": "abamectin-ws283-ldpruned-grm-sensitivity-20260720T231705Z-df9ae7333925",
+      "source_git_commit": "df9ae7333925b481175fd93e171b5e53c4e8170b",
+      "checksum_file_count": 315,
+      "checksum_receipt_relative_path": "receipts/SHA256SUMS.txt",
+      "source_revision_relative_path": "receipts/SOURCE_REVISION",
+      "required_files": [
+        {
+          "relative_path": "SUCCESS",
+          "bytes": 8,
+          "sha256": "1f513d4ecec4e91ddd48da1a59b6d96f1b76c374dc1da641980782a34f43b102"
+        },
+        {
+          "relative_path": "receipts/SOURCE_REVISION",
+          "bytes": 41,
+          "sha256": "cb32445b078abaef97f9aa93ddbb04a3ff5a27a4a43847df5472c6544339420d"
+        },
+        {
+          "relative_path": "receipts/SHA256SUMS.txt",
+          "bytes": 35585,
+          "sha256": "77186d716f15023b7fb4026f2713025a1751bed73843dc1b52a80c233bb7e92c"
+        },
+        {
+          "relative_path": "receipts/grm_verification.json",
+          "bytes": 5595,
+          "sha256": "91adbad29221913a773bd1b68b084f4dcb9ba50037e9e33cf3b9df63d7c4369e"
+        },
+        {
+          "relative_path": "receipts/runtime_qualification.json",
+          "bytes": 65311,
+          "sha256": "7046d428faec9a58a4a2e0aa443cb6e43bc08d4f02f17469b46b27f981a3013b"
+        },
+        {
+          "relative_path": "genotype/marker_lists/marker_manifest.json",
+          "bytes": 3430,
+          "sha256": "4c9c849f6e99d0ecf942f7631f63404320a4a481c4c0f122b02fe2bf7d3e9a47"
+        },
+        {
+          "relative_path": "association/assembled/ldgrm_pc0/mean_EXT.ldpruned_loco.mlma",
+          "bytes": 22179734,
+          "sha256": "851a93aa76c046631f624ab7fd4f44b6805c20123cf177278ed9cea33df702d7"
+        },
+        {
+          "relative_path": "association/assembled/ldgrm_pc0/mean_TOF.ldpruned_loco.mlma",
+          "bytes": 22227713,
+          "sha256": "10001b1a415f4cd28cd4e959378de29e5a08e2608eeabc28512bc735e9e7f950"
+        },
+        {
+          "relative_path": "association/assembled/ldgrm_pc0/mean_norm_EXT.ldpruned_loco.mlma",
+          "bytes": 23768763,
+          "sha256": "c3fd5658d8ae322d238c1083d04ee34808a1fafbf7907abf327dd025fcb99d5c"
+        },
+        {
+          "relative_path": "association/assembled/ldgrm_pc0/norm_n.ldpruned_loco.mlma",
+          "bytes": 22780996,
+          "sha256": "1e339eed08861e16b49d17598cbe8e57a2b03c478e127367f686660614a9d9b8"
+        },
+        {
+          "relative_path": "association/assembled/ldgrm_pc10/mean_EXT.ldpruned_loco.mlma",
+          "bytes": 22134880,
+          "sha256": "1267aafa1786893c14bdc50c9f1294f284dbefdd3d7f267d7a87d8372b4f7136"
+        },
+        {
+          "relative_path": "association/assembled/ldgrm_pc10/mean_TOF.ldpruned_loco.mlma",
+          "bytes": 22210546,
+          "sha256": "8bb1226cfc81cb790ee69a722cedfbb2e0f6011f49e80c1830f2c415b22d89b1"
+        },
+        {
+          "relative_path": "association/assembled/ldgrm_pc10/mean_norm_EXT.ldpruned_loco.mlma",
+          "bytes": 23729022,
+          "sha256": "d3c5965c45ccda73c19b83546d21ea7bf16c928461d065b2509a7730dfad2a3c"
+        },
+        {
+          "relative_path": "association/assembled/ldgrm_pc10/norm_n.ldpruned_loco.mlma",
+          "bytes": 22794416,
+          "sha256": "396fc95f205966c8c86933b4f4397c6be0ea19fb6737e74163022a750f10d7e7"
+        }
+      ]
+    }
+  ],
+  "tools": [
+    {
+      "name": "plink2",
+      "version": "2.0.0-a.6.9LM_2025-01-29",
+      "absolute_path": "/opt/deepquery/bin/plink2",
+      "sha256": "28e45a65689bacf2b6675898abc6fc2eb2a5de19ae21a60ccec0dd37e6b21ce2"
+    },
+    {
+      "name": "gcta64",
+      "version": "1.94.1_2022-11-15",
+      "absolute_path": "/opt/deepquery/bin/gcta64",
+      "sha256": "f3ade5211d2a457ad2c22323675120c61b9db9535905fb0f16987c5cad8f4f0f"
+    }
+  ],
+  "relationship_models": [
+    {
+      "id": "full",
+      "marker_count": 373279,
+      "anchor_method": "GCTA_make_grm_algorithm_0",
+      "association_method": "GCTA_MLMA_LOCO",
+      "observed_parent": "calibration",
+      "observed_model_prefix": "pc"
+    },
+    {
+      "id": "ldpruned",
+      "marker_count": 1370,
+      "anchor_method": "GCTA_make_grm_algorithm_0",
+      "association_method": "GCTA_MLMA_external_LOCO_GRM",
+      "observed_parent": "sensitivity",
+      "observed_model_prefix": "ldgrm_pc"
+    }
+  ],
+  "endpoints": [
+    {
+      "id": "pc0",
+      "pc_count": 0,
+      "design_terms": ["intercept"],
+      "qcovar_parent": null,
+      "qcovar_relative_path": null
+    },
+    {
+      "id": "pc10",
+      "pc_count": 10,
+      "design_terms": [
+        "intercept", "PC1", "PC2", "PC3", "PC4", "PC5", "PC6",
+        "PC7", "PC8", "PC9", "PC10"
+      ],
+      "qcovar_parent": "calibration",
+      "qcovar_relative_path": "genotype/qcovars/pc10.qcovar"
+    }
+  ],
+  "traits": ["mean.EXT", "mean.TOF", "mean.norm.EXT", "norm.n"],
+  "reml": {
+    "method": "GCTA_GREML",
+    "constrained": true,
+    "estimate_fixed_effects": true,
+    "fixed_effect_reconstruction": "GCTA_hsq_reml_est_fix_verified_by_independent_GLS",
+    "fit_count": 16,
+    "thread_count": 16,
+    "phenotype_samples": 209,
+    "boundary_policy": "retain_expected_gcta_residual_floor_as_descriptive_stress_test",
+    "expected_boundary_cells": [
+      "ldpruned_pc0_norm_n",
+      "ldpruned_pc10_norm_n"
+    ],
+    "variance_identity_absolute_tolerance": 1e-6,
+    "fixed_effect_gls_absolute_tolerance": 0.01
+  },
+  "bootstrap": {
+    "replicates_per_cell": 100,
+    "cell_count": 16,
+    "total_null_maps": 1600,
+    "random_generator": "numpy.PCG64DXSM",
+    "seed_derivation": "SHA256_length_delimited_v1",
+    "master_seed_sha256": "c7d073ef47624551225f917246f8db94151a0a3874eb8ef11b70c006b3d1d505",
+    "common_random_numbers": true,
+    "shared_stream_key_fields": ["trait_slug", "replicate", "component"],
+    "stream_components": ["genetic", "residual"],
+    "sentinel_replicates": [1, 25, 50, 75, 100],
+    "smoke_gate": {
+      "replicates": [1, 2],
+      "required_cells": 16,
+      "required_checkpoints": 32
+    },
+    "phenotype_formula": "y=Xbeta+sqrt(Vg)*Khalf*zg+sqrt(Ve)*ze",
+    "phenotype_float_format": ".17g",
+    "byte_replay_required": true,
+    "empirical_p_correction": "plus_one",
+    "min_p_fwer_order_statistic": 5,
+    "pooled_thresholds_permitted": false
+  },
+  "diagnostics": {
+    "alpha": 0.05,
+    "marker_count": 373279,
+    "marker_bonferroni_p": 1.3394806565598387e-7,
+    "lambda_exclusions": [
+      "none", "trait_published_intervals", "all_published_intervals"
+    ],
+    "qq_quantiles": [0.5, 0.9, 0.95, 0.99, 0.999],
+    "clump_p2": 0.05,
+    "clump_r2": 0.2,
+    "clump_kb": 1000
+  },
+  "published_intervals": [
+    {
+      "id": "mean_EXT_VL", "trait": "mean.EXT", "chromosome": 5,
+      "start": 1747612, "end": 4333001
+    },
+    {
+      "id": "mean_TOF_VL", "trait": "mean.TOF", "chromosome": 5,
+      "start": 1757246, "end": 4333001
+    },
+    {
+      "id": "mean_TOF_VR_glc-1", "trait": "mean.TOF", "chromosome": 5,
+      "start": 15983112, "end": 16599066
+    },
+    {
+      "id": "norm_n_II", "trait": "norm.n", "chromosome": 2,
+      "start": 13756151, "end": 14937792
+    },
+    {
+      "id": "norm_n_III", "trait": "norm.n", "chromosome": 3,
+      "start": 3061633, "end": 4632949
+    },
+    {
+      "id": "norm_n_V", "trait": "norm.n", "chromosome": 5,
+      "start": 13606517, "end": 16754986
+    }
+  ],
+  "claims": {
+    "permitted": [
+      "preliminary model-specific parametric polygenic-null calibration",
+      "gross type-I and tail-behavior screen within each frozen analysis cell",
+      "preliminary empirical extremeness of the already observed maps"
+    ],
+    "prohibited": [
+      "strict reproduction or independent replication",
+      "validated empirical threshold or calibrated discovery claim",
+      "causal locus, gene, allele, haplotype, or mechanism",
+      "model selection from known-locus or published-interval recovery",
+      "pooling null thresholds across traits, endpoints, or GRM constructions"
+    ]
+  }
+}

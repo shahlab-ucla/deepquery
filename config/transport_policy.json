@@ -1,0 +1,38 @@
+{
+  "policy_id": "wormctx:transport-policy-v0.1",
+  "description": "Transparent initialization policy; not a calibrated biological probability.",
+  "thresholds": {
+    "direct": 0.95,
+    "near_context": 0.75,
+    "transported": 0.45
+  },
+  "dimensions": {
+    "organism_taxon": {"weight": 4.0, "unknown_score": 0.0, "mismatch_score": 0.0, "hard_gate": true},
+    "genetic_background": {"weight": 2.0, "unknown_score": 0.35, "mismatch_score": 0.15, "hard_gate": false},
+    "life_stage": {"weight": 3.0, "unknown_score": 0.25, "mismatch_score": 0.1, "hard_gate": false},
+    "anatomy": {"weight": 2.0, "unknown_score": 0.35, "mismatch_score": 0.1, "hard_gate": false},
+    "intervention": {"weight": 6.0, "unknown_score": 0.15, "mismatch_score": 0.05, "hard_gate": false},
+    "assay": {"weight": 2.0, "unknown_score": 0.3, "mismatch_score": 0.1, "hard_gate": false},
+    "environment": {"weight": 1.5, "unknown_score": 0.35, "mismatch_score": 0.1, "hard_gate": false},
+    "modality": {"weight": 1.5, "unknown_score": 0.35, "mismatch_score": 0.15, "hard_gate": false},
+    "readout_resolution": {"weight": 1.5, "unknown_score": 0.35, "mismatch_score": 0.15, "hard_gate": false},
+    "absolute_time": {"weight": 1.0, "unknown_score": 0.35, "mismatch_score": 0.1, "hard_gate": false}
+  },
+  "compatibility": {
+    "life_stage": {
+      "wormctx:young_adult|wormctx:adult": 0.85,
+      "wormctx:adult|wormctx:young_adult": 0.85,
+      "wormctx:l4|wormctx:young_adult": 0.55,
+      "wormctx:embryo|wormctx:young_adult": 0.1
+    },
+    "genetic_background": {
+      "wormctx:cb4856_background|wormctx:natural_isolate_panel": 0.75,
+      "wormctx:n2_background|wormctx:natural_isolate_panel": 0.3
+    },
+    "readout_resolution": {
+      "organism|organism": 1.0,
+      "cell|organism": 0.35,
+      "trajectory|organism": 0.25
+    }
+  }
+}

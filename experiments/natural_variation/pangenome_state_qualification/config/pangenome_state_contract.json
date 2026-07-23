@@ -1,0 +1,146 @@
+{
+  "schema_version": "wormctx-abamectin-ws283-chrv-haplotype-pav-scaffold-1.1",
+  "analysis_id": "abamectin_ws283_chrv_haplotype_pav_first_wave_v1",
+  "classification": "governed_descriptive_haplotype_pav_scaffold",
+  "status": "blocked_on_real_pangenome_inputs",
+  "validated": false,
+  "biological_claims_permitted": false,
+  "regions": [
+    {
+      "id": "chrv_left",
+      "chromosome": 5,
+      "source_assembly": "PRJNA13758.WS276",
+      "target_assembly": "PRJNA13758.WS283_inferred_not_declared_in_vcf_header",
+      "ws276_start": 1747612,
+      "ws276_end": 4333001,
+      "ws283_query_start": 1747612,
+      "ws283_query_end": 4333001,
+      "coordinate_identity_assumed": false,
+      "identity_receipt_required_before_state_ingestion": true
+    },
+    {
+      "id": "chrv_right",
+      "chromosome": 5,
+      "source_assembly": "PRJNA13758.WS276",
+      "target_assembly": "PRJNA13758.WS283_inferred_not_declared_in_vcf_header",
+      "ws276_start": 13606517,
+      "ws276_end": 16754986,
+      "ws283_query_start": 13606517,
+      "ws283_query_end": 16754986,
+      "coordinate_identity_assumed": false,
+      "identity_receipt_required_before_state_ingestion": true
+    }
+  ],
+  "coordinate_gate": {
+    "mapping_mode": "sequence_identical_coordinate_identity",
+    "source_and_target_reference_sha256_required": true,
+    "chromosome_v_sha256_required": true,
+    "interval_sequence_sha256_required": true,
+    "numerical_coordinate_equality_required": true,
+    "outcome_blind_receipt_required": true,
+    "liftover_fallback_permitted_in_v1": false
+  },
+  "null_dependency": {
+    "run_id": "abamectin-ws283-parametric-null-20260721T161005Z-c01179f4a52e",
+    "source_git_commit": "c01179f4a52e97fcc6c0d1bc1df07e03fe2215c8",
+    "frozen_contract_relative_path": "receipts/frozen_parametric_null_contract.json",
+    "frozen_contract_sha256": "d665742c2e8fec1400196797bae90963816611e268420eeaf812447e8f4e70e7",
+    "terminal_success_required_before_analysis_plan": true,
+    "interpretation_receipt_required": true,
+    "interpretation_receipt_status": "frozen",
+    "interpretation_receipt_relative_path": "artifacts/upstream/parametric_polygenic_null_calibration/interpretation.json",
+    "interpretation_receipt_sha256": "aa933f7610a875feafebf44f108c29320785e86e714d33071a42108b07d92565",
+    "interpretation_receipt_must_be_frozen_in_manifest": true,
+    "expected_calibration_cells": 16,
+    "expected_replicates_per_cell": 100,
+    "expected_completed_maps": 1600,
+    "expected_threshold_eligible_cells": 14,
+    "expected_boundary_cells": [
+      "ldpruned_pc0_norm_n",
+      "ldpruned_pc10_norm_n"
+    ],
+    "scaffold_development_permitted_while_nonterminal": true,
+    "marker_null_is_not_haplotype_test_calibration": true
+  },
+  "states": {
+    "target_assembly": "PRJNA13758.WS283_inferred_not_declared_in_vcf_header",
+    "expected_samples": 209,
+    "sample_order": "baseline_parent_fam_order",
+    "allowed_kinds": ["haplotype", "pav"],
+    "one_call_per_sample_per_block": true,
+    "unresolved_is_missing_not_reference": true,
+    "absent_pav_is_explicit_not_missing": true,
+    "block_definitions_frozen_before_phenotype_access": true
+  },
+  "carrier_gate": {
+    "minimum_carriers_per_state": 5,
+    "minimum_noncarriers_per_state": 5,
+    "maximum_unresolved_fraction": 0.1,
+    "rare_state_policy": "exclude_entire_block_without_collapsing_states",
+    "require_reference_and_alternative": true,
+    "gate_evaluated_without_phenotypes": true
+  },
+  "kinship": {
+    "relationships": ["full", "ldpruned"],
+    "endpoints": ["pc0", "pc10"],
+    "traits": ["mean.EXT", "mean.TOF", "mean.norm.EXT", "norm.n"],
+    "chromosome_excluded_from_kinship": 5,
+    "primary_test": "kinship_aware_block_omnibus",
+    "secondary_state_contrasts": "within_block_holm_descriptive_only_after_primary",
+    "full_kinship_resource": "build_full_marker_chr5_excluded_grm",
+    "ldpruned_kinship_resource": "reuse_ldpruned_sensitivity_chr5_excluded_grm",
+    "model_selection_from_known_locus_permitted": false,
+    "pooled_null_thresholds_permitted": false
+  },
+  "multiplicity": {
+    "family_alpha": 0.05,
+    "primary_unit": "outcome_blind_eligible_block",
+    "family_scope": "within_trait_relationship_endpoint_across_both_frozen_regions",
+    "primary_correction": "bonferroni_over_eligible_blocks",
+    "threshold_formula": "0.05/eligible_block_count",
+    "state_contrasts_in_primary_family": false,
+    "no_cross_cell_pooling": true
+  },
+  "real_execution_handoff": {
+    "manifest_relative_path": "experiments/natural_variation/pangenome_state_qualification/config/state_input_handoff.json",
+    "manifest_sha256": "6cf173cbdfb3c112cbe517c11e3bfab3f467a8e50e469fb8426c1b7af95c67c6",
+    "schema_version": "wormctx-abamectin-regional_state-heldout_prediction-real-input-handoff-1.1",
+    "analysis_id": "abamectin_ws283_regional_state_heldout_prediction_real_input_handoff_20260721",
+    "required_qualified_gates": [
+      "coordinate_identity",
+      "state_panel",
+      "ldpruned_chr5_excluded_grm",
+      "full_kernels",
+      "population_groups"
+    ],
+    "allowed_nonqualified_advisory_gates": ["phenotype_provenance"],
+    "coordinate_receipt_role": "ws276_ws283_coordinate_identity_receipt",
+    "required_state_asset_roles": [
+      "real_haplotype_pav_state_panel",
+      "real_haplotype_pav_sample_order",
+      "real_haplotype_pav_call_definition_receipt",
+      "real_haplotype_pav_qualification_receipt"
+    ],
+    "runtime_root_mapping_required": true,
+    "every_execution_asset_byte_and_sha256_verified": true,
+    "every_execution_receipt_semantically_verified": true,
+    "symbolic_resource_names_are_execution_evidence": false,
+    "runtime_boolean_self_attestation_permitted": false,
+    "operator_outcome_blinding_asserted": false,
+    "outcome_access_claim_scope": "derivation_execution_paths_only"
+  },
+  "claims": {
+    "permitted": [
+      "outcome-blind chromosome-V haplotype/PAV input qualification",
+      "descriptive carrier-count-qualified block summaries",
+      "descriptive kinship-aware block sensitivity after the frozen null gate"
+    ],
+    "prohibited": [
+      "strict reproduction or independent replication",
+      "causal locus, gene, allele, haplotype, PAV, or mechanism",
+      "model selection from recovery of a published interval or candidate gene",
+      "treating the marker-level parametric null as calibration of a block test",
+      "biological validation or prospective utility"
+    ]
+  }
+}

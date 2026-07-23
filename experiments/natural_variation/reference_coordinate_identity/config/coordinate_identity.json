@@ -1,0 +1,33 @@
+{
+  "schema_version": "wormctx-ws276-ws283-coordinate-qualification-config-1.0",
+  "source_assembly": "PRJNA13758.WS276",
+  "target_assembly": "PRJNA13758.WS283_inferred_not_declared_in_vcf_header",
+  "generated_before_state_ingestion": true,
+  "phenotype_paths_accepted": false,
+  "association_result_paths_accepted": false,
+  "operator_outcome_blinding_asserted": false,
+  "outcome_access_claim_scope": "qualification_execution_path_only",
+  "numerical_coordinate_equality_required": true,
+  "full_chromosome_v_sequence_identity_required": true,
+  "source_fasta": {
+    "bytes": 101957874,
+    "sha256": "948855c154b81f6b257852eab401a289160e8e7c6ec9b6bb653fab73a167dcc3",
+    "caendr_url": "https://caendr-open-access-data-bucket.s3.us-east-2.amazonaws.com/dataset_release/c_elegans/20200815/20200815_c_elegans_WS276.genome.fa",
+    "caendr_object_version_id": "XH2XITuFD_lDGIm8_jiokjpTZbWbXw17",
+    "wormbase_ebi_url": "https://ftp.ebi.ac.uk/pub/databases/wormbase/releases/WS276/species/c_elegans/PRJNA13758/c_elegans.PRJNA13758.WS276.genomic.fa.gz",
+    "wormbase_gzip_bytes": 29131150,
+    "wormbase_gzip_md5": "6259542da4c35355f6ea41bc5972b39b"
+  },
+  "target_fasta": {
+    "bytes": 101957874,
+    "sha256": "948855c154b81f6b257852eab401a289160e8e7c6ec9b6bb653fab73a167dcc3"
+  },
+  "target_fai": {
+    "bytes": 181,
+    "sha256": "491045ba6a2bec8c00111acdd0a4822f7837d3ff42bce9907118b9e30fe58d2d"
+  },
+  "regions": [
+    {"region_id": "chrv_left", "start": 1747612, "end": 4333001},
+    {"region_id": "chrv_right", "start": 13606517, "end": 16754986}
+  ]
+}

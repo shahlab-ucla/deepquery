@@ -1,0 +1,88 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "deepquery"
+version = "0.1.0"
+description = "Context-resolved evidence graphs and controlled biological inference experiments"
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.11"
+dependencies = [
+  "pydantic>=2,<3",
+]
+
+[project.optional-dependencies]
+pipeline = [
+  "duckdb>=1,<2",
+  "fsspec>=2025.3",
+  "httpx>=0.28,<1",
+  "pyarrow>=19,<22",
+]
+semantic = [
+  "bioregistry",
+  "bmt",
+  "ga4gh.vrs",
+  "kgx",
+  "koza",
+  "linkml",
+  "linkml-runtime",
+  "oaklib",
+  "rdflib",
+  "rocrate",
+  "sssom",
+]
+dev = [
+  "mypy>=1.15,<2",
+  "pytest>=8,<9",
+  "pytest-cov>=6,<8",
+  "ruff>=0.11,<1",
+]
+poc = [
+  "numpy>=2,<3",
+  "safetensors>=0.5,<1",
+  "torch>=2.5,<2.9",
+]
+
+[project.scripts]
+deepquery = "wormctx.cli:main"
+deepquery-poc = "wormctx.poc.cli:main"
+wormctx = "wormctx.cli:main"
+wormpoc = "wormctx.poc.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/wormctx"]
+
+[tool.hatch.build.targets.wheel.force-include]
+"schemas" = "wormctx/resources/schemas"
+"config" = "wormctx/resources/config"
+"experiments" = "wormctx/resources/experiments"
+"mappings" = "wormctx/resources/mappings"
+"sql" = "wormctx/resources/sql"
+"data/examples" = "wormctx/resources/data/examples"
+
+[tool.hatch.build.targets.sdist]
+include = [
+  "/src",
+  "/schemas",
+  "/config",
+  "/experiments",
+  "/mappings",
+  "/sql",
+  "/data/examples",
+  "/docs",
+  "/environment",
+  "/tests",
+  "/README.md",
+  "/LICENSE",
+  "/scripts",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
