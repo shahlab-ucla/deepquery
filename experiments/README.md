@@ -6,6 +6,7 @@ diagnostics from synthetic qualification, active work, and blocked real-data exe
 
 | Experiment | Primary question | Current public status | Implementation |
 |---|---|---|---|
+| [Context graph and transport smoke](context_graph/context_graph_transport_smoke/) | Can the rights-safe graph and transport fixture execute through the portable receipt layer? | Executable portability control | `wormctx.pipeline`, `wormctx.execution` |
 | [Synthetic routing and design selection](graph_conditioned_inference/synthetic_routing_and_design_selection/) | Can one shared graph encoder route typed biological inference tasks and reject invalid designs? | Executable synthetic benchmark | `wormctx.poc.model`, `operators`, `training` |
 | [Historical marker identity](natural_variation/historical_marker_identity/) | Do recovered historical assets reproduce the deposited marker universe? | Reproduction blocked by source/preprocessing mismatch | `qtl_ws276`, `qtl_ws276_sensitivity` |
 | [Modern SNP association reanalysis](natural_variation/modern_snp_association_reanalysis/) | Can a four-trait modern association path be made provenance-bound and auditable? | Technical reanalysis complete; biological claims prohibited | `qtl` |
@@ -30,4 +31,3 @@ diagnostics from synthetic qualification, active work, and blocked real-data exe
 
 Private operational receipts are not part of this tree. Aggregate public summaries appear
 under an experiment's `results/` directory only after their release boundary has been checked.
-

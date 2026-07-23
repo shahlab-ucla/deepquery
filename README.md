@@ -72,6 +72,28 @@ deepquery-poc run \
   --output-root runs/synthetic-gpu
 ```
 
+The portable execution layer binds a module invocation to hashed inputs, explicit resource
+requirements, rooted paths, declared outputs, and a write-once receipt:
+
+```bash
+mkdir -p build/portable-smoke
+deepquery execute \
+  --manifest experiments/graph_conditioned_inference/synthetic_routing_and_design_selection/execution/portable_smoke.json \
+  --config-root experiments/graph_conditioned_inference/synthetic_routing_and_design_selection/config \
+  --input-root . \
+  --output-root build/portable-smoke \
+  --dry-run
+```
+
+Create a clean, content-addressed transfer bundle only after committing the intended source:
+
+```bash
+deepquery source-bundle create --output-directory dist/source
+```
+
+Container and Apptainer execution are documented in
+[containers/README.md](containers/README.md).
+
 ## What has been demonstrated
 
 - Context-bearing observations can be validated, normalized, reified as a graph, projected
@@ -115,9 +137,9 @@ See [docs/reproducibility/data-and-result-boundaries.md](docs/reproducibility/da
 - [Graph-grounded reasoning evaluation](docs/algorithms/graph-grounded-reasoning-evaluation.md)
 - [Implementation roadmap](docs/implementation/roadmap.md)
 - [Portable execution](docs/implementation/portable-execution.md)
+- [Portable execution algorithms](docs/algorithms/portable-execution-contract.md)
 
 ## License
 
 Code is released under the [MIT License](LICENSE). Fixture and mapping artifacts retain their
 own embedded licensing statements where applicable.
-

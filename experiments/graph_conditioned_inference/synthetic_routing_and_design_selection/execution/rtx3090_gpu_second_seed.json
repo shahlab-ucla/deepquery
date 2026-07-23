@@ -1,0 +1,37 @@
+{
+  "execution_manifest_schema_version": "1.0",
+  "experiment_id": "synthetic-routing-design-selection-gpu-second-seed",
+  "entrypoint": {
+    "module": "wormctx.poc",
+    "argv": [
+      "run",
+      "--config",
+      "{config:model-config}",
+      "--output-root",
+      "{output:run-directory}"
+    ]
+  },
+  "configs": [
+    {
+      "name": "model-config",
+      "path": "full_gpu_second_seed.json",
+      "sha256": "fb53bd18eb9450cd20edd356ed966069ed43ee00d0a8242e268c5866ef700d71"
+    }
+  ],
+  "inputs": [],
+  "outputs": [
+    {
+      "name": "run-directory",
+      "path": "synthetic-routing-design-selection-gpu-second-seed",
+      "kind": "directory"
+    }
+  ],
+  "resources": {
+    "cpu_cores": 4,
+    "ram_gib": 8.0,
+    "gpus": 1,
+    "min_vram_gib": 23.0
+  },
+  "required_environment": [],
+  "timeout_seconds": 21600
+}

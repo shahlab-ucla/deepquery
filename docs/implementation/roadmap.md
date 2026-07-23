@@ -23,6 +23,12 @@ The repository already provides:
 
 ### 1. Freeze a portable software environment
 
+Foundation implemented: cross-platform dependency bounds, an OCI definition, an Apptainer
+definition, external mount rules, and content-addressed source bundling are present. The CPU
+validation image now builds on Linux from an exported commit, verifies its embedded revision,
+runs the packaged doctor, and passes the runtime test suite. The remaining production gate is
+a digest-pinned accelerator base plus its software and license inventory.
+
 Deliverables:
 
 - resolved dependency lock for Python 3.11;
@@ -31,9 +37,20 @@ Deliverables:
 - image digest and software/license inventory;
 - explicit external-tool mounting rules for tools that cannot be redistributed.
 
-Gate: a clean checkout must run the core tests and rights-safe demo inside the image.
+Gate: met for the CPU validation image. An accelerator image must still pass the same checks
+and the checked GPU manifest with driver passthrough.
 
 ### 2. Replace specialized launchers with one provider-neutral execution layer
+
+Foundation implemented: strict execution manifests now bind trusted Python modules, hashed
+inputs, rooted paths, resource requests, declared file or directory outputs, write-once
+receipts, and retrieval-side closure verification. The remaining engineering work is signal
+forwarding, structured log capture, explicit checkpoint restart, and adapters for direct
+remote and scheduler submission.
+
+A clean source archive has also completed the rights-safe graph fixture on a Linux execution
+host with matching graph counts and input hashes, followed by independent recursive-output
+and graph-build verification.
 
 The launcher should accept:
 
@@ -51,6 +68,16 @@ checkpoints, and write `SUCCESS` only after checksum closure.
 Gate: local and remote fixture runs produce equivalent semantic receipts.
 
 ### 3. Measure the synthetic GPU path
+
+Qualification and the first full run are implemented. The repository detected and qualified
+a 24-GB-class accelerator without collecting host identity, completed the checked 24-epoch
+configuration, reloaded its portable checkpoint, and verified the 223-MB output closure. The
+public-safe result is recorded under
+`experiments/graph_conditioned_inference/synthetic_routing_and_design_selection/evidence/`.
+An exact replay reproduced all stable artifacts and every checkpoint tensor bitwise. The
+outcome-blind second seed also passed every gate, with stable core routing metrics. The
+current synthetic model-level qualification gate is complete; further seeds would estimate
+variability rather than close a portability blocker.
 
 Run the small and full graph-conditioned configurations with at least two seeds. Record:
 

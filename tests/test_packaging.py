@@ -26,6 +26,9 @@ class PackagingTests(unittest.TestCase):
         self.assertEqual(
             included["data/examples"], "wormctx/resources/data/examples"
         )
+        self.assertEqual(
+            included["SOURCE_REVISION"], "wormctx/resources/SOURCE_REVISION"
+        )
 
     def test_repository_root_falls_back_to_installed_resources(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
@@ -58,6 +61,23 @@ class PackagingTests(unittest.TestCase):
         self.assertIn("biolink_knowledge_level VARCHAR", ddl)
         self.assertIn("s.source_release", ddl)
         self.assertIn("s.source_artifact", ddl)
+
+    def test_container_definitions_include_experiment_runners(self) -> None:
+        if not (ROOT / "containers").is_dir():
+            self.skipTest("container build definitions are not runtime-image assets")
+        containerfile = (ROOT / "containers" / "Containerfile").read_text(
+            encoding="utf-8"
+        )
+        dockerignore = (
+            ROOT / "containers" / "Containerfile.dockerignore"
+        ).read_text(encoding="utf-8")
+        apptainer = (ROOT / "containers" / "deepquery.def").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn("COPY scripts ./scripts", containerfile)
+        self.assertIn("!scripts/", dockerignore)
+        self.assertIn("!scripts/**", dockerignore)
+        self.assertIn("scripts /opt/deepquery/scripts", apptainer)
 
 
 if __name__ == "__main__":

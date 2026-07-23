@@ -33,6 +33,8 @@ data/private/
 *.tar
 *.tar.gz
 *.zip
+*.sif
+*.oci
 *.log
 *.pid
 *.stdout
@@ -44,4 +46,3 @@ data/private/
 *.pem
 *.key
 .ssh/
-

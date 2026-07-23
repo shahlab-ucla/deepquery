@@ -36,6 +36,67 @@ jobs:
             --observations data/examples/observations.jsonl \
             --query data/examples/query_context.json \
             --policy config/transport_policy.json
+      - name: Portable execution and retrieval verification
+        run: |
+          mkdir -p build/portable-ci
+          python -m wormctx execute \
+            --manifest experiments/context_graph/context_graph_transport_smoke/execution/portable_smoke.json \
+            --config-root . \
+            --input-root . \
+            --output-root build/portable-ci
+          receipt="$(find build/portable-ci/receipts -type f -name '*.execution.json' -print -quit)"
+          python -m wormctx verify-execution \
+            --receipt "${receipt}" \
+            --output-root build/portable-ci
+      - name: Source archive creation and verification
+        run: |
+          python -m wormctx source-bundle create --output-directory dist/source
+          short_revision="$(git rev-parse --short=12 HEAD)"
+          python -m wormctx source-bundle verify \
+            --archive "dist/source/deepquery-${short_revision}.tar.gz" \
+            --receipt "dist/source/deepquery-${short_revision}.tar.gz.receipt.json"
+
+  container-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      IMAGE_TAG: deepquery-ci:${{ github.sha }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Export committed container context
+        run: |
+          short_revision="$(git rev-parse --short=12 HEAD)"
+          mkdir -p build/container-context
+          git archive \
+            --format=tar.gz \
+            --prefix="deepquery-${short_revision}/" \
+            --output=build/deepquery-source.tar.gz \
+            HEAD
+          tar -xzf build/deepquery-source.tar.gz -C build/container-context
+          echo "CONTAINER_CONTEXT=build/container-context/deepquery-${short_revision}" >> "${GITHUB_ENV}"
+      - name: Build CPU validation image
+        run: |
+          docker build \
+            --file "${CONTAINER_CONTEXT}/containers/Containerfile" \
+            --tag "${IMAGE_TAG}" \
+            "${CONTAINER_CONTEXT}"
+      - name: Verify embedded source revision
+        run: |
+          observed_revision="$(
+            docker run --rm \
+              --entrypoint /bin/cat \
+              "${IMAGE_TAG}" \
+              /opt/deepquery/SOURCE_REVISION
+          )"
+          test "${observed_revision}" = "${GITHUB_SHA}"
+      - name: Run packaged doctor
+        run: docker run --rm "${IMAGE_TAG}" doctor
+      - name: Run rights-safe runtime tests
+        run: |
+          docker run --rm \
+            --entrypoint python \
+            "${IMAGE_TAG}" \
+            -m pytest -q --ignore=tests/test_bundles.py
 
   # Semantic conformance is gated behind the optional ontology toolchain.
   # Enable after the pinned Biolink/KGX and LinkML validators are wired.

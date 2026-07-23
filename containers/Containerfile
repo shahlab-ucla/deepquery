@@ -1,0 +1,55 @@
+ARG BASE_IMAGE=python:3.11-slim-bookworm
+FROM ${BASE_IMAGE}
+
+ARG APP_UID=10001
+ARG APP_GID=10001
+
+ENV DEBIAN_FRONTEND=noninteractive \
+    PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PIP_DISABLE_PIP_VERSION_CHECK=1 \
+    PIP_NO_CACHE_DIR=1 \
+    DEEPQUERY_INPUT_ROOT=/data/input \
+    DEEPQUERY_OUTPUT_ROOT=/data/output
+
+RUN groupadd --gid "${APP_GID}" deepquery \
+    && useradd \
+        --uid "${APP_UID}" \
+        --gid "${APP_GID}" \
+        --create-home \
+        --shell /usr/sbin/nologin \
+        deepquery
+
+WORKDIR /opt/deepquery
+
+# Copy only the public runtime, experiment contracts, and rights-safe test assets.
+# Raw inputs and run outputs are supplied through external mounts.
+COPY pyproject.toml README.md LICENSE SOURCE_REVISION ./
+COPY src ./src
+COPY config ./config
+COPY data/examples ./data/examples
+COPY experiments ./experiments
+COPY mappings ./mappings
+COPY schemas ./schemas
+COPY sql ./sql
+COPY scripts ./scripts
+COPY tests ./tests
+COPY environment/constraints-container.txt environment/requirements-container.txt ./environment/
+
+RUN python -m pip install --upgrade pip \
+    && python -m pip install \
+        --constraint environment/constraints-container.txt \
+        --requirement environment/requirements-container.txt \
+    && python -m compileall -q src \
+    && mkdir -p "${DEEPQUERY_INPUT_ROOT}" "${DEEPQUERY_OUTPUT_ROOT}" \
+    && chown -R deepquery:deepquery \
+        /opt/deepquery \
+        "${DEEPQUERY_INPUT_ROOT}" \
+        "${DEEPQUERY_OUTPUT_ROOT}"
+
+USER deepquery
+
+VOLUME ["/data/input", "/data/output"]
+
+ENTRYPOINT ["deepquery"]
+CMD ["doctor"]
