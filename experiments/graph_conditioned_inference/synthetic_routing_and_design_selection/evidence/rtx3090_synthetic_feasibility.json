@@ -24,6 +24,44 @@
     "context_graph_build_verified": true,
     "context_graph_product_count": 11
   },
+  "deterministic_replay": {
+    "run_id": "rtx3090_feasibility-20260723T195033Z-ab91819e9a",
+    "manifest_sha256": "40bd4515b451a1aa522c78ebe8222dded7b7cdd0dada5a5b1c04a803ccb15e9c",
+    "receipt_sha256": "847ef9be055e86057170be8c5bec7e03a497ca8918a2e67ffa366aede4ae6a79",
+    "status": "succeeded",
+    "recursive_output_bytes": 223406819,
+    "recursive_output_closure_verified": true,
+    "internal_checksums_verified": true,
+    "elapsed_seconds": 38.36801681574434,
+    "peak_vram_gib": 0.8243365287780762,
+    "aggregate_metrics_identical": true,
+    "stable_artifacts": {
+      "decision_thresholds.json": "7eb9963ea9cbcbcf9c0bba2e2556c78e87d3f3f86d242b3b6e8c3829db2eac9d",
+      "predictions.test.jsonl": "8ca97f492308c3365a18fa6190393b85c28e9f7120b0227682be70b3ba19357e",
+      "metrics.json": "64ef071ae04ea75c62f371ab4d9b753f4d9b6315553b7bd8b1e7cbdd96538377",
+      "data/train.jsonl": "5b818bac451a9f79f4feb2804cedd72add6438580dba5246a1a92ebfbbc63f42",
+      "data/val.jsonl": "f92bc67b9ee052f84c1cca5223410ec18563a6bbab6b2e9d4f9c17f0fee6f222",
+      "data/test.jsonl": "66153a87cd7d64b87bdf80eac1ef19edca02d622e5659565d3a31a522fc25b0c",
+      "data/manifest.json": "e96101973d31fa7be2e5ddde15da876f24de985e1eac542fddf27afe702b6dd5",
+      "config.resolved.json": "aa1ebd80abc9f7398be7037772878ced79da37ed1b3b183efa46329c2fca6b29",
+      "vocabulary.json": "123ea8873e10378393cb9553fc399d0030d21c328168952d72fa53ee4106ea8d"
+    },
+    "checkpoint": {
+      "tensor_count": 117,
+      "tensor_names_identical": true,
+      "tensor_values_bitwise_identical": true,
+      "container_bytes_identical": false,
+      "primary_container_sha256": "94e996b95ea97150ecbfa66a60914520567efc58103268b1c3f927ec0dab452d",
+      "replay_container_sha256": "4c849095b17938ed355caa817fb0fa9cf633d499687728033ae9d2d72bbf65d3",
+      "container_difference": "timestamped_run_id_metadata"
+    },
+    "excluded_runtime_variants": [
+      "run identifier",
+      "wall-clock duration",
+      "timestamp-bearing report and manifest fields",
+      "epoch timing logs"
+    ]
+  },
   "accelerator": {
     "class": "NVIDIA GeForce RTX 3090",
     "compute_capability": [
@@ -133,7 +171,7 @@
     "The episodes are generated simulations rather than biological observations.",
     "The result demonstrates contract learning and execution integrity, not calibrated biological reasoning.",
     "Hypothesis accuracy did not exceed the constant baseline.",
-    "A second predeclared seed and deterministic checkpoint replay remain required.",
+    "A second predeclared seed remains required.",
     "Real-data comparisons must begin with conventional phenotype, relatedness, and locus or topology baselines."
   ]
 }

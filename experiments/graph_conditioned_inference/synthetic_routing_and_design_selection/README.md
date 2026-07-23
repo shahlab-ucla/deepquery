@@ -27,6 +27,8 @@ engineering behavior, not biological validity.
 
 One full checked GPU run has completed and passed every predeclared engineering gate. Its
 path-free evidence record and interpretation are under [`evidence/`](evidence/README.md).
-The next model-level controls are a second seed and deterministic checkpoint replay.
+An exact replay reproduced all stable artifacts and all 117 checkpoint tensors. A second
+simulation/training seed and its execution manifest are now frozen under `config/` and
+`execution/`.
 
 Implementation: `wormctx.poc.{generation,operators,tensorize,model,training,metrics}`.

@@ -72,8 +72,8 @@ a 24-GB-class accelerator without collecting host identity, completed the checke
 configuration, reloaded its portable checkpoint, and verified the 223-MB output closure. The
 public-safe result is recorded under
 `experiments/graph_conditioned_inference/synthetic_routing_and_design_selection/evidence/`.
-The remaining model-level gates are a second predeclared seed, deterministic checkpoint
-replay, and a paired comparison across seeds.
+An exact replay reproduced all stable artifacts and every checkpoint tensor bitwise. The
+remaining model-level gate is the frozen second seed and a paired comparison across seeds.
 
 Run the small and full graph-conditioned configurations with at least two seeds. Record:
 

@@ -22,6 +22,11 @@ The unchanged hypothesis accuracy is an informative negative control. The simula
 supervises the true hypothesis index, so the run does not support a claim that causal
 hypothesis selection has been learned.
 
+An exact replay in a fresh output root produced byte-identical thresholds, predictions,
+metrics, split files, data manifest, resolved configuration, and vocabulary. All 117 named
+checkpoint tensors were bitwise identical. The safetensors container hash changed because its
+metadata includes the timestamped run identifier; tensor values did not change.
+
 The machine-neutral evidence record is
 [`rtx3090_synthetic_feasibility.json`](rtx3090_synthetic_feasibility.json). It binds the source
 revision, source archive, execution manifest, output-closure receipt, workload, metrics, and
@@ -30,5 +35,7 @@ absolute paths, and interpreter locations are excluded. The 223-MB model run dir
 committed; its recursive closure digest is recorded so a retained or repeated run can be
 checked against the same contract.
 
-Next controls are a second predeclared training seed, deterministic replay of the selected
-checkpoint, and conventional real-data baselines before any biological interpretation.
+The second simulation/training seed is frozen in
+[`full_gpu_second_seed.json`](../config/full_gpu_second_seed.json) and bound by
+[`rtx3090_gpu_second_seed.json`](../execution/rtx3090_gpu_second_seed.json). After its paired
+run, conventional real-data baselines remain required before biological interpretation.

@@ -139,7 +139,7 @@ def test_linux_ram_discovery_falls_back_to_sysconf(
 
 @pytest.mark.parametrize(
     "manifest_name",
-    ["portable_smoke.json", "rtx3090_gpu.json"],
+    ["portable_smoke.json", "rtx3090_gpu.json", "rtx3090_gpu_second_seed.json"],
 )
 def test_public_execution_manifests_preflight_against_bound_configs(
     manifest_name: str,

@@ -1,0 +1,43 @@
+{
+  "schema_version": "wormctx-poc-1.0",
+  "run_name": "rtx3090_feasibility_second_seed",
+  "mode": "exploratory",
+  "simulation": {
+    "seed": 20260719,
+    "train_groups_per_family": 96,
+    "validation_groups_per_family": 24,
+    "test_groups_per_family": 24,
+    "episodes_per_group": 4
+  },
+  "model": {
+    "hidden_dim": 384,
+    "transformer_layers": 4,
+    "message_passing_layers": 3,
+    "attention_heads": 6,
+    "dropout": 0.10,
+    "max_nodes": 96,
+    "numeric_feature_dim": 16,
+    "max_hypotheses": 4,
+    "max_experiments": 4
+  },
+  "training": {
+    "seed": 20260720,
+    "epochs": 24,
+    "batch_size": 48,
+    "learning_rate": 0.00035,
+    "weight_decay": 0.0001,
+    "gradient_clip": 1.0,
+    "num_workers": 0,
+    "device": "cuda",
+    "amp": true,
+    "deterministic": true
+  },
+  "acceptance": {
+    "require_cuda": true,
+    "minimum_invalid_flag_recall": 0.80,
+    "minimum_invalid_flag_f1": 0.70,
+    "minimum_invalid_design_accuracy": 0.85,
+    "minimum_operator_micro_f1": 0.80,
+    "maximum_peak_vram_gib": 22.0
+  }
+}
