@@ -24,9 +24,10 @@ The repository already provides:
 ### 1. Freeze a portable software environment
 
 Foundation implemented: cross-platform dependency bounds, an OCI definition, an Apptainer
-definition, external mount rules, and content-addressed source bundling are present. The
-remaining gate is to build the image on Linux, record its digest and software inventory, and
-run the clean-checkout tests inside it.
+definition, external mount rules, and content-addressed source bundling are present. The CPU
+validation image now builds on Linux from an exported commit, verifies its embedded revision,
+runs the packaged doctor, and passes the runtime test suite. The remaining production gate is
+a digest-pinned accelerator base plus its software and license inventory.
 
 Deliverables:
 
@@ -36,7 +37,8 @@ Deliverables:
 - image digest and software/license inventory;
 - explicit external-tool mounting rules for tools that cannot be redistributed.
 
-Gate: a clean checkout must run the core tests and rights-safe demo inside the image.
+Gate: met for the CPU validation image. An accelerator image must still pass the same checks
+and the checked GPU manifest with driver passthrough.
 
 ### 2. Replace specialized launchers with one provider-neutral execution layer
 

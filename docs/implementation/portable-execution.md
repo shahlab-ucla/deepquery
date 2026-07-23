@@ -193,3 +193,8 @@ and rights-safe fixtures. Data and results are external mounts. The CPU base val
 packaging; an accelerator base is supplied as a digest-pinned build argument compatible with
 the execution system's driver. The portable constraints deliberately do not claim that one
 Windows, CPU, or CUDA package resolution is universal.
+
+The CPU image is continuously built from a Git-exported source context. CI verifies the
+substituted source revision, runs the packaged doctor, and executes the rights-safe runtime
+suite as the unprivileged image user. Accelerator-image construction and driver passthrough
+remain execution-system qualifications.

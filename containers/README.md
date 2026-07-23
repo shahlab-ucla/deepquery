@@ -114,6 +114,12 @@ privileged builder, fakeroot, or a separately operated build service.
 
 ## Validation and result handling
 
+The repository CI exports the committed tree before building the CPU image, so
+`SOURCE_REVISION` is substituted exactly as it is for a deployable source archive. It then
+checks the embedded revision, runs `doctor`, and runs the rights-safe runtime tests as the
+image's unprivileged user. Source-export tests remain in the host CI jobs because build
+definitions and `.git` metadata are intentionally not runtime-image assets.
+
 Before an experiment run:
 
 1. record the source revision and container digest;
